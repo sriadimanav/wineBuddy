@@ -1,0 +1,780 @@
+@import "tailwindcss";
+
+/* Wine Buddy App - Tailwind V4 + Custom Design System */
+/* Light Wine Rosé Color Scheme */
+
+@theme {
+  /* Wine Color Palette */
+  --color-wine-darkest: #250902;
+  --color-wine-dark: #38040e;
+  --color-wine-medium: #640d14;
+  --color-wine-light: #800e13;
+  --color-wine-accent: #ad2831;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing Scale */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius: 0.5rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-full: 9999px;
+
+  /* Wine Red Color Scheme */
+  --color-wine-darkest: #250902;
+  --color-wine-dark: #38040e;
+  --color-wine-medium: #640d14;
+  --color-wine-light: #800e13;
+  --color-wine-accent: #ad2831;
+
+  /* LIGHT WINE ROSÉ COLOR SCHEME */
+  /* Base Colors - Delicate wine-tinted backgrounds with rosé elegance */
+  --color-background: #fdf8f8;     /* Very light wine/rosé background */
+  --color-foreground: #2a1214;     /* Dark wine-tinted text */
+  
+  /* Card */
+  --color-card: #ffffff;           /* Pure white cards for contrast */
+  --color-card-foreground: #2a1214;
+  
+  /* Popover */
+  --color-popover: #ffffff;
+  --color-popover-foreground: #2a1214;
+  
+  /* Primary */
+  --color-primary: #250902;
+  --color-primary-foreground: #fdf8f8;
+  
+  /* Secondary - Light wine-tinted */
+  --color-secondary: #faf2f3;      /* Light wine-tinted secondary */
+  --color-secondary-foreground: #2a1214;
+  
+  /* Muted - Wine-tinted backgrounds */
+  --color-muted: #f5eeef;          /* Wine-tinted muted background */
+  --color-muted-foreground: #6b4a4f;  /* Wine-tinted muted text */
+  
+  /* Accent */
+  --color-accent: #ad2831;
+  --color-accent-foreground: #fdf8f8;
+  
+  /* Destructive */
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fdf8f8;
+  
+  /* Border - Light wine-tinted borders */
+  --color-border: #f0e1e3;         /* Light wine-tinted borders */
+  --color-input: #f0e1e3;
+  
+  /* Ring */
+  --color-ring: #ad2831;
+  
+  /* Chart colors */
+  --color-chart-1: #ad2831;
+  --color-chart-2: #640d14;
+  --color-chart-3: #800e13;
+  --color-chart-4: #38040e;
+  --color-chart-5: #250902;
+
+  /* Shadows - Wine-tinted shadow tones */
+  --shadow-sm: 0 1px 2px 0 rgb(42 18 20 / 0.05);
+  --shadow: 0 4px 6px -1px rgb(42 18 20 / 0.1), 0 2px 4px -2px rgb(42 18 20 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(42 18 20 / 0.1), 0 2px 4px -2px rgb(42 18 20 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(42 18 20 / 0.1), 0 4px 6px -4px rgb(42 18 20 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(42 18 20 / 0.1), 0 8px 10px -6px rgb(42 18 20 / 0.05);
+  --shadow-2xl: 0 25px 50px -12px rgb(42 18 20 / 0.15);
+
+  /* Animation */
+  --animate-in: ;
+  --animate-out: ;
+}
+
+/* Reset and base styles */
+* {
+  border-color: #f0e1e3;  /* Light wine-tinted border color */
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+}
+
+body {
+  background-color: #fdf8f8 !important;  /* Very light wine/rosé background */
+  color: #2a1214 !important;              /* Dark wine-tinted text */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* PWA Specific Styles */
+/* =================== */
+
+/* Standalone mode (when installed as PWA) */
+@media (display-mode: standalone) {
+  body {
+    /* Prevent selection and context menus for native app feel */
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+    
+    /* Disable tap highlights */
+    -webkit-tap-highlight-color: transparent;
+    
+    /* Ensure proper viewport */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  
+  /* Hide browser UI elements */
+  html {
+    overflow: hidden;
+  }
+  
+  /* Status bar adjustment for iOS */
+  .status-bar-spacer {
+    height: env(safe-area-inset-top);
+    background-color: #ad2831;
+  }
+}
+
+/* PWA Install Banner Animations */
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pwa-install-banner {
+  animation: slideUpAndFade 0.3s ease-out;
+}
+
+/* Offline Indicator Styles */
+.offline-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ef4444;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  z-index: 9999;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.offline-indicator.show {
+  transform: translateY(0);
+}
+
+/* PWA Splash Screen Styles */
+.pwa-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ad2831, #800e13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.pwa-splash.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pwa-splash-content {
+  text-align: center;
+  color: white;
+}
+
+.pwa-splash-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.pwa-splash-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* iOS-specific PWA styles */
+@supports (-webkit-appearance: none) {
+  /* iPhone X and newer */
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3),
+         only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3),
+         only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+    body {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+}
+
+/* Android PWA styles */
+@media (display-mode: standalone) and (orientation: portrait) {
+  .android-pwa-header {
+    background-color: #ad2831;
+    height: 24px; /* Status bar height on Android */
+  }
+}
+
+/* UPDATED TAILWIND UTILITIES WITH LIGHT WINE ROSÉ COLOR SCHEME */
+.bg-background { background-color: #fdf8f8 !important; }
+.bg-foreground { background-color: #2a1214 !important; }
+.bg-card { background-color: #ffffff !important; }
+.bg-card-foreground { background-color: #2a1214 !important; }
+.bg-popover { background-color: #ffffff !important; }
+.bg-popover-foreground { background-color: #2a1214 !important; }
+.bg-primary { background-color: #250902 !important; }
+.bg-primary-foreground { background-color: #fdf8f8 !important; }
+.bg-secondary { background-color: #faf2f3 !important; }
+.bg-secondary-foreground { background-color: #2a1214 !important; }
+.bg-muted { background-color: #f5eeef !important; }
+.bg-muted-foreground { background-color: #6b4a4f !important; }
+.bg-accent { background-color: #ad2831 !important; }
+.bg-accent-foreground { background-color: #fdf8f8 !important; }
+.bg-destructive { background-color: #ef4444 !important; }
+.bg-destructive-foreground { background-color: #fdf8f8 !important; }
+
+.text-background { color: #fdf8f8 !important; }
+.text-foreground { color: #2a1214 !important; }
+.text-card { color: #ffffff !important; }
+.text-card-foreground { color: #2a1214 !important; }
+.text-popover { color: #ffffff !important; }
+.text-popover-foreground { color: #2a1214 !important; }
+.text-primary { color: #250902 !important; }
+.text-primary-foreground { color: #fdf8f8 !important; }
+.text-secondary { color: #faf2f3 !important; }
+.text-secondary-foreground { color: #2a1214 !important; }
+.text-muted { color: #f5eeef !important; }
+.text-muted-foreground { color: #6b4a4f !important; }
+.text-accent { color: #ad2831 !important; }
+.text-accent-foreground { color: #fdf8f8 !important; }
+.text-destructive { color: #ef4444 !important; }
+.text-destructive-foreground { color: #fdf8f8 !important; }
+
+.border-background { border-color: #fdf8f8 !important; }
+.border-foreground { border-color: #2a1214 !important; }
+.border-card { border-color: #ffffff !important; }
+.border-card-foreground { border-color: #2a1214 !important; }
+.border-popover { border-color: #ffffff !important; }
+.border-popover-foreground { border-color: #2a1214 !important; }
+.border-primary { border-color: #250902 !important; }
+.border-primary-foreground { border-color: #fdf8f8 !important; }
+.border-secondary { border-color: #faf2f3 !important; }
+.border-secondary-foreground { border-color: #2a1214 !important; }
+.border-muted { border-color: #f5eeef !important; }
+.border-muted-foreground { border-color: #6b4a4f !important; }
+.border-accent { border-color: #ad2831 !important; }
+.border-accent-foreground { border-color: #fdf8f8 !important; }
+.border-destructive { border-color: #ef4444 !important; }
+.border-destructive-foreground { border-color: #fdf8f8 !important; }
+.border-border { border-color: #f0e1e3 !important; }
+
+/* Wine-themed gradients - Fixed for Tailwind v4 */
+.from-wine-darkest { 
+  --tw-gradient-from: #250902; 
+  --tw-gradient-to: rgba(37, 9, 2, 0); 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+.from-wine-dark { 
+  --tw-gradient-from: #38040e; 
+  --tw-gradient-to: rgba(56, 4, 14, 0); 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+.from-wine-medium { 
+  --tw-gradient-from: #640d14; 
+  --tw-gradient-to: rgba(100, 13, 20, 0); 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+.from-wine-light { 
+  --tw-gradient-from: #800e13; 
+  --tw-gradient-to: rgba(128, 14, 19, 0); 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+.from-wine-accent { 
+  --tw-gradient-from: #ad2831; 
+  --tw-gradient-to: rgba(173, 40, 49, 0); 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+
+.to-wine-darkest { 
+  --tw-gradient-to: #250902; 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+.to-wine-dark { 
+  --tw-gradient-to: #38040e; 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+.to-wine-medium { 
+  --tw-gradient-to: #640d14; 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+.to-wine-light { 
+  --tw-gradient-to: #800e13; 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+.to-wine-accent { 
+  --tw-gradient-to: #ad2831; 
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); 
+}
+
+/* Gradient direction utilities */
+.bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
+.bg-gradient-to-l { background-image: linear-gradient(to left, var(--tw-gradient-stops)); }
+.bg-gradient-to-t { background-image: linear-gradient(to top, var(--tw-gradient-stops)); }
+.bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)); }
+.bg-gradient-to-tr { background-image: linear-gradient(to top right, var(--tw-gradient-stops)); }
+.bg-gradient-to-tl { background-image: linear-gradient(to top left, var(--tw-gradient-stops)); }
+.bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+.bg-gradient-to-bl { background-image: linear-gradient(to bottom left, var(--tw-gradient-stops)); }
+
+.bg-wine-darkest { background-color: #250902 !important; }
+.bg-wine-dark { background-color: #38040e !important; }
+.bg-wine-medium { background-color: #640d14 !important; }
+.bg-wine-light { background-color: #800e13 !important; }
+.bg-wine-accent { background-color: #ad2831 !important; }
+
+.text-wine-darkest { color: #250902 !important; }
+.text-wine-dark { color: #38040e !important; }
+.text-wine-medium { color: #640d14 !important; }
+.text-wine-light { color: #800e13 !important; }
+.text-wine-accent { color: #ad2831 !important; }
+
+.border-wine-darkest { border-color: #250902 !important; }
+.border-wine-dark { border-color: #38040e !important; }
+.border-wine-medium { border-color: #640d14 !important; }
+.border-wine-light { border-color: #800e13 !important; }
+.border-wine-accent { border-color: #ad2831 !important; }
+
+/* Custom component styles */
+.wine-gradient {
+  background: linear-gradient(135deg, #250902, #38040e, #640d14) !important;
+}
+
+/* Pre-built wine gradient combinations */
+.wine-gradient-primary {
+  background: linear-gradient(to right, #ad2831, #800e13) !important;
+}
+
+.wine-gradient-dark {
+  background: linear-gradient(to right, #250902, #38040e) !important;
+}
+
+.wine-gradient-medium {
+  background: linear-gradient(to right, #640d14, #800e13) !important;
+}
+
+.wine-gradient-light {
+  background: linear-gradient(to right, #800e13, #ad2831) !important;
+}
+
+.wine-gradient-vertical {
+  background: linear-gradient(to bottom, #ad2831, #800e13) !important;
+}
+
+.wine-text-gradient {
+  background: linear-gradient(135deg, #640d14, #ad2831);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* LIGHT WINE ROSÉ: Sophisticated background variants */
+.bg-wine-rosé { background-color: #fdf8f8 !important; }      /* Main rosé background */
+.bg-wine-blush { background-color: #faf2f3 !important; }     /* Light wine-tinted secondary */
+.bg-wine-whisper { background-color: #f5eeef !important; }   /* Wine-tinted muted */
+.bg-wine-soft { background-color: #fef9f9 !important; }      /* Very subtle wine tint */
+.bg-wine-pearl { background-color: #fbf4f5 !important; }     /* Pearl wine background */
+
+.text-wine-dark { color: #2a1214 !important; }               /* Dark wine-tinted text */
+.text-wine-muted { color: #6b4a4f !important; }              /* Wine-tinted muted text */
+
+/* Wine-themed badge styles - Updated for rosé scheme */
+.wine-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  background-color: #ad2831;
+  color: white;
+}
+
+.wine-badge--success {
+  background-color: #10b981 !important;
+  color: white !important;
+}
+
+.wine-badge--warning {
+  background-color: #f59e0b !important;
+  color: white !important;
+}
+
+.wine-badge--secondary {
+  background-color: #faf2f3 !important;
+  color: #2a1214 !important;
+}
+
+/* Wine progress bar - Updated for rosé scheme */
+.wine-progress {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #f5eeef;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.wine-progress__fill {
+  height: 100%;
+  background-color: #ad2831;
+  transition: all 300ms ease-out;
+}
+
+/* Wine button variants - Updated for rosé color scheme */
+.wine-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: all 200ms;
+}
+
+.wine-button--primary {
+  background-color: #ad2831 !important;
+  color: #fdf8f8 !important;
+}
+
+.wine-button--primary:hover {
+  background-color: #800e13 !important;
+  color: #fdf8f8 !important;
+}
+
+.wine-button--secondary {
+  background-color: #faf2f3 !important;
+  color: #2a1214 !important;
+}
+
+.wine-button--secondary:hover {
+  background-color: #f5eeef !important;
+  color: #2a1214 !important;
+}
+
+.wine-button--ghost {
+  background-color: transparent !important;
+}
+
+.wine-button--ghost:hover {
+  background-color: #ad2831 !important;
+  color: #fdf8f8 !important;
+}
+
+.wine-button--destructive {
+  background-color: #ef4444 !important;
+  color: #fdf8f8 !important;
+  border: 1px solid #ef4444 !important;
+}
+
+.wine-button--destructive:hover {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: #fdf8f8 !important;
+  box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.2), 0 4px 6px -4px rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Gamification styles - Wine-Tinted Originals Color Scheme */
+.badge-shimmer {
+  background: linear-gradient(45deg, #ad2831, #800e13, #ad2831);
+  background-size: 200% 200%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Wine-Tinted Gamification Gradients */
+.gamification-streak {
+  background: linear-gradient(135deg, #d4a574, #c49363) !important;
+  color: white !important;
+}
+
+.gamification-scans {
+  background: linear-gradient(135deg, #9d6b8f, #b85a7a) !important;
+  color: white !important;
+}
+
+.gamification-badges {
+  background: linear-gradient(135deg, #7a9b7e, #6b8e7f) !important;
+  color: white !important;
+}
+
+/* Individual gradient utilities */
+.bg-gamification-streak {
+  background: linear-gradient(135deg, #d4a574, #c49363) !important;
+}
+
+.bg-gamification-scans {
+  background: linear-gradient(135deg, #9d6b8f, #b85a7a) !important;
+}
+
+.bg-gamification-badges {
+  background: linear-gradient(135deg, #7a9b7e, #6b8e7f) !important;
+}
+
+/* Legacy streak counter - updated to wine-tinted */
+.streak-counter {
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #d4a574, #c49363);
+  color: white;
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* Kiosk styles */
+  html {
+    font-size: 18px;
+  }
+  
+  .wine-button {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Line clamp utility */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Profile screen hover states - Updated for rosé color scheme */
+.hover\:bg-accent:hover .text-foreground {
+  color: #fdf8f8 !important;
+}
+
+.hover\:bg-accent:hover .text-muted-foreground {
+  color: #fdf8f8 !important;
+}
+
+.hover\:bg-accent:hover svg {
+  color: #fdf8f8 !important;
+}
+
+/* Additional responsive grid utilities */
+@media (max-width: 767px) {
+  .mobile-space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .mobile-grid-1 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .kiosk-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* LIGHT WINE ROSÉ ENHANCEMENT */
+/* Subtle wine-tinted texture overlays for visual richness */
+.wine-texture-overlay {
+  position: relative;
+}
+
+.wine-texture-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(173, 40, 49, 0.02) 1px, transparent 0);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+/* Wine-inspired glass effect with rosé tints */
+.wine-glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(240, 225, 227, 0.4);
+  box-shadow: 
+    0 8px 32px rgba(42, 18, 20, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Elegant wine-themed dividers with rosé colors */
+.wine-divider {
+  height: 1px;
+  background: linear-gradient(to right, 
+    transparent, 
+    rgba(173, 40, 49, 0.2), 
+    rgba(173, 40, 49, 0.4), 
+    rgba(173, 40, 49, 0.2), 
+    transparent
+  );
+}
+
+/* Sophisticated hover states for rosé scheme */
+.wine-hover-lift {
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.wine-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 48px rgba(42, 18, 20, 0.06),
+    0 4px 16px rgba(173, 40, 49, 0.08);
+}
+
+/* Rosé-specific wine themed elements */
+.wine-rosé-gradient {
+  background: linear-gradient(135deg, #fdf8f8, #faf2f3, #f5eeef) !important;
+}
+
+.wine-rosé-soft-shadow {
+  box-shadow: 0 4px 12px rgba(42, 18, 20, 0.05), 0 2px 4px rgba(173, 40, 49, 0.03) !important;
+}
+
+/* Enhanced card styling for rosé theme */
+.wine-rosé-card {
+  background: #ffffff;
+  border: 1px solid #f0e1e3;
+  border-radius: 0.75rem;
+  box-shadow: 
+    0 4px 6px -1px rgba(42, 18, 20, 0.1),
+    0 2px 4px -2px rgba(42, 18, 20, 0.05);
+  transition: all 300ms ease;
+}
+
+.wine-rosé-card:hover {
+  box-shadow: 
+    0 12px 24px -4px rgba(42, 18, 20, 0.12),
+    0 4px 8px -2px rgba(173, 40, 49, 0.08);
+  transform: translateY(-1px);
+}
