@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate, redirect } from '@tanstack/react-router'
+import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
 import { FavoritesScreen } from '../components/FavoritesScreen'
 import type { Wine } from './__root'
 

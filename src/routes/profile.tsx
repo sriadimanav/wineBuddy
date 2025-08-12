@@ -1,5 +1,5 @@
-import { createFileRoute, useNavigate, redirect } from '@tanstack/react-router'
 import { ProfileScreen } from '@components/ProfileScreen'
+import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
 
 function ProfileComponent() {
   const navigate = useNavigate()

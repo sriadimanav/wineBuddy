@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { Button } from '@ui/Button'
+import { Input } from '@ui/Input'
 import {
+  Camera,
   ChevronDown,
   ChevronUp,
-  Search,
-  Camera,
   Heart,
-  Star,
   HelpCircle,
+  Search,
+  Star,
 } from 'lucide-react'
-import { Input } from '@ui/Input'
-import { Button } from '@ui/Button'
+import { useState } from 'react'
 
 interface FAQScreenProps {
   onBack: () => void
@@ -112,7 +112,7 @@ const faqData = [
   },
 ]
 
-export function FAQScreen({ onBack }: FAQScreenProps) {
+export function FAQScreen({}: FAQScreenProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [expandedItems, setExpandedItems] = useState<string[]>([])
 

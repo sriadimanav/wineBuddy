@@ -1,16 +1,16 @@
 import {
-  Settings,
-  HelpCircle,
-  Star,
-  Heart,
-  Camera,
-  LogOut,
-  ChevronRight,
-  Shield,
   Bell,
+  Camera,
+  ChevronRight,
+  Heart,
+  HelpCircle,
+  LogOut,
+  Settings,
+  Shield,
+  Star,
 } from 'lucide-react'
 import type { User } from '../routes/__root'
-import { useScreenSize } from './hooks/useMediaQuery'
+//import { useScreenSize } from './hooks/useMediaQueries'
 
 interface ProfileScreenProps {
   user: User
@@ -18,7 +18,7 @@ interface ProfileScreenProps {
 }
 
 export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
-  const screenSize = useScreenSize()
+  //const screenSize = useScreenSize()
 
   const resetApp = () => {
     if (

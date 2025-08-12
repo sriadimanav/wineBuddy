@@ -1,4 +1,3 @@
-import * as React from 'react'
 import {
   createRootRoute,
   Link,
@@ -8,9 +7,10 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import { ArrowLeft, Wine } from 'lucide-react'
-import { ResponsiveLayout } from '../components/layout/ResponsiveLayout'
+import * as React from 'react'
+import { useScreenSize } from '../components/hooks/useMediaQueries'
 import { BottomNav } from '../components/layout/BottomNav'
-import { useScreenSize } from '../components/hooks/useMediaQuery'
+import { ResponsiveLayout } from '../components/layout/ResponsiveLayout'
 
 export interface Wine {
   id: string

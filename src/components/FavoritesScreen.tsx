@@ -1,21 +1,21 @@
-import { useState } from 'react'
+import type { User, Wine } from '@routes/__root'
 import { useNavigate } from '@tanstack/react-router'
 import {
-  Heart,
-  Star,
-  Search,
-  Filter,
-  SortAsc,
-  Grid,
-  List,
-  Trash2,
-  Edit3,
   Check,
+  Edit3,
+  Filter,
+  Grid,
+  Heart,
+  List,
+  Search,
+  SortAsc,
+  Star,
+  Trash2,
   X,
 } from 'lucide-react'
-import type { User, Wine } from '@routes/__root'
+import { useState } from 'react'
 import { ImageWithFallback } from './figma/ImageWithFallback.tsx'
-import { useScreenSize } from './hooks/useMediaQuery'
+import { useScreenSize } from './hooks/useMediaQueries.ts'
 
 interface FavoritesScreenProps {
   user: User
@@ -160,7 +160,7 @@ const favoritesData: Wine[] = [
   },
 ]
 
-export function FavoritesScreen({ user, onWineSelect }: FavoritesScreenProps) {
+export function FavoritesScreen({ user }: FavoritesScreenProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list')
   //const [sortBy, setSortBy] = useState('name')

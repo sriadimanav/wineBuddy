@@ -1,19 +1,19 @@
-import { useState } from 'react'
+import type { User, Wine } from '@routes/__root'
+import { Badge } from '@ui/Badge'
+import { Button } from '@ui/Button'
+import { SeparatorComp as Separator } from '@ui/Separator'
 import {
-  Heart,
-  Star,
-  MapPin,
   Calendar,
   Droplets,
-  Thermometer,
+  Heart,
+  Info,
+  MapPin,
   Share,
   ShoppingCart,
-  Info,
+  Star,
+  Thermometer,
 } from 'lucide-react'
-import { Button } from '@ui/Button'
-import { Badge } from '@ui/Badge'
-import { SeparatorComp as Separator } from '@ui/Separator'
-import type { Wine, User } from '@routes/__root'
+import { useState } from 'react'
 import { ImageWithFallback } from './figma/ImageWithFallback'
 
 interface WineDetailScreenProps {

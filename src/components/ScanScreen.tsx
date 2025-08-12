@@ -1,15 +1,15 @@
-import { useState } from 'react'
 import {
   Camera,
-  X,
+  CheckCircle,
   Flashlight,
   FlashlightOff,
-  RotateCcw,
   Image as ImageIcon,
-  CheckCircle,
+  RotateCcw,
+  X,
 } from 'lucide-react'
+import { useState } from 'react'
 import type { Wine } from '../routes/__root'
-import { useScreenSize } from './hooks/useMediaQuery'
+import { useScreenSize } from './hooks/useMediaQueries'
 
 interface ScanScreenProps {
   onWineFound: (wine: Wine) => void

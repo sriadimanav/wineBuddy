@@ -1,16 +1,16 @@
-import { useState } from 'react'
 import {
-  ChevronRight,
+  ArrowRight,
+  Award,
   Camera,
+  ChevronRight,
   //Star,
   Heart,
   //BookOpen,
   Wine,
-  Award,
-  ArrowRight,
 } from 'lucide-react'
+import { useState } from 'react'
 
-import { useScreenSize } from '@hooks/useMediaQuery'
+import { useScreenSize } from '@/components/hooks/useMediaQueries'
 
 interface OnboardingScreenProps {
   onComplete: () => void

@@ -1,7 +1,10 @@
-import { useMediaQuery } from '@hooks/useMediaQuery'
+import { useMediaQuery } from '@hooks/useMediaQueries'
+import type { CSSProperties, ReactNode } from 'react'
+
+type ScreenSize = 'mobile' | 'tablet' | 'desktop' | 'kiosk'
 
 interface ResponsiveLayoutProps {
-  children: React.ReactNode
+  children: ReactNode
   className?: string
 }
 
@@ -13,24 +16,23 @@ export function ResponsiveLayout({
   const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)')
   const isKiosk = useMediaQuery('(min-width: 1440px)')
 
-  const getContainerClass = () => {
-    if (isMobile) return 'container-mobile'
-    if (isTablet) return 'container-tablet'
-    if (isKiosk) return 'container-kiosk'
-    return 'container-desktop'
+  const getScreenSize = (): ScreenSize => {
+    if (isMobile) return 'mobile'
+    if (isTablet) return 'tablet'
+    if (isKiosk) return 'kiosk'
+    return 'desktop'
   }
 
-  return <div className={`${getContainerClass()} ${className}`}>{children}</div>
+  return (
+    <div className={`${`container-${getScreenSize()}`} ${className}`}>
+      {children}
+    </div>
+  )
 }
 
 interface AdaptiveGridProps {
-  children: React.ReactNode
-  cols?: {
-    mobile?: number
-    tablet?: number
-    desktop?: number
-    kiosk?: number
-  }
+  children: ReactNode
+  cols?: Partial<Record<ScreenSize, number>>
   gap?: string
   className?: string
 }
@@ -45,17 +47,17 @@ export function AdaptiveGrid({
   const isTablet = useMediaQuery('(min-width: 768px) and (max-width: 1023px)')
   const isKiosk = useMediaQuery('(min-width: 1440px)')
 
-  const getGridCols = () => {
-    if (isMobile) return cols.mobile || 1
-    if (isTablet) return cols.tablet || 2
-    if (isKiosk) return cols.kiosk || 4
-    return cols.desktop || 3
+  const getCols = () => {
+    if (isMobile) return cols.mobile ?? 1
+    if (isTablet) return cols.tablet ?? 2
+    if (isKiosk) return cols.kiosk ?? 4
+    return cols.desktop ?? 3
   }
 
-  const gridStyle: React.CSSProperties = {
+  const gridStyle: CSSProperties = {
     display: 'grid',
-    gridTemplateColumns: `repeat(${getGridCols()}, 1fr)`,
-    gap: gap,
+    gridTemplateColumns: `repeat(${getCols()}, 1fr)`,
+    gap,
   }
 
   return (

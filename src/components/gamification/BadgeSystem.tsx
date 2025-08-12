@@ -1,4 +1,4 @@
-import { Award, Trophy, Star, Map, Clock, Users } from 'lucide-react'
+import { Award, Clock, Map, Star, Trophy, Users } from 'lucide-react'
 
 export interface Badge {
   id: string

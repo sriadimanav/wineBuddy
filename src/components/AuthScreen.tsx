@@ -1,8 +1,8 @@
+import { Eye, EyeOff, Lock, Mail, User as UserIcon, Wine } from 'lucide-react'
 import { useState } from 'react'
-import { Eye, EyeOff, Mail, Lock, User as UserIcon, Wine } from 'lucide-react'
 
+import { useScreenSize } from '@/components/hooks/useMediaQueries'
 import type { User } from '@routes/__root'
-import { useScreenSize } from '@hooks/useMediaQuery'
 
 interface AuthScreenProps {
   onLogin: (user: User) => void

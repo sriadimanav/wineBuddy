@@ -11,3 +11,9 @@ const reportWebVitals = (onPerfEntry?: () => void) => {
 }
 
 export default reportWebVitals
+
+// For production analytics
+export const sendToAnalytics = (metric: any) => {
+  // Send to your analytics service (Google Analytics, Mixpanel, etc.)
+  console.log('Performance metric:', metric)
+}

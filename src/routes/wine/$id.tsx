@@ -1,19 +1,19 @@
-import { createFileRoute, useNavigate, redirect } from '@tanstack/react-router'
-import { useState } from 'react'
+import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
 import {
-  Heart,
-  Star,
-  MapPin,
+  Award,
   Calendar,
   Grape,
-  Wine,
-  Utensils,
-  Award,
-  Share,
+  Heart,
+  MapPin,
   Plus,
+  Share,
+  Star,
+  Utensils,
+  Wine,
 } from 'lucide-react'
-import { useScreenSize } from '../../components/hooks/useMediaQuery.ts'
+import { useState } from 'react'
 import { ImageWithFallback } from '../../components/figma/ImageWithFallback.tsx'
+import { useScreenSize } from '../../components/hooks/useMediaQueries.ts'
 import type { User, Wine as WineType } from '../__root.tsx'
 
 // Mock wine database

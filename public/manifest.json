@@ -1,6 +1,15 @@
 {
-  "short_name": "TanStack App",
-  "name": "Create TanStack App Sample",
+  "name": "Wine Buddy - Wine Discovery App",
+  "short_name": "Wine Buddy",
+  "description": "Discover, scan, and explore wines with comprehensive details, reviews, and personalized recommendations",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ad2831",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["lifestyle", "food", "entertainment"],
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +27,52 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "shortcuts": [
+    {
+      "name": "Scan Wine",
+      "short_name": "Scan",
+      "description": "Quickly scan a wine label or barcode",
+      "url": "/scan",
+      "icons": [
+        {
+          "src": "/icons/scan-shortcut-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "My Favorites",
+      "short_name": "Favorites",
+      "description": "View your favorite wines",
+      "url": "/favorites",
+      "icons": [
+        {
+          "src": "/icons/favorites-shortcut-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/wine-details-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshots/home-desktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
