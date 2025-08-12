@@ -1,0 +1,71 @@
+/* styles/components/buttons.css */
+.wine-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius);
+  transition: all 200ms;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.wine-button--primary {
+  background-color: var(--color-accent) !important;
+  color: var(--color-accent-foreground) !important;
+  border-color: var(--color-accent) !important;
+}
+
+.wine-button--primary:hover {
+  background-color: var(--color-wine-light) !important;
+  border-color: var(--color-wine-light) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(173, 40, 49, 0.3);
+}
+
+.wine-button--secondary {
+  background-color: var(--color-secondary) !important;
+  color: var(--color-secondary-foreground) !important;
+  border-color: var(--color-border) !important;
+}
+
+.wine-button--secondary:hover {
+  background-color: var(--color-muted) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(42, 18, 20, 0.1);
+}
+
+.wine-button--ghost {
+  background-color: transparent !important;
+  color: var(--color-foreground) !important;
+}
+
+.wine-button--ghost:hover {
+  background-color: var(--color-accent) !important;
+  color: var(--color-accent-foreground) !important;
+}
+
+.wine-button--destructive {
+  background-color: var(--color-destructive) !important;
+  color: var(--color-destructive-foreground) !important;
+  border-color: var(--color-destructive) !important;
+}
+
+.wine-button--destructive:hover {
+  background-color: #dc2626 !important;
+  border-color: #dc2626 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.2), 0 4px 6px -4px rgba(239, 68, 68, 0.1) !important;
+}
+
+.wine-button--small {
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-xs);
+}
+
+.wine-button--large {
+  padding: 1rem 2rem;
+  font-size: var(--font-size-lg);
+}

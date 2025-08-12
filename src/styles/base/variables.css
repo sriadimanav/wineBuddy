@@ -1,0 +1,76 @@
+/* styles/base/variables.css */
+@theme {
+  /* Wine Color Palette */
+  --color-wine-darkest: #250902;
+  --color-wine-dark: #38040e;
+  --color-wine-medium: #640d14;
+  --color-wine-light: #800e13;
+  --color-wine-accent: #ad2831;
+
+  /* LIGHT WINE ROSÉ COLOR SCHEME */
+  --color-background: #fdf8f8;
+  --color-foreground: #2a1214;
+  --color-card: #ffffff;
+  --color-card-foreground: #2a1214;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #2a1214;
+  --color-primary: #250902;
+  --color-primary-foreground: #fdf8f8;
+  --color-secondary: #faf2f3;
+  --color-secondary-foreground: #2a1214;
+  --color-muted: #f5eeef;
+  --color-muted-foreground: #6b4a4f;
+  --color-accent: #ad2831;
+  --color-accent-foreground: #fdf8f8;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fdf8f8;
+  --color-border: #f0e1e3;
+  --color-input: #f0e1e3;
+  --color-ring: #ad2831;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing Scale */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius: 0.5rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-full: 9999px;
+
+  /* Chart colors */
+  --color-chart-1: #ad2831;
+  --color-chart-2: #640d14;
+  --color-chart-3: #800e13;
+  --color-chart-4: #38040e;
+  --color-chart-5: #250902;
+}

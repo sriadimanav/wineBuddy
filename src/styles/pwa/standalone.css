@@ -1,0 +1,40 @@
+/* styles/pwa/standalone.css */
+/* Standalone mode (when installed as PWA) */
+@media (display-mode: standalone) {
+  body {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  html {
+    overflow: hidden;
+  }
+
+  .status-bar-spacer {
+    height: env(safe-area-inset-top);
+    background-color: var(--color-accent);
+  }
+}
+
+/* iOS-specific PWA styles */
+@supports (-webkit-appearance: none) {
+  @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3),
+    only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3),
+    only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+    body {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+}
+
+/* Android PWA styles */
+@media (display-mode: standalone) and (orientation: portrait) {
+  .android-pwa-header {
+    background-color: var(--color-accent);
+    height: 24px;
+  }
+}

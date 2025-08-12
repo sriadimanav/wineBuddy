@@ -1,0 +1,46 @@
+/* styles/theme/colors.css */
+/* Background colors */
+.bg-background { background-color: var(--color-background) !important; }
+.bg-foreground { background-color: var(--color-foreground) !important; }
+.bg-card { background-color: var(--color-card) !important; }
+.bg-primary { background-color: var(--color-primary) !important; }
+.bg-secondary { background-color: var(--color-secondary) !important; }
+.bg-muted { background-color: var(--color-muted) !important; }
+.bg-accent { background-color: var(--color-accent) !important; }
+.bg-destructive { background-color: var(--color-destructive) !important; }
+
+/* Wine palette backgrounds */
+.bg-wine-darkest { background-color: var(--color-wine-darkest) !important; }
+.bg-wine-dark { background-color: var(--color-wine-dark) !important; }
+.bg-wine-medium { background-color: var(--color-wine-medium) !important; }
+.bg-wine-light { background-color: var(--color-wine-light) !important; }
+.bg-wine-accent { background-color: var(--color-wine-accent) !important; }
+
+/* Rosé palette backgrounds */
+.bg-wine-rosé { background-color: #fdf8f8 !important; }
+.bg-wine-blush { background-color: #faf2f3 !important; }
+.bg-wine-whisper { background-color: #f5eeef !important; }
+.bg-wine-soft { background-color: #fef9f9 !important; }
+.bg-wine-pearl { background-color: #fbf4f5 !important; }
+
+/* Text colors */
+.text-background { color: var(--color-background) !important; }
+.text-foreground { color: var(--color-foreground) !important; }
+.text-primary { color: var(--color-primary) !important; }
+.text-secondary { color: var(--color-secondary) !important; }
+.text-muted-foreground { color: var(--color-muted-foreground) !important; }
+.text-accent { color: var(--color-accent) !important; }
+.text-destructive { color: var(--color-destructive) !important; }
+
+/* Wine text colors */
+.text-wine-darkest { color: var(--color-wine-darkest) !important; }
+.text-wine-dark { color: var(--color-wine-dark) !important; }
+.text-wine-medium { color: var(--color-wine-medium) !important; }
+.text-wine-light { color: var(--color-wine-light) !important; }
+.text-wine-accent { color: var(--color-wine-accent) !important; }
+
+/* Border colors */
+.border-border { border-color: var(--color-border) !important; }
+.border-primary { border-color: var(--color-primary) !important; }
+.border-accent { border-color: var(--color-accent) !important; }
+.border-wine-accent { border-color: var(--color-wine-accent) !important; }

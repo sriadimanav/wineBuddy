@@ -1,0 +1,49 @@
+/* styles/components/badges.css */
+.wine-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  color: var(--color-accent-foreground);
+  white-space: nowrap;
+}
+
+.wine-badge--primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.wine-badge--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+}
+
+.wine-badge--success {
+  background-color: #10b981 !important;
+  color: white !important;
+}
+
+.wine-badge--warning {
+  background-color: #f59e0b !important;
+  color: white !important;
+}
+
+.wine-badge--destructive {
+  background-color: var(--color-destructive);
+  color: var(--color-destructive-foreground);
+}
+
+.wine-badge--outline {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-foreground);
+}
+
+.badge-shimmer {
+  background: linear-gradient(45deg, var(--color-accent), var(--color-wine-light), var(--color-accent));
+  background-size: 200% 200%;
+  animation: shimmer 2s infinite;
+}

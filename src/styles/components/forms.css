@@ -1,0 +1,48 @@
+/* styles/components/forms.css */
+.wine-input {
+  display: flex;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-background);
+  padding: 0.75rem 1rem;
+  font-size: var(--font-size-sm);
+  transition: all 200ms;
+}
+
+.wine-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(173, 40, 49, 0.2);
+}
+
+.wine-input::placeholder {
+  color: var(--color-muted-foreground);
+}
+
+.wine-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wine-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-foreground);
+  margin-bottom: var(--spacing-2);
+  display: block;
+}
+
+.wine-textarea {
+  min-height: 5rem;
+  resize: vertical;
+}
+
+.wine-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+}

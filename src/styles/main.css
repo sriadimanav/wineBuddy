@@ -1,0 +1,49 @@
+/* styles/main.css - Main entry point */
+@import 'tailwindcss';
+
+/* Base styles */
+@import './base/reset.css';
+@import './base/variables.css';
+@import './base/typography.css';
+
+/* Theme system */
+@import './theme/colors.css';
+@import './theme/wine-gradients.css';
+@import './theme/shadows.css';
+
+/* Components */
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/badges.css';
+@import './components/forms.css';
+@import './components/progress.css';
+@import './components/checkbox.css';
+@import './components/radio.css';
+
+/* Layout & utilities */
+@import './layout/grid.css';
+@import './layout/spacing.css';
+
+/* PWA specific */
+@import './pwa/standalone.css';
+@import './pwa/install-banner.css';
+@import './pwa/offline-indicator.css';
+
+/* Utilities & animations */
+@import './utils/animations.css';
+@import './utils/responsive.css';
+@import './utils/accessibility.css';
+
+/* Gamification */
+@import './features/gamification.css';
+
+/* Special effects */
+@import './effects/glass.css';
+@import './effects/textures.css';
+
+/*
+Usage in your app:
+1. Import this file in your main application
+2. Use theme utilities from wine-theme.ts
+3. Components automatically inherit wine theme styles
+*/
