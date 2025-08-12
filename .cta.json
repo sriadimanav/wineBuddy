@@ -1,5 +1,5 @@
 {
-  "projectName": "wineBuddy",
+  "projectName": "wine_buddy",
   "mode": "file-router",
   "typescript": true,
   "tailwind": false,

@@ -1,5 +1,5 @@
 {
-  "name": "wineBuddy",
+  "name": "wine_buddy",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,14 +8,16 @@
     "build": "vite build && tsc",
     "serve": "vite preview",
     "test": "vitest run",
-    "lint": "eslint",
-    "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
-    "check": "prettier --write . && eslint --fix"
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "format": "prettier --config prettier.config.js --write .",
+    "format:check": "prettier --config prettier.config.js --check .",
+    "clean": "rm -rf node_modules package-lock.json yarn.lock pnpm-lock.yaml"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.2.3",
-    "@tanstack/react-query": "5.84.2",
-    "@tanstack/react-router": "1.131.5",
+    "@radix-ui/react-slot": "1.2.3",
+    "@tanstack/react-query": "5.85.0",
+    "@tanstack/react-router": "1.131.7",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "lucide-react": "0.539.0",
@@ -30,25 +32,29 @@
     "@tailwindcss/vite": "4.1.11",
     "@tanstack/eslint-config": "0.3.0",
     "@tanstack/eslint-plugin-query": "5.83.1",
-    "@tanstack/react-query-devtools": "5.84.2",
-    "@tanstack/react-router-devtools": "1.131.5",
-    "@tanstack/router-plugin": "1.131.5",
+    "@tanstack/react-query-devtools": "5.85.0",
+    "@tanstack/react-router-devtools": "1.131.7",
+    "@tanstack/router-plugin": "1.131.7",
     "@testing-library/dom": "10.4.1",
     "@testing-library/react": "16.3.0",
     "@types/node": "24.2.1",
-    "@types/react": "19.1.9",
+    "@types/react": "19.1.10",
     "@types/react-dom": "19.1.7",
     "@vitejs/plugin-react": "5.0.0",
     "jsdom": "26.1.0",
     "prettier": "3.6.2",
     "prettier-plugin-organize-imports": "4.2.0",
-    "serve": "^14.2.4",
+    "serve": "14.2.4",
     "tailwindcss": "4.1.11",
     "typescript": "5.9.2",
-    "vite": "7.1.1",
+    "vite": "7.1.2",
     "vite-plugin-pwa": "1.0.2",
     "vitest": "3.2.4",
     "web-vitals": "5.1.0",
-    "workbox-window": "^7.3.0"
+    "workbox-window": "7.3.0"
+  },
+  "engines": {
+    "node": ">=22.18.0 <23",
+    "pnpm": ">=10.14.0 <11"
   }
 }
