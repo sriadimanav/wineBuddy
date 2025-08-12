@@ -1,3 +1,25 @@
+# Ignore lock files (already present)
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
+
+# Ignore build/output folders
+dist/
+dist-ssr/
+dev-dist/
+
+# Ignore node modules
+node_modules/
+
+# Ignore environment files
+.env
+
+# Ignore system files
+.DS_Store
+
+# Ignore other cache or generated folders you had
+.nitro/
+.tanstack/
+
+# Ignore TypeScript build info files
+*.tsbuildinfo

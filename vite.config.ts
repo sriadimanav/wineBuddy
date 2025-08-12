@@ -160,7 +160,7 @@ export default defineConfig({
       '@layout': path.resolve(__dirname, './src/components/layout'),
       '@gamification': path.resolve(__dirname, './src/components/gamification'),
       '@figma': path.resolve(__dirname, './src/components/figma'),
-      '@types': path.resolve(__dirname, './src/types'),
+      '@ts': path.resolve(__dirname, './src/ts'),
     },
     //extensions: ['.ts', '.tsx', '.js', '.jsx']
   },

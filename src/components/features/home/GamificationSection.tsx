@@ -1,6 +1,6 @@
+import type { Badge } from '@ts/badge'
+import type { User } from '@ts/user'
 import { Camera, Trophy, Zap } from 'lucide-react'
-import type { Badge } from '../../../types/badge'
-import type { User } from '../../../types/user'
 import { AdaptiveGrid } from '../../layout/ResponsiveLayout'
 
 interface GamificationSectionProps {

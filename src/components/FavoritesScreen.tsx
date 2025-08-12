@@ -14,8 +14,8 @@ import {
   X,
 } from 'lucide-react'
 import { useState } from 'react'
-import { ImageWithFallback } from './figma/ImageWithFallback.tsx'
 import { useScreenSize } from './hooks/useMediaQueries.ts'
+import { ImageWithFallback } from './ui/ImageWithFallback.tsx'
 
 interface FavoritesScreenProps {
   user: User

@@ -14,7 +14,7 @@ import {
   Thermometer,
 } from 'lucide-react'
 import { useState } from 'react'
-import { ImageWithFallback } from './figma/ImageWithFallback'
+import { ImageWithFallback } from './ui/ImageWithFallback'
 
 interface WineDetailScreenProps {
   wine: Wine

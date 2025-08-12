@@ -1,5 +1,5 @@
+import type { User } from '@ts/user'
 import { Filter, Search } from 'lucide-react'
-import type { User } from '../../../types/user'
 import { useScreenSize } from '../../hooks/useMediaQueries'
 
 interface HomeHeaderProps {

@@ -1,7 +1,7 @@
+import type { TrendingWine } from '@ts/wine'
 import { Star, TrendingUp } from 'lucide-react'
-import type { TrendingWine } from '../../../types/wine'
-import { ImageWithFallback } from '../../figma/ImageWithFallback'
 import { useScreenSize } from '../../hooks/useMediaQueries'
+import { ImageWithFallback } from '../../ui/ImageWithFallback'
 
 interface TrendingWinesSectionProps {
   wines: TrendingWine[]

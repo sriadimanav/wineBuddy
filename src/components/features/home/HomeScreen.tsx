@@ -1,5 +1,5 @@
+import type { User } from '@ts/user.ts'
 import { useState } from 'react'
-import type { User } from '../../../types/user'
 import { useUserActions } from './useUserActions'
 import { useWineData } from './useWineData'
 

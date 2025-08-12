@@ -1,5 +1,5 @@
-import type { Badge } from '@/types/badge'
-import type { FeaturedWine, TrendingWine } from '@/types/wine'
+import type { Badge } from '@ts/badge'
+import type { FeaturedWine, TrendingWine } from '@ts/wine'
 
 export const wineDataService = {
   getFeaturedWines: (): FeaturedWine[] => [

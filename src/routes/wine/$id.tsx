@@ -12,8 +12,8 @@ import {
   Wine,
 } from 'lucide-react'
 import { useState } from 'react'
-import { ImageWithFallback } from '../../components/figma/ImageWithFallback.tsx'
 import { useScreenSize } from '../../components/hooks/useMediaQueries.ts'
+import { ImageWithFallback } from '../../components/ui/ImageWithFallback.tsx'
 import type { User, Wine as WineType } from '../__root.tsx'
 
 // Mock wine database

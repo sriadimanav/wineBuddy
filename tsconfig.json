@@ -32,7 +32,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@types/*": ["./src/types/*"],
+      "@ts/*": ["./src/ts/*"],
       "@ui/*": ["./src/components/ui/*"],
       "@routes/*": ["./src/routes/*"],
       "@styles/*": ["./src/styles/*"],

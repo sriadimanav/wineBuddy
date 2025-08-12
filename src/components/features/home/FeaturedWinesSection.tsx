@@ -1,7 +1,7 @@
+import type { FeaturedWine } from '@ts/wine'
 import { MapPin, Star } from 'lucide-react'
-import type { FeaturedWine } from '../../../types/wine'
-import { ImageWithFallback } from '../../figma/ImageWithFallback'
 import { useScreenSize } from '../../hooks/useMediaQueries'
+import { ImageWithFallback } from '../../ui/ImageWithFallback'
 
 interface FeaturedWinesSectionProps {
   wines: FeaturedWine[]
