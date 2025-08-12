@@ -1,8 +1,8 @@
-import { clsx, type ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 // Wine-themed component utilities
@@ -29,7 +29,7 @@ export const wineTheme = {
     xl: 'var(--radius-xl)',
     full: 'var(--radius-full)',
   },
-}
+};
 
 // Wine-specific utility functions
 export const wineUtils = {
@@ -37,32 +37,28 @@ export const wineUtils = {
   wineClass: (...classes: ClassValue[]) => cn(classes),
 
   // Wine color variants
-  wineVariant: (
-    variant: 'primary' | 'secondary' | 'accent' | 'muted' = 'primary',
-  ) => {
+  wineVariant: (variant: 'primary' | 'secondary' | 'accent' | 'muted' = 'primary') => {
     const variants = {
       primary: 'bg-wine-accent text-wine-primary-foreground',
       secondary: 'bg-secondary text-secondary-foreground',
       accent: 'bg-accent text-accent-foreground',
       muted: 'bg-muted text-muted-foreground',
-    }
-    return variants[variant]
+    };
+    return variants[variant];
   },
 
   // Wine button styles
-  wineButton: (
-    variant: 'primary' | 'secondary' | 'ghost' | 'destructive' = 'primary',
-  ) => {
+  wineButton: (variant: 'primary' | 'secondary' | 'ghost' | 'destructive' = 'primary') => {
     return cn('wine-button', {
       'wine-button--primary': variant === 'primary',
       'wine-button--secondary': variant === 'secondary',
       'wine-button--ghost': variant === 'ghost',
       'wine-button--destructive': variant === 'destructive',
-    })
+    });
   },
 
   // Wine card styles
   wineCard: (hover: boolean = true) => {
-    return cn('wine-rosé-card', hover && 'wine-hover-lift')
+    return cn('wine-rosé-card', hover && 'wine-hover-lift');
   },
-}
+};

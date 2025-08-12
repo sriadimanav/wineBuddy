@@ -1,30 +1,30 @@
-import type { User } from '@ts/user.ts'
-import { useState } from 'react'
-import { useUserActions } from './useUserActions'
-import { useWineData } from './useWineData'
+import type { User } from '@ts/user.ts';
+import { useState } from 'react';
+import { useUserActions } from './useUserActions';
+import { useWineData } from './useWineData';
 
-import { FeaturedWinesSection } from './FeaturedWinesSection'
-import { GamificationSection } from './GamificationSection.tsx'
-import { GuestReminder } from './GuestReminder.tsx'
-import { HomeHeader } from './HomeHeader.tsx'
-import { QuickScanCTA } from './QuickScanCTA.tsx'
-import { TrendingWinesSection } from './TrendingWinesSection'
-import { WineCategoriesSection } from './WineCategoriesSection'
+import { FeaturedWinesSection } from './FeaturedWinesSection';
+import { GamificationSection } from './GamificationSection.tsx';
+import { GuestReminder } from './GuestReminder.tsx';
+import { HomeHeader } from './HomeHeader.tsx';
+import { QuickScanCTA } from './QuickScanCTA.tsx';
+import { TrendingWinesSection } from './TrendingWinesSection';
+import { WineCategoriesSection } from './WineCategoriesSection';
 
 interface HomeScreenProps {
-  user: User
+  user: User;
 }
 
 export function HomeScreen({ user }: HomeScreenProps) {
-  const [searchQuery, setSearchQuery] = useState('')
-  const { featuredWines, trendingWines, badges } = useWineData()
+  const [searchQuery, setSearchQuery] = useState('');
+  const { featuredWines, trendingWines, badges } = useWineData();
   const {
     handleWineClick,
     handleScanNow,
     handleProfileClick,
     handleAuthClick,
     handleCategoryClick,
-  } = useUserActions()
+  } = useUserActions();
 
   return (
     <div className="min-h-screen bg-background">
@@ -41,18 +41,12 @@ export function HomeScreen({ user }: HomeScreenProps) {
         <GamificationSection user={user} badges={badges} />
         <QuickScanCTA onScanClick={handleScanNow} />
 
-        <FeaturedWinesSection
-          wines={featuredWines}
-          onWineClick={handleWineClick}
-        />
+        <FeaturedWinesSection wines={featuredWines} onWineClick={handleWineClick} />
 
-        <TrendingWinesSection
-          wines={trendingWines}
-          onWineClick={handleWineClick}
-        />
+        <TrendingWinesSection wines={trendingWines} onWineClick={handleWineClick} />
 
         <WineCategoriesSection onCategoryClick={handleCategoryClick} />
       </div>
     </div>
-  )
+  );
 }

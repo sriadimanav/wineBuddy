@@ -12,22 +12,18 @@ export const isDevelopment = (): boolean => {
       import.meta.env &&
       typeof import.meta.env.DEV === 'boolean'
     ) {
-      return import.meta.env.DEV
+      return import.meta.env.DEV;
     }
 
     // Node.js environment variable (fallback)
-    if (
-      typeof process !== 'undefined' &&
-      process.env &&
-      process.env.NODE_ENV === 'development'
-    ) {
-      return true
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development') {
+      return true;
     }
 
     // Browser-based detection (fallback)
     if (typeof window !== 'undefined' && window.location) {
-      const hostname = window.location.hostname || ''
-      const port = window.location.port || ''
+      const hostname = window.location.hostname || '';
+      const port = window.location.port || '';
 
       return (
         hostname === 'localhost' ||
@@ -38,16 +34,16 @@ export const isDevelopment = (): boolean => {
         port === '5173' ||
         port === '8080' ||
         port === '4173'
-      )
+      );
     }
 
     // Final fallback - assume production if we can't determine
-    return false
+    return false;
   } catch (error) {
     // Silent fallback to production mode if detection fails
-    return false
+    return false;
   }
-}
+};
 
 // Production environment detection
 export const isProduction = (): boolean => {
@@ -58,114 +54,100 @@ export const isProduction = (): boolean => {
       import.meta.env &&
       typeof import.meta.env.PROD === 'boolean'
     ) {
-      return import.meta.env.PROD
+      return import.meta.env.PROD;
     }
 
     // Node.js environment variable (fallback)
-    if (
-      typeof process !== 'undefined' &&
-      process.env &&
-      process.env.NODE_ENV === 'production'
-    ) {
-      return true
+    if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'production') {
+      return true;
     }
 
     // Inverse of development detection
-    return !isDevelopment()
+    return !isDevelopment();
   } catch (error) {
-    console.warn('Error detecting production environment:', error)
-    return !isDevelopment()
+    console.warn('Error detecting production environment:', error);
+    return !isDevelopment();
   }
-}
+};
 
 // Get environment mode as string
-export const getEnvironmentMode = ():
-  | 'development'
-  | 'production'
-  | 'unknown' => {
-  if (isDevelopment()) return 'development'
-  if (isProduction()) return 'production'
-  return 'unknown'
-}
+export const getEnvironmentMode = (): 'development' | 'production' | 'unknown' => {
+  if (isDevelopment()) return 'development';
+  if (isProduction()) return 'production';
+  return 'unknown';
+};
 
 // PWA detection utilities
 export const isPWAInstalled = (): boolean => {
   try {
-    if (typeof window === 'undefined') return false
+    if (typeof window === 'undefined') return false;
 
     // Check if running in standalone mode
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
     // Check iOS standalone mode
-    const isIOSInstalled = (window.navigator as any)?.standalone === true
+    const isIOSInstalled = (window.navigator as any)?.standalone === true;
 
-    return isStandalone || isIOSInstalled
+    return isStandalone || isIOSInstalled;
   } catch (error) {
-    console.warn('Error detecting PWA installation:', error)
-    return false
+    console.warn('Error detecting PWA installation:', error);
+    return false;
   }
-}
+};
 
 // Browser online status
 export const isOnline = (): boolean => {
   try {
-    return typeof navigator !== 'undefined' ? navigator.onLine : true
+    return typeof navigator !== 'undefined' ? navigator.onLine : true;
   } catch (error) {
-    console.warn('Error detecting online status:', error)
-    return true
+    console.warn('Error detecting online status:', error);
+    return true;
   }
-}
+};
 
 // Device type detection
 export const getDeviceType = (): 'mobile' | 'tablet' | 'desktop' | 'kiosk' => {
   try {
-    if (typeof window === 'undefined') return 'desktop'
+    if (typeof window === 'undefined') return 'desktop';
 
-    const width = window.innerWidth
+    const width = window.innerWidth;
 
-    if (width < 768) return 'mobile'
-    if (width < 1024) return 'tablet'
-    if (width < 1440) return 'desktop'
-    return 'kiosk'
+    if (width < 768) return 'mobile';
+    if (width < 1024) return 'tablet';
+    if (width < 1440) return 'desktop';
+    return 'kiosk';
   } catch (error) {
-    console.warn('Error detecting device type:', error)
-    return 'desktop'
+    console.warn('Error detecting device type:', error);
+    return 'desktop';
   }
-}
+};
 
 // Safe environment variable access
-export const getEnvVar = (
-  key: string,
-  defaultValue?: string,
-): string | undefined => {
+export const getEnvVar = (key: string, defaultValue?: string): string | undefined => {
   try {
     // Vite environment variables
-    if (
-      typeof import.meta !== 'undefined' &&
-      import.meta.env &&
-      key in import.meta.env
-    ) {
-      return import.meta.env[key]
+    if (typeof import.meta !== 'undefined' && import.meta.env && key in import.meta.env) {
+      return import.meta.env[key];
     }
 
     // Node.js environment variables
     if (typeof process !== 'undefined' && process.env && key in process.env) {
-      return process.env[key]
+      return process.env[key];
     }
 
-    return defaultValue
+    return defaultValue;
   } catch (error) {
-    console.warn(`Error accessing environment variable ${key}:`, error)
-    return defaultValue
+    console.warn(`Error accessing environment variable ${key}:`, error);
+    return defaultValue;
   }
-}
+};
 
 // Debug logging (only in development)
 export const debugLog = (...args: any[]): void => {
   if (isDevelopment()) {
-    console.log('[Wine Buddy Debug]:', ...args)
+    console.log('[Wine Buddy Debug]:', ...args);
   }
-}
+};
 
 // Environment info for debugging
 export const getEnvironmentInfo = () => {
@@ -176,8 +158,7 @@ export const getEnvironmentInfo = () => {
     isPWAInstalled: isPWAInstalled(),
     isOnline: isOnline(),
     deviceType: getDeviceType(),
-    userAgent:
-      typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown',
+    userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'unknown',
     url: typeof window !== 'undefined' ? window.location.href : 'unknown',
-  }
-}
+  };
+};

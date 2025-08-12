@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import { Separator } from 'radix-ui'
-import * as React from 'react'
+import { Separator } from 'radix-ui';
+import * as React from 'react';
 
-import { cn } from '../utils/utils'
+import { cn } from '../utils/utils';
 
 function SeparatorComp({
   className,
@@ -22,7 +22,7 @@ function SeparatorComp({
       )}
       {...props}
     />
-  )
+  );
 }
 
-export { SeparatorComp }
+export { SeparatorComp };

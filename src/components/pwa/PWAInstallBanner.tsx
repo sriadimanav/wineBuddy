@@ -1,16 +1,11 @@
 // components/pwa/PWAInstallBanner.tsx
-import { usePWA } from './usePWA'
+import { usePWA } from './usePWA';
 
 export function PWAInstallBanner() {
-  const {
-    showInstallBanner,
-    deferredPrompt,
-    handleInstallClick,
-    handleDismissClick,
-  } = usePWA()
+  const { showInstallBanner, deferredPrompt, handleInstallClick, handleDismissClick } = usePWA();
 
   if (!showInstallBanner || !deferredPrompt) {
-    return null
+    return null;
   }
 
   return (
@@ -23,15 +18,13 @@ export function PWAInstallBanner() {
         <div className="flex gap-2 ml-4">
           <button
             onClick={handleInstallClick}
-            className="bg-white text-wine-accent px-3 py-1 rounded text-sm font-medium hover:bg-gray-100 transition-colors wine-hover-lift"
-          >
+            className="bg-white text-wine-accent px-3 py-1 rounded text-sm font-medium hover:bg-gray-100 transition-colors wine-hover-lift">
             Install
           </button>
           <button
             onClick={handleDismissClick}
             className="text-white/80 hover:text-white transition-colors p-1"
-            aria-label="Dismiss install banner"
-          >
+            aria-label="Dismiss install banner">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path
                 fillRule="evenodd"
@@ -43,5 +36,5 @@ export function PWAInstallBanner() {
         </div>
       </div>
     </div>
-  )
+  );
 }

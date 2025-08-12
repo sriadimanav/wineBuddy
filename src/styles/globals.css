@@ -106,14 +106,10 @@
 
   /* Shadows - Wine-tinted shadow tones */
   --shadow-sm: 0 1px 2px 0 rgb(42 18 20 / 0.05);
-  --shadow:
-    0 4px 6px -1px rgb(42 18 20 / 0.1), 0 2px 4px -2px rgb(42 18 20 / 0.05);
-  --shadow-md:
-    0 4px 6px -1px rgb(42 18 20 / 0.1), 0 2px 4px -2px rgb(42 18 20 / 0.05);
-  --shadow-lg:
-    0 10px 15px -3px rgb(42 18 20 / 0.1), 0 4px 6px -4px rgb(42 18 20 / 0.05);
-  --shadow-xl:
-    0 20px 25px -5px rgb(42 18 20 / 0.1), 0 8px 10px -6px rgb(42 18 20 / 0.05);
+  --shadow: 0 4px 6px -1px rgb(42 18 20 / 0.1), 0 2px 4px -2px rgb(42 18 20 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(42 18 20 / 0.1), 0 2px 4px -2px rgb(42 18 20 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(42 18 20 / 0.1), 0 4px 6px -4px rgb(42 18 20 / 0.05);
+  --shadow-xl: 0 20px 25px -5px rgb(42 18 20 / 0.1), 0 8px 10px -6px rgb(42 18 20 / 0.05);
   --shadow-2xl: 0 25px 50px -12px rgb(42 18 20 / 0.15);
 
   /* Animation */
@@ -164,8 +160,8 @@ body {
     -webkit-tap-highlight-color: transparent;
 
     /* Ensure proper viewport */
-    padding: env(safe-area-inset-top) env(safe-area-inset-right)
-      env(safe-area-inset-bottom) env(safe-area-inset-left);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+      env(safe-area-inset-left);
   }
 
   /* Hide browser UI elements */
@@ -899,11 +895,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    rgba(173, 40, 49, 0.02) 1px,
-    transparent 0
-  );
+  background-image: radial-gradient(circle at 1px 1px, rgba(173, 40, 49, 0.02) 1px, transparent 0);
   background-size: 24px 24px;
   pointer-events: none;
 }

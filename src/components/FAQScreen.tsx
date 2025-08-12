@@ -1,18 +1,10 @@
-import { Button } from '@ui/Button'
-import { Input } from '@ui/Input'
-import {
-  Camera,
-  ChevronDown,
-  ChevronUp,
-  Heart,
-  HelpCircle,
-  Search,
-  Star,
-} from 'lucide-react'
-import { useState } from 'react'
+import { Button } from '@ui/Button';
+import { Input } from '@ui/Input';
+import { Camera, ChevronDown, ChevronUp, Heart, HelpCircle, Search, Star } from 'lucide-react';
+import { useState } from 'react';
 
 interface FAQScreenProps {
-  onBack: () => void
+  onBack: () => void;
 }
 
 const faqData = [
@@ -110,30 +102,28 @@ const faqData = [
       },
     ],
   },
-]
+];
 
 export function FAQScreen({}: FAQScreenProps) {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [expandedItems, setExpandedItems] = useState<string[]>([])
+  const [searchQuery, setSearchQuery] = useState('');
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   const toggleExpanded = (questionId: string) => {
-    setExpandedItems((prev) =>
-      prev.includes(questionId)
-        ? prev.filter((id) => id !== questionId)
-        : [...prev, questionId],
-    )
-  }
+    setExpandedItems(prev =>
+      prev.includes(questionId) ? prev.filter(id => id !== questionId) : [...prev, questionId],
+    );
+  };
 
   const filteredFAQ = faqData
-    .map((category) => ({
+    .map(category => ({
       ...category,
       questions: category.questions.filter(
-        (q) =>
+        q =>
           q.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
           q.answer.toLowerCase().includes(searchQuery.toLowerCase()),
       ),
     }))
-    .filter((category) => category.questions.length > 0)
+    .filter(category => category.questions.length > 0);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -141,9 +131,7 @@ export function FAQScreen({}: FAQScreenProps) {
       <div className="bg-white shadow-sm px-6 py-6">
         <div className="mb-6">
           <h1 className="text-2xl mb-2">Frequently Asked Questions</h1>
-          <p className="text-gray-600">
-            Find answers to common questions about Wine Buddy
-          </p>
+          <p className="text-gray-600">Find answers to common questions about Wine Buddy</p>
         </div>
 
         {/* Search */}
@@ -152,7 +140,7 @@ export function FAQScreen({}: FAQScreenProps) {
           <Input
             placeholder="Search FAQ..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={e => setSearchQuery(e.target.value)}
             className="pl-10"
           />
         </div>
@@ -164,40 +152,30 @@ export function FAQScreen({}: FAQScreenProps) {
           <div className="text-center py-12">
             <Search className="h-16 w-16 text-gray-300 mx-auto mb-4" />
             <h3 className="text-lg text-gray-600 mb-2">No results found</h3>
-            <p className="text-gray-500">
-              Try searching with different keywords
-            </p>
+            <p className="text-gray-500">Try searching with different keywords</p>
           </div>
         ) : (
           <div className="space-y-6">
             {filteredFAQ.map((category, categoryIndex) => (
-              <div
-                key={categoryIndex}
-                className="bg-white rounded-xl overflow-hidden shadow-sm"
-              >
+              <div key={categoryIndex} className="bg-white rounded-xl overflow-hidden shadow-sm">
                 {/* Category Header */}
                 <div className="flex items-center p-4 bg-gray-50 border-b">
                   {category.icon}
-                  <h2 className="ml-3 text-lg font-medium text-gray-900">
-                    {category.category}
-                  </h2>
+                  <h2 className="ml-3 text-lg font-medium text-gray-900">{category.category}</h2>
                 </div>
 
                 {/* Questions */}
                 <div className="divide-y divide-gray-100">
                   {category.questions.map((faq, questionIndex) => {
-                    const questionId = `${categoryIndex}-${questionIndex}`
-                    const isExpanded = expandedItems.includes(questionId)
+                    const questionId = `${categoryIndex}-${questionIndex}`;
+                    const isExpanded = expandedItems.includes(questionId);
 
                     return (
                       <div key={questionIndex}>
                         <button
                           onClick={() => toggleExpanded(questionId)}
-                          className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
-                        >
-                          <span className="font-medium text-gray-900 pr-4">
-                            {faq.question}
-                          </span>
+                          className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors">
+                          <span className="font-medium text-gray-900 pr-4">{faq.question}</span>
                           {isExpanded ? (
                             <ChevronUp className="h-5 w-5 text-gray-400 flex-shrink-0" />
                           ) : (
@@ -207,13 +185,11 @@ export function FAQScreen({}: FAQScreenProps) {
 
                         {isExpanded && (
                           <div className="px-4 pb-4">
-                            <p className="text-gray-700 leading-relaxed">
-                              {faq.answer}
-                            </p>
+                            <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
                           </div>
                         )}
                       </div>
-                    )
+                    );
                   })}
                 </div>
               </div>
@@ -227,22 +203,18 @@ export function FAQScreen({}: FAQScreenProps) {
         <div className="bg-purple-50 rounded-xl p-6 border border-purple-100">
           <h3 className="text-lg mb-2 text-purple-900">Still need help?</h3>
           <p className="text-purple-700 mb-4">
-            Can't find what you're looking for? Our support team is here to
-            help.
+            Can't find what you're looking for? Our support team is here to help.
           </p>
           <div className="flex space-x-3">
-            <Button className="bg-purple-600 hover:bg-purple-700">
-              Contact Support
-            </Button>
+            <Button className="bg-purple-600 hover:bg-purple-700">Contact Support</Button>
             <Button
               variant="outline"
-              className="border-purple-200 text-purple-700 hover:bg-purple-50"
-            >
+              className="border-purple-200 text-purple-700 hover:bg-purple-50">
               Send Feedback
             </Button>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

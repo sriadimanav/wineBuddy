@@ -1,5 +1,5 @@
-import type { User, Wine } from '@routes/__root'
-import { useNavigate } from '@tanstack/react-router'
+import type { User, Wine } from '@routes/__root';
+import { useNavigate } from '@tanstack/react-router';
 import {
   Check,
   Edit3,
@@ -12,14 +12,14 @@ import {
   Star,
   Trash2,
   X,
-} from 'lucide-react'
-import { useState } from 'react'
-import { useScreenSize } from './hooks/useMediaQueries.ts'
-import { ImageWithFallback } from './ui/ImageWithFallback.tsx'
+} from 'lucide-react';
+import { useState } from 'react';
+import { useScreenSize } from './hooks/useMediaQueries.ts';
+import { ImageWithFallback } from './ui/ImageWithFallback.tsx';
 
 interface FavoritesScreenProps {
-  user: User
-  onWineSelect: (wine: Wine) => void
+  user: User;
+  onWineSelect: (wine: Wine) => void;
 }
 
 // Mock favorite wines data
@@ -30,8 +30,7 @@ const favoritesData: Wine[] = [
     winery: 'Château Margaux',
     vintage: 2015,
     region: 'Bordeaux, France',
-    description:
-      'A legendary Bordeaux blend showcasing elegance and power in perfect harmony.',
+    description: 'A legendary Bordeaux blend showcasing elegance and power in perfect harmony.',
     grapeVariety: ['Cabernet Sauvignon', 'Merlot'],
     color: 'Deep Ruby',
     alcoholContent: 13.5,
@@ -42,8 +41,7 @@ const favoritesData: Wine[] = [
     rating: 4.8,
     reviews: 127,
     sommelierNotes: 'Exceptional vintage with remarkable aging potential.',
-    image:
-      'https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=300&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=300&h=400&fit=crop',
     price: 450,
   },
   {
@@ -52,8 +50,7 @@ const favoritesData: Wine[] = [
     winery: 'Cloudy Bay',
     vintage: 2022,
     region: 'Marlborough, New Zealand',
-    description:
-      'Crisp and refreshing with distinctive tropical and citrus flavors.',
+    description: 'Crisp and refreshing with distinctive tropical and citrus flavors.',
     grapeVariety: ['Sauvignon Blanc'],
     color: 'Pale Yellow',
     alcoholContent: 13.0,
@@ -64,8 +61,7 @@ const favoritesData: Wine[] = [
     rating: 4.3,
     reviews: 89,
     sommelierNotes: 'Perfect expression of Marlborough terroir.',
-    image:
-      'https://images.unsplash.com/photo-1558008258-3256797b43f3?w=300&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1558008258-3256797b43f3?w=300&h=400&fit=crop',
     price: 28,
   },
   {
@@ -74,8 +70,7 @@ const favoritesData: Wine[] = [
     winery: 'Giuseppe Rinaldi',
     vintage: 2018,
     region: 'Piedmont, Italy',
-    description:
-      'Traditional Barolo with complex tannins and exceptional longevity.',
+    description: 'Traditional Barolo with complex tannins and exceptional longevity.',
     grapeVariety: ['Nebbiolo'],
     color: 'Garnet Red',
     alcoholContent: 14.5,
@@ -86,8 +81,7 @@ const favoritesData: Wine[] = [
     rating: 4.6,
     reviews: 67,
     sommelierNotes: "A masterpiece from one of Barolo's finest producers.",
-    image:
-      'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=300&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=300&h=400&fit=crop',
     price: 85,
   },
   {
@@ -96,8 +90,7 @@ const favoritesData: Wine[] = [
     winery: 'Dom Pérignon',
     vintage: 2012,
     region: 'Champagne, France',
-    description:
-      'Prestigious champagne with exceptional complexity and finesse.',
+    description: 'Prestigious champagne with exceptional complexity and finesse.',
     grapeVariety: ['Chardonnay', 'Pinot Noir'],
     color: 'Golden Yellow',
     alcoholContent: 12.5,
@@ -108,8 +101,7 @@ const favoritesData: Wine[] = [
     rating: 4.9,
     reviews: 203,
     sommelierNotes: 'Perfect expression of Dom Pérignon house style.',
-    image:
-      'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=300&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=300&h=400&fit=crop',
     price: 180,
   },
   {
@@ -118,8 +110,7 @@ const favoritesData: Wine[] = [
     winery: 'Opus One',
     vintage: 2019,
     region: 'Napa Valley, USA',
-    description:
-      'Bordeaux-style blend representing the pinnacle of Napa Valley winemaking.',
+    description: 'Bordeaux-style blend representing the pinnacle of Napa Valley winemaking.',
     grapeVariety: ['Cabernet Sauvignon', 'Merlot', 'Petit Verdot'],
     color: 'Deep Purple',
     alcoholContent: 14.5,
@@ -129,10 +120,8 @@ const favoritesData: Wine[] = [
     foodPairing: ['Prime Rib', 'Duck Confit', 'Dark Chocolate'],
     rating: 4.7,
     reviews: 134,
-    sommelierNotes:
-      'Collaboration between Mondavi and Rothschild reaches new heights.',
-    image:
-      'https://images.unsplash.com/photo-1474722883778-792e7990302f?w=300&h=400&fit=crop',
+    sommelierNotes: 'Collaboration between Mondavi and Rothschild reaches new heights.',
+    image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?w=300&h=400&fit=crop',
     price: 320,
   },
   {
@@ -152,106 +141,95 @@ const favoritesData: Wine[] = [
     foodPairing: ['Grilled Steak', 'Lamb Chops'],
     rating: 4.4,
     reviews: 156,
-    sommelierNotes:
-      'Excellent everyday Cabernet with consistent quality year after year.',
-    image:
-      'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=400&fit=crop',
+    sommelierNotes: 'Excellent everyday Cabernet with consistent quality year after year.',
+    image: 'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=400&fit=crop',
     price: 65,
   },
-]
+];
 
 export function FavoritesScreen({ user }: FavoritesScreenProps) {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('list')
+  const [searchQuery, setSearchQuery] = useState('');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   //const [sortBy, setSortBy] = useState('name')
-  const [isEditMode, setIsEditMode] = useState(false)
-  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set())
-  const navigate = useNavigate()
-  const screenSize = useScreenSize()
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
+  const navigate = useNavigate();
+  const screenSize = useScreenSize();
 
   // Filter favorites based on user's favorite IDs
-  const favoriteWines = favoritesData.filter((wine) =>
-    user.favorites.includes(wine.id),
-  )
+  const favoriteWines = favoritesData.filter(wine => user.favorites.includes(wine.id));
 
   // Filter wines based on search query
   const filteredWines = favoriteWines.filter(
-    (wine) =>
+    wine =>
       wine.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       wine.winery.toLowerCase().includes(searchQuery.toLowerCase()) ||
       wine.region.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+  );
 
   const handleWineClick = (wine: Wine) => {
     if (isEditMode) {
-      toggleItemSelection(wine.id)
+      toggleItemSelection(wine.id);
     } else {
-      navigate({ to: '/wine/$id', params: { id: wine.id } })
+      navigate({ to: '/wine/$id', params: { id: wine.id } });
     }
-  }
+  };
 
   const toggleItemSelection = (wineId: string) => {
-    const newSelectedItems = new Set(selectedItems)
+    const newSelectedItems = new Set(selectedItems);
     if (newSelectedItems.has(wineId)) {
-      newSelectedItems.delete(wineId)
+      newSelectedItems.delete(wineId);
     } else {
-      newSelectedItems.add(wineId)
+      newSelectedItems.add(wineId);
     }
-    setSelectedItems(newSelectedItems)
-  }
+    setSelectedItems(newSelectedItems);
+  };
 
   const toggleSelectAll = () => {
     if (selectedItems.size === filteredWines.length) {
-      setSelectedItems(new Set())
+      setSelectedItems(new Set());
     } else {
-      setSelectedItems(new Set(filteredWines.map((wine) => wine.id)))
+      setSelectedItems(new Set(filteredWines.map(wine => wine.id)));
     }
-  }
+  };
 
   const handleDeleteSelected = () => {
-    if (selectedItems.size === 0) return
+    if (selectedItems.size === 0) return;
 
-    const itemText = selectedItems.size === 1 ? 'item' : 'items'
+    const itemText = selectedItems.size === 1 ? 'item' : 'items';
     if (
       confirm(
         `Are you sure you want to remove ${selectedItems.size} ${itemText} from your favorites? This action cannot be undone.`,
       )
     ) {
       // Here you would typically update the user's favorites
-      console.log('Deleting selected items:', Array.from(selectedItems))
-      setSelectedItems(new Set())
-      setIsEditMode(false)
+      console.log('Deleting selected items:', Array.from(selectedItems));
+      setSelectedItems(new Set());
+      setIsEditMode(false);
     }
-  }
+  };
 
   const exitEditMode = () => {
-    setIsEditMode(false)
-    setSelectedItems(new Set())
-  }
+    setIsEditMode(false);
+    setSelectedItems(new Set());
+  };
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
         size={12}
-        className={
-          i < Math.floor(rating)
-            ? 'text-yellow-400 fill-current'
-            : 'text-gray-300'
-        }
+        className={i < Math.floor(rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}
       />
-    ))
-  }
+    ));
+  };
 
   const WineCard = ({ wine }: { wine: Wine }) => (
     <div
       onClick={() => handleWineClick(wine)}
       className={`bg-card rounded-xl p-4 shadow-sm border border-border cursor-pointer hover:shadow-md transition-all ${
-        isEditMode && selectedItems.has(wine.id)
-          ? 'ring-2 ring-wine-accent bg-wine-accent/5'
-          : ''
-      }`}
-    >
+        isEditMode && selectedItems.has(wine.id) ? 'ring-2 ring-wine-accent bg-wine-accent/5' : ''
+      }`}>
       <div className="flex space-x-4">
         {isEditMode && (
           <div className="flex items-center justify-center flex-shrink-0">
@@ -260,11 +238,8 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
                 selectedItems.has(wine.id)
                   ? 'bg-wine-accent border-wine-accent'
                   : 'border-gray-300 hover:border-wine-accent'
-              }`}
-            >
-              {selectedItems.has(wine.id) && (
-                <Check size={12} className="text-white" />
-              )}
+              }`}>
+              {selectedItems.has(wine.id) && <Check size={12} className="text-white" />}
             </div>
           </div>
         )}
@@ -276,12 +251,8 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between">
             <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-foreground truncate">
-                {wine.name}
-              </h3>
-              <p className="text-sm text-muted-foreground truncate">
-                {wine.winery}
-              </p>
+              <h3 className="font-medium text-foreground truncate">{wine.name}</h3>
+              <p className="text-sm text-muted-foreground truncate">{wine.winery}</p>
               <p className="text-xs text-muted-foreground mt-1">
                 {wine.region} • {wine.vintage}
               </p>
@@ -295,12 +266,10 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
           <div className="flex items-center justify-between mt-2">
             <div className="flex items-center space-x-1">
               {renderStars(wine.rating)}
-              <span className="text-xs text-muted-foreground ml-1">
-                {wine.rating}
-              </span>
+              <span className="text-xs text-muted-foreground ml-1">{wine.rating}</span>
             </div>
             <div className="flex flex-wrap gap-1">
-              {wine.grapeVariety.slice(0, 1).map((grape) => (
+              {wine.grapeVariety.slice(0, 1).map(grape => (
                 <span key={grape} className="wine-badge--secondary text-xs">
                   {grape}
                 </span>
@@ -310,17 +279,14 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
         </div>
       </div>
     </div>
-  )
+  );
 
   const WineGridCard = ({ wine }: { wine: Wine }) => (
     <div
       onClick={() => handleWineClick(wine)}
       className={`bg-card rounded-xl p-4 shadow-sm border border-border cursor-pointer hover:shadow-md transition-all relative ${
-        isEditMode && selectedItems.has(wine.id)
-          ? 'ring-2 ring-wine-accent bg-wine-accent/5'
-          : ''
-      }`}
-    >
+        isEditMode && selectedItems.has(wine.id) ? 'ring-2 ring-wine-accent bg-wine-accent/5' : ''
+      }`}>
       {isEditMode && (
         <div className="absolute top-2 left-2 z-10">
           <div
@@ -328,11 +294,8 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
               selectedItems.has(wine.id)
                 ? 'bg-wine-accent border-wine-accent'
                 : 'border-white bg-white/90 hover:border-wine-accent'
-            }`}
-          >
-            {selectedItems.has(wine.id) && (
-              <Check size={12} className="text-white" />
-            )}
+            }`}>
+            {selectedItems.has(wine.id) && <Check size={12} className="text-white" />}
           </div>
         </div>
       )}
@@ -341,23 +304,17 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
         alt={wine.name}
         className="w-full h-32 object-cover rounded-lg mb-3"
       />
-      <h4 className="font-medium text-sm text-foreground mb-1 line-clamp-2">
-        {wine.name}
-      </h4>
+      <h4 className="font-medium text-sm text-foreground mb-1 line-clamp-2">{wine.name}</h4>
       <p className="text-xs text-muted-foreground mb-2">{wine.winery}</p>
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-1">
           <Star size={12} className="text-yellow-400 fill-current" />
           <span className="text-xs text-muted-foreground">{wine.rating}</span>
         </div>
-        {wine.price && (
-          <span className="text-sm font-semibold text-foreground">
-            ${wine.price}
-          </span>
-        )}
+        {wine.price && <span className="text-sm font-semibold text-foreground">${wine.price}</span>}
       </div>
     </div>
-  )
+  );
 
   return (
     <div className="bg-background">
@@ -377,8 +334,7 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
           <div
             className={`w-10 h-10 rounded-full flex items-center justify-center ${
               isEditMode ? 'bg-wine-accent/10' : 'bg-red-100'
-            }`}
-          >
+            }`}>
             {isEditMode ? (
               <Edit3 size={20} className="text-wine-accent" />
             ) : (
@@ -398,7 +354,7 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
               type="text"
               placeholder="Search your favorites..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={e => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-border rounded-md bg-input text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
             />
           </div>
@@ -418,8 +374,7 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
                   {favoriteWines.length > 0 && (
                     <button
                       onClick={() => setIsEditMode(true)}
-                      className="wine-button wine-button--secondary text-sm px-3 py-1.5 rounded-md flex items-center"
-                    >
+                      className="wine-button wine-button--secondary text-sm px-3 py-1.5 rounded-md flex items-center">
                       <Edit3 size={16} className="mr-1" />
                       Edit
                     </button>
@@ -429,16 +384,12 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={toggleSelectAll}
-                    className="wine-button wine-button--secondary text-sm px-3 py-1.5 rounded-md whitespace-nowrap"
-                  >
-                    {selectedItems.size === filteredWines.length
-                      ? 'Deselect'
-                      : 'Select All'}
+                    className="wine-button wine-button--secondary text-sm px-3 py-1.5 rounded-md whitespace-nowrap">
+                    {selectedItems.size === filteredWines.length ? 'Deselect' : 'Select All'}
                   </button>
                   <button
                     onClick={exitEditMode}
-                    className="wine-button wine-button--secondary text-sm px-3 py-1.5 rounded-md flex items-center"
-                  >
+                    className="wine-button wine-button--secondary text-sm px-3 py-1.5 rounded-md flex items-center">
                     <X size={16} className="mr-1" />
                     Cancel
                   </button>
@@ -449,14 +400,12 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
             <div className="flex items-center space-x-1 bg-muted rounded-lg p-1">
               <button
                 onClick={() => setViewMode('list')}
-                className={`h-8 w-8 p-0 rounded ${viewMode === 'list' ? 'bg-accent text-accent-foreground' : 'hover:bg-accent/50'} flex items-center justify-center`}
-              >
+                className={`h-8 w-8 p-0 rounded ${viewMode === 'list' ? 'bg-accent text-accent-foreground' : 'hover:bg-accent/50'} flex items-center justify-center`}>
                 <List size={16} />
               </button>
               <button
                 onClick={() => setViewMode('grid')}
-                className={`h-8 w-8 p-0 rounded ${viewMode === 'grid' ? 'bg-accent text-accent-foreground' : 'hover:bg-accent/50'} flex items-center justify-center`}
-              >
+                className={`h-8 w-8 p-0 rounded ${viewMode === 'grid' ? 'bg-accent text-accent-foreground' : 'hover:bg-accent/50'} flex items-center justify-center`}>
                 <Grid size={16} />
               </button>
             </div>
@@ -468,60 +417,36 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
       <div
         className="px-6 py-6"
         style={{
-          minHeight:
-            screenSize === 'kiosk'
-              ? 'calc(100vh - 280px)'
-              : 'calc(100vh - 240px)',
-          maxHeight:
-            screenSize === 'kiosk'
-              ? 'calc(100vh - 280px)'
-              : 'calc(100vh - 240px)',
+          minHeight: screenSize === 'kiosk' ? 'calc(100vh - 280px)' : 'calc(100vh - 240px)',
+          maxHeight: screenSize === 'kiosk' ? 'calc(100vh - 280px)' : 'calc(100vh - 240px)',
           overflowY: 'auto',
-        }}
-      >
+        }}>
         {filteredWines.length === 0 ? (
           <div className="text-center py-12 flex flex-col items-center justify-center h-full">
             {favoriteWines.length === 0 ? (
               <div>
-                <Heart
-                  size={64}
-                  className="text-muted-foreground mx-auto mb-4"
-                />
-                <h3 className="text-lg text-muted-foreground mb-2">
-                  No favorites yet
-                </h3>
+                <Heart size={64} className="text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg text-muted-foreground mb-2">No favorites yet</h3>
                 <p className="text-muted-foreground mb-6">
                   Start exploring wines and save your favorites here
                 </p>
                 <button
                   onClick={() => navigate({ to: '/' })}
-                  className="bg-wine-accent hover:bg-wine-light text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200 shadow-lg"
-                >
+                  className="bg-wine-accent hover:bg-wine-light text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200 shadow-lg">
                   Discover Wines
                 </button>
               </div>
             ) : (
               <div>
-                <Search
-                  size={64}
-                  className="text-muted-foreground mx-auto mb-4"
-                />
-                <h3 className="text-lg text-muted-foreground mb-2">
-                  No results found
-                </h3>
-                <p className="text-muted-foreground">
-                  Try adjusting your search terms
-                </p>
+                <Search size={64} className="text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg text-muted-foreground mb-2">No results found</h3>
+                <p className="text-muted-foreground">Try adjusting your search terms</p>
               </div>
             )}
           </div>
         ) : (
-          <div
-            className={
-              viewMode === 'grid' ? 'grid grid-cols-2 gap-4' : 'space-y-4'
-            }
-          >
-            {filteredWines.map((wine) =>
+          <div className={viewMode === 'grid' ? 'grid grid-cols-2 gap-4' : 'space-y-4'}>
+            {filteredWines.map(wine =>
               viewMode === 'grid' ? (
                 <WineGridCard key={wine.id} wine={wine} />
               ) : (
@@ -537,14 +462,8 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
         <div
           className="fixed left-4 right-4 bg-white border border-gray-200 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg"
           style={{
-            bottom:
-              screenSize === 'kiosk'
-                ? '96px'
-                : screenSize === 'desktop'
-                  ? '88px'
-                  : '80px',
-          }}
-        >
+            bottom: screenSize === 'kiosk' ? '96px' : screenSize === 'desktop' ? '88px' : '80px',
+          }}>
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <Edit3 size={16} className="text-wine-accent" />
@@ -558,8 +477,7 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
               {selectedItems.size > 0 && (
                 <button
                   onClick={handleDeleteSelected}
-                  className="bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-4 py-2 rounded-lg flex items-center transition-colors"
-                >
+                  className="bg-red-500 hover:bg-red-600 text-white text-sm font-medium px-4 py-2 rounded-lg flex items-center transition-colors">
                   <Trash2 size={14} className="mr-1" />
                   Remove
                 </button>
@@ -569,5 +487,5 @@ export function FavoritesScreen({ user }: FavoritesScreenProps) {
         </div>
       )}
     </div>
-  )
+  );
 }

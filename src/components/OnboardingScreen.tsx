@@ -7,13 +7,13 @@ import {
   Heart,
   //BookOpen,
   Wine,
-} from 'lucide-react'
-import { useState } from 'react'
+} from 'lucide-react';
+import { useState } from 'react';
 
-import { useScreenSize } from '@/components/hooks/useMediaQueries'
+import { useScreenSize } from '@/components/hooks/useMediaQueries';
 
 interface OnboardingScreenProps {
-  onComplete: () => void
+  onComplete: () => void;
 }
 
 const onboardingSteps = [
@@ -53,26 +53,26 @@ const onboardingSteps = [
     icon: <Award className="w-16 h-16 text-white" />,
     gradient: 'from-wine-light to-wine-accent',
   },
-]
+];
 
 export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
-  const [currentStep, setCurrentStep] = useState(0)
-  const screenSize = useScreenSize()
+  const [currentStep, setCurrentStep] = useState(0);
+  const screenSize = useScreenSize();
 
   const handleNext = () => {
     if (currentStep < onboardingSteps.length - 1) {
-      setCurrentStep(currentStep + 1)
+      setCurrentStep(currentStep + 1);
     } else {
-      onComplete()
+      onComplete();
     }
-  }
+  };
 
   const handleSkip = () => {
-    onComplete()
-  }
+    onComplete();
+  };
 
-  const step = onboardingSteps[currentStep]
-  const isLastStep = currentStep === onboardingSteps.length - 1
+  const step = onboardingSteps[currentStep];
+  const isLastStep = currentStep === onboardingSteps.length - 1;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
@@ -83,22 +83,19 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           style={{
             backgroundColor: '#ad2831',
             opacity: 0.15,
-          }}
-        ></div>
+          }}></div>
         <div
           className="absolute bottom-20 right-10 w-24 h-24 rounded-full"
           style={{
             backgroundColor: '#640d14',
             opacity: 0.2,
-          }}
-        ></div>
+          }}></div>
         <div
           className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full"
           style={{
             backgroundColor: '#800e13',
             opacity: 0.18,
-          }}
-        ></div>
+          }}></div>
       </div>
 
       <div className="relative z-10 flex flex-col min-h-screen">
@@ -119,8 +116,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           {!isLastStep && (
             <button
               onClick={handleSkip}
-              className="text-gray-500 hover:text-gray-700 transition-colors px-4 py-2 rounded-md"
-            >
+              className="text-gray-500 hover:text-gray-700 transition-colors px-4 py-2 rounded-md">
               Skip
             </button>
           )}
@@ -140,8 +136,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
                     : step.id === 3
                       ? 'linear-gradient(135deg, #640d14, #800e13)'
                       : 'linear-gradient(135deg, #800e13, #ad2831)',
-            }}
-          >
+            }}>
             {step.icon}
           </div>
 
@@ -150,24 +145,21 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
             <h1
               className={`font-bold text-gray-900 mb-4 ${
                 screenSize === 'kiosk' ? 'text-4xl' : 'text-3xl'
-              }`}
-            >
+              }`}>
               {step.title}
             </h1>
 
             <h2
               className={`font-medium text-wine-accent mb-6 ${
                 screenSize === 'kiosk' ? 'text-xl' : 'text-lg'
-              }`}
-            >
+              }`}>
               {step.subtitle}
             </h2>
 
             <p
               className={`text-gray-600 leading-relaxed ${
                 screenSize === 'kiosk' ? 'text-lg' : 'text-base'
-              }`}
-            >
+              }`}>
               {step.description}
             </p>
           </div>
@@ -179,8 +171,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
             onClick={handleNext}
             className={`w-full bg-wine-accent hover:bg-wine-light text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl flex items-center justify-center ${
               screenSize === 'kiosk' ? 'py-5 text-lg' : 'py-4'
-            }`}
-          >
+            }`}>
             {isLastStep ? 'Get Started' : 'Continue'}
             {isLastStep ? (
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -192,13 +183,12 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           {currentStep > 0 && (
             <button
               onClick={() => setCurrentStep(currentStep - 1)}
-              className="w-full mt-3 text-gray-500 hover:text-gray-700 transition-colors py-2"
-            >
+              className="w-full mt-3 text-gray-500 hover:text-gray-700 transition-colors py-2">
               Back
             </button>
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,18 +1,18 @@
 // components/pwa/PWAProvider.tsx
-import { useEffect } from 'react'
-import { PWAInstallBanner } from './PWAInstallBanner'
-import { PWAStatus } from './PWAStatus'
-import { PWAService } from './pwaService'
+import { useEffect } from 'react';
+import { PWAInstallBanner } from './PWAInstallBanner';
+import { PWAStatus } from './PWAStatus';
+import { PWAService } from './pwaService';
 
 interface PWAProviderProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export function PWAProvider({ children }: PWAProviderProps) {
   useEffect(() => {
     // Initialize PWA services
-    PWAService.initializeWhenReady()
-  }, [])
+    PWAService.initializeWhenReady();
+  }, []);
 
   return (
     <>
@@ -85,5 +85,5 @@ export function PWAProvider({ children }: PWAProviderProps) {
         }
       `}</style>
     </>
-  )
+  );
 }

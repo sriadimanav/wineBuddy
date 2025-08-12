@@ -8,35 +8,31 @@ import {
   Settings,
   Shield,
   Star,
-} from 'lucide-react'
-import type { User } from '../routes/__root'
+} from 'lucide-react';
+import type { User } from '../routes/__root';
 //import { useScreenSize } from './hooks/useMediaQueries'
 
 interface ProfileScreenProps {
-  user: User
-  onLogout: () => void
+  user: User;
+  onLogout: () => void;
 }
 
 export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
   //const screenSize = useScreenSize()
 
   const resetApp = () => {
-    if (
-      confirm(
-        'This will reset all app data and show onboarding again. Are you sure?',
-      )
-    ) {
-      localStorage.removeItem('wine-buddy-user')
-      localStorage.removeItem('wine-buddy-onboarding-complete')
-      window.location.href = '/'
+    if (confirm('This will reset all app data and show onboarding again. Are you sure?')) {
+      localStorage.removeItem('wine-buddy-user');
+      localStorage.removeItem('wine-buddy-onboarding-complete');
+      window.location.href = '/';
     }
-  }
+  };
 
   const handleCreateAccount = () => {
     // Remove current guest user and redirect to auth
-    localStorage.removeItem('wine-buddy-user')
-    window.location.href = '/auth'
-  }
+    localStorage.removeItem('wine-buddy-user');
+    window.location.href = '/auth';
+  };
 
   const menuItems = [
     {
@@ -63,7 +59,7 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
       subtitle: 'Get help or contact support',
       action: () => console.log('Help'),
     },
-  ]
+  ];
 
   const stats = [
     {
@@ -81,7 +77,7 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
       value: '12',
       icon: <Star size={16} className="text-yellow-500" />,
     },
-  ]
+  ];
 
   return (
     <div className="bg-background pb-20">
@@ -100,8 +96,7 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
               ) : (
                 <div
                   className="w-20 h-20 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: 'var(--color-wine-accent)' }}
-                >
+                  style={{ backgroundColor: 'var(--color-wine-accent)' }}>
                   <span className="text-2xl text-white font-medium">
                     {user.name.charAt(0).toUpperCase()}
                   </span>
@@ -111,13 +106,10 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
             </div>
 
             <div className="flex-1">
-              <h1 className="text-2xl font-bold text-foreground mb-1">
-                {user.name}
-              </h1>
+              <h1 className="text-2xl font-bold text-foreground mb-1">{user.name}</h1>
               <p className="text-muted-foreground mb-2">{user.email}</p>
               <span
-                className={`inline-flex items-center px-3 py-1 text-sm font-medium rounded-full ${user.isGuest ? 'bg-orange-100 text-orange-700' : 'bg-purple-100 text-purple-700'}`}
-              >
+                className={`inline-flex items-center px-3 py-1 text-sm font-medium rounded-full ${user.isGuest ? 'bg-orange-100 text-orange-700' : 'bg-purple-100 text-purple-700'}`}>
                 {user.isGuest ? 'Guest Explorer' : 'Wine Enthusiast'}
               </span>
             </div>
@@ -128,9 +120,7 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
             {stats.map((stat, index) => (
               <div key={index} className="text-center p-4 bg-muted rounded-xl">
                 <div className="flex justify-center mb-2">{stat.icon}</div>
-                <p className="text-2xl font-bold text-foreground mb-1">
-                  {stat.value}
-                </p>
+                <p className="text-2xl font-bold text-foreground mb-1">{stat.value}</p>
                 <p className="text-xs text-muted-foreground">{stat.label}</p>
               </div>
             ))}
@@ -145,20 +135,16 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
             className="rounded-xl p-6 text-white shadow-lg"
             style={{
               background: 'linear-gradient(to right, #ad2831, #800e13)',
-            }}
-          >
-            <h3 className="text-lg font-semibold mb-2 text-white">
-              Unlock Your Full Wine Journey
-            </h3>
+            }}>
+            <h3 className="text-lg font-semibold mb-2 text-white">Unlock Your Full Wine Journey</h3>
             <p className="text-white opacity-90 text-sm mb-4">
-              Create an account to save your favorites, track your wine
-              discoveries, and earn badges!
+              Create an account to save your favorites, track your wine discoveries, and earn
+              badges!
             </p>
             <button
               onClick={handleCreateAccount}
               className="bg-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
-              style={{ color: '#ad2831' }}
-            >
+              style={{ color: '#ad2831' }}>
               Create Your Account
             </button>
           </div>
@@ -172,31 +158,24 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
             <div key={index}>
               <button
                 onClick={item.action}
-                className="w-full flex items-center p-4 hover:bg-accent hover:text-accent-foreground transition-colors"
-              >
+                className="w-full flex items-center p-4 hover:bg-accent hover:text-accent-foreground transition-colors">
                 <div className="flex items-center space-x-3 flex-1">
                   {item.icon}
                   <div className="text-left">
                     <p className="font-medium text-foreground">{item.title}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {item.subtitle}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{item.subtitle}</p>
                   </div>
                 </div>
                 <ChevronRight size={20} className="text-muted-foreground" />
               </button>
-              {index < menuItems.length - 1 && (
-                <div className="h-px bg-border mx-4"></div>
-              )}
+              {index < menuItems.length - 1 && <div className="h-px bg-border mx-4"></div>}
             </div>
           ))}
         </div>
 
         {/* Preferences */}
         <div className="bg-card rounded-xl p-4 border border-border">
-          <h3 className="text-lg font-semibold text-foreground mb-4">
-            Wine Preferences
-          </h3>
+          <h3 className="text-lg font-semibold text-foreground mb-4">Wine Preferences</h3>
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-foreground">Preferred Wine Type</span>
@@ -217,18 +196,14 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
 
         {/* Recent Activity */}
         <div className="bg-card rounded-xl p-4 border border-border">
-          <h3 className="text-lg font-semibold text-foreground mb-4">
-            Recent Activity
-          </h3>
+          <h3 className="text-lg font-semibold text-foreground mb-4">Recent Activity</h3>
           <div className="space-y-3">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
                 <Camera size={16} className="text-purple-600" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-foreground">
-                  Scanned Caymus Cabernet
-                </p>
+                <p className="text-sm font-medium text-foreground">Scanned Caymus Cabernet</p>
                 <p className="text-xs text-muted-foreground">2 hours ago</p>
               </div>
             </div>
@@ -283,8 +258,7 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
         {/* Logout */}
         <button
           onClick={onLogout}
-          className="w-full flex items-center justify-center px-4 py-3 text-red-600 border border-red-200 rounded-md hover:bg-red-50 transition-colors"
-        >
+          className="w-full flex items-center justify-center px-4 py-3 text-red-600 border border-red-200 rounded-md hover:bg-red-50 transition-colors">
           <LogOut size={16} className="mr-2" />
           Sign Out
         </button>
@@ -292,12 +266,11 @@ export function ProfileScreen({ user, onLogout }: ProfileScreenProps) {
         {/* Development Reset Button */}
         <button
           onClick={resetApp}
-          className="w-full flex items-center justify-center px-4 py-3 text-gray-600 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors mt-2"
-        >
+          className="w-full flex items-center justify-center px-4 py-3 text-gray-600 border border-gray-200 rounded-md hover:bg-gray-50 transition-colors mt-2">
           <Settings size={16} className="mr-2" />
           Reset App (Dev)
         </button>
       </div>
     </div>
-  )
+  );
 }

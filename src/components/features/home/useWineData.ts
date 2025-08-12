@@ -1,24 +1,24 @@
-import type { Badge } from '@ts/badge'
-import type { FeaturedWine, TrendingWine } from '@ts/wine'
-import { useCallback, useEffect, useState } from 'react'
-import { wineDataService } from './wineDataService'
+import type { Badge } from '@ts/badge';
+import type { FeaturedWine, TrendingWine } from '@ts/wine';
+import { useCallback, useEffect, useState } from 'react';
+import { wineDataService } from './wineDataService';
 
 interface WineDataState {
-  featuredWines: FeaturedWine[]
-  trendingWines: TrendingWine[]
-  badges: Badge[]
-  loading: boolean
-  error: string | null
+  featuredWines: FeaturedWine[];
+  trendingWines: TrendingWine[];
+  badges: Badge[];
+  loading: boolean;
+  error: string | null;
 }
 
 interface UseWineDataReturn extends WineDataState {
   // Actions
-  refreshData: () => Promise<void>
-  searchWines: (query: string) => (FeaturedWine | TrendingWine)[]
-  getWinesByCategory: (category: string) => (FeaturedWine | TrendingWine)[]
-  getWineById: (id: string) => FeaturedWine | TrendingWine | undefined
-  unlockBadge: (badgeId: string) => void
-  updateBadgeProgress: (badgeId: string, progress: number) => void
+  refreshData: () => Promise<void>;
+  searchWines: (query: string) => (FeaturedWine | TrendingWine)[];
+  getWinesByCategory: (category: string) => (FeaturedWine | TrendingWine)[];
+  getWineById: (id: string) => FeaturedWine | TrendingWine | undefined;
+  unlockBadge: (badgeId: string) => void;
+  updateBadgeProgress: (badgeId: string, progress: number) => void;
 }
 
 export function useWineData(): UseWineDataReturn {
@@ -28,19 +28,19 @@ export function useWineData(): UseWineDataReturn {
     badges: [],
     loading: true,
     error: null,
-  })
+  });
 
   const loadWineData = async () => {
     try {
-      setData((prev) => ({ ...prev, loading: true, error: null }))
+      setData(prev => ({ ...prev, loading: true, error: null }));
 
       // Simulate loading delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
       // Load data from service
-      const featuredWines = wineDataService.getFeaturedWines()
-      const trendingWines = wineDataService.getTrendingWines()
-      const badges = wineDataService.getBadges()
+      const featuredWines = wineDataService.getFeaturedWines();
+      const trendingWines = wineDataService.getTrendingWines();
+      const badges = wineDataService.getBadges();
 
       setData({
         featuredWines,
@@ -48,63 +48,60 @@ export function useWineData(): UseWineDataReturn {
         badges,
         loading: false,
         error: null,
-      })
+      });
     } catch (error) {
-      setData((prev) => ({
+      setData(prev => ({
         ...prev,
         loading: false,
         error: 'Failed to load wine data',
-      }))
+      }));
     }
-  }
+  };
 
   useEffect(() => {
-    loadWineData()
-  }, [])
+    loadWineData();
+  }, []);
 
   // Action methods
   const refreshData = useCallback(async () => {
-    await loadWineData()
-  }, [])
+    await loadWineData();
+  }, []);
 
   const searchWines = useCallback((query: string) => {
-    return wineDataService.searchWines(query)
-  }, [])
+    return wineDataService.searchWines(query);
+  }, []);
 
   const getWinesByCategory = useCallback((category: string) => {
-    return wineDataService.getWinesByCategory(category)
-  }, [])
+    return wineDataService.getWinesByCategory(category);
+  }, []);
 
   const getWineById = useCallback((id: string) => {
-    return wineDataService.getWineById(id)
-  }, [])
+    return wineDataService.getWineById(id);
+  }, []);
 
   const unlockBadge = useCallback((badgeId: string) => {
-    setData((prev) => ({
+    setData(prev => ({
       ...prev,
-      badges: prev.badges.map((badge) =>
+      badges: prev.badges.map(badge =>
         badge.id === badgeId ? { ...badge, unlocked: true } : badge,
       ),
-    }))
-  }, [])
+    }));
+  }, []);
 
-  const updateBadgeProgress = useCallback(
-    (badgeId: string, progress: number) => {
-      setData((prev) => ({
-        ...prev,
-        badges: prev.badges.map((badge) =>
-          badge.id === badgeId
-            ? {
-                ...badge,
-                progress: Math.min(progress, badge.maxProgress || progress),
-                unlocked: progress >= (badge.maxProgress || progress),
-              }
-            : badge,
-        ),
-      }))
-    },
-    [],
-  )
+  const updateBadgeProgress = useCallback((badgeId: string, progress: number) => {
+    setData(prev => ({
+      ...prev,
+      badges: prev.badges.map(badge =>
+        badge.id === badgeId
+          ? {
+              ...badge,
+              progress: Math.min(progress, badge.maxProgress || progress),
+              unlocked: progress >= (badge.maxProgress || progress),
+            }
+          : badge,
+      ),
+    }));
+  }, []);
 
   return {
     ...data,
@@ -114,5 +111,5 @@ export function useWineData(): UseWineDataReturn {
     getWineById,
     unlockBadge,
     updateBadgeProgress,
-  }
+  };
 }

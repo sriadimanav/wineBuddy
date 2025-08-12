@@ -1,11 +1,11 @@
 /// <reference types="vitest" />
-import tailwindcss from '@tailwindcss/vite'
-import viteReact from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite';
+import viteReact from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
-import { tanstackRouter } from '@tanstack/router-plugin/vite'
-import path from 'node:path'
-import { VitePWA } from 'vite-plugin-pwa'
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
+import path from 'node:path';
+import { VitePWA } from 'vite-plugin-pwa';
 // import { fileURLToPath } from 'node:url'
 
 // const __filename = fileURLToPath(import.meta.url)
@@ -35,9 +35,9 @@ export default defineConfig({
               plugins: [
                 {
                   cacheKeyWillBeUsed: async ({ request }) => {
-                    const url = new URL(request.url)
-                    url.searchParams.set('wine-buddy', 'v1')
-                    return url.toString()
+                    const url = new URL(request.url);
+                    url.searchParams.set('wine-buddy', 'v1');
+                    return url.toString();
                   },
                 },
               ],
@@ -164,4 +164,4 @@ export default defineConfig({
     },
     //extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
-})
+});

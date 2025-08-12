@@ -1,34 +1,30 @@
-import { useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router';
 
 export const useUserActions = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleWineClick = (wineId: string) => {
-    navigate({ to: '/wine/$id', params: { id: wineId } })
-  }
+    navigate({ to: '/wine/$id', params: { id: wineId } });
+  };
 
   const handleScanNow = () => {
-    navigate({ to: '/scan' })
-  }
+    navigate({ to: '/scan' });
+  };
 
   const handleProfileClick = () => {
-    navigate({ to: '/profile' })
-  }
+    navigate({ to: '/profile' });
+  };
 
   const handleAuthClick = () => {
-    navigate({ to: '/auth' })
-  }
+    navigate({ to: '/auth' });
+  };
 
-  type WineCategory =
-    | 'Red Wines'
-    | 'White Wines'
-    | 'Sparkling Wines'
-    | 'Rosé Wines'
+  type WineCategory = 'Red Wines' | 'White Wines' | 'Sparkling Wines' | 'Rosé Wines';
 
   const handleCategoryClick = (category: WineCategory) => {
     // Future: Navigate to category page
-    alert(`Exploring ${category} - Feature coming soon!`)
-  }
+    alert(`Exploring ${category} - Feature coming soon!`);
+  };
 
   return {
     handleWineClick,
@@ -36,5 +32,5 @@ export const useUserActions = () => {
     handleProfileClick,
     handleAuthClick,
     handleCategoryClick,
-  }
-}
+  };
+};

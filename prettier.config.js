@@ -2,10 +2,14 @@
 
 /** @type {import('prettier').Config} */
 const config = {
-  semi: false,
+  arrowParens: 'avoid',
+  bracketSameLine: true,
+  printWidth: 100,
+  //semi: false,
   singleQuote: true,
-  trailingComma: 'all',
+  tabWidth: 2,
+  //trailingComma: 'all',
   plugins: ['prettier-plugin-organize-imports'],
-}
+};
 
-export default config
+export default config;

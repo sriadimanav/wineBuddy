@@ -6,14 +6,14 @@ import {
   Image as ImageIcon,
   RotateCcw,
   X,
-} from 'lucide-react'
-import { useState } from 'react'
-import type { Wine } from '../routes/__root'
-import { useScreenSize } from './hooks/useMediaQueries'
+} from 'lucide-react';
+import { useState } from 'react';
+import type { Wine } from '../routes/__root';
+import { useScreenSize } from './hooks/useMediaQueries';
 
 interface ScanScreenProps {
-  onWineFound: (wine: Wine) => void
-  onBack: () => void
+  onWineFound: (wine: Wine) => void;
+  onBack: () => void;
 }
 
 // Mock scan results
@@ -35,10 +35,8 @@ const mockScanResults: Wine[] = [
     foodPairing: ['Grilled Steak', 'Lamb Chops', 'Dark Chocolate'],
     rating: 4.4,
     reviews: 156,
-    sommelierNotes:
-      'Excellent everyday Cabernet with consistent quality year after year.',
-    image:
-      'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=400&fit=crop',
+    sommelierNotes: 'Excellent everyday Cabernet with consistent quality year after year.',
+    image: 'https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?w=300&h=400&fit=crop',
   },
   {
     id: 'scan-2',
@@ -46,8 +44,7 @@ const mockScanResults: Wine[] = [
     winery: 'Kendall-Jackson',
     vintage: 2021,
     region: 'California, USA',
-    description:
-      'Balanced Chardonnay with tropical fruit flavors and a hint of oak.',
+    description: 'Balanced Chardonnay with tropical fruit flavors and a hint of oak.',
     grapeVariety: ['Chardonnay'],
     color: 'Golden Yellow',
     alcoholContent: 13.5,
@@ -57,68 +54,63 @@ const mockScanResults: Wine[] = [
     foodPairing: ['Roasted Chicken', 'Seafood', 'Creamy Pasta'],
     rating: 4.2,
     reviews: 203,
-    sommelierNotes:
-      'A reliable crowd-pleaser with perfect balance of fruit and oak.',
-    image:
-      'https://images.unsplash.com/photo-1558008258-3256797b43f3?w=300&h=400&fit=crop',
+    sommelierNotes: 'A reliable crowd-pleaser with perfect balance of fruit and oak.',
+    image: 'https://images.unsplash.com/photo-1558008258-3256797b43f3?w=300&h=400&fit=crop',
   },
-]
+];
 
 export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
-  const [isScanning, setIsScanning] = useState(false)
-  const [flashOn, setFlashOn] = useState(false)
-  const [scanningText, setScanningText] = useState(
-    'Point your camera at a wine label or barcode',
-  )
-  const [showResult, setShowResult] = useState(false)
-  const [scanProgress, setScanProgress] = useState(0)
-  const screenSize = useScreenSize()
+  const [isScanning, setIsScanning] = useState(false);
+  const [flashOn, setFlashOn] = useState(false);
+  const [scanningText, setScanningText] = useState('Point your camera at a wine label or barcode');
+  const [showResult, setShowResult] = useState(false);
+  const [scanProgress, setScanProgress] = useState(0);
+  const screenSize = useScreenSize();
 
   const startScan = () => {
-    setIsScanning(true)
-    setScanningText('Scanning...')
-    setScanProgress(0)
+    setIsScanning(true);
+    setScanningText('Scanning...');
+    setScanProgress(0);
 
     // Simulate scanning progress
     const progressInterval = setInterval(() => {
-      setScanProgress((prev) => {
+      setScanProgress(prev => {
         if (prev >= 100) {
-          clearInterval(progressInterval)
-          return 100
+          clearInterval(progressInterval);
+          return 100;
         }
-        return prev + 10
-      })
-    }, 150)
+        return prev + 10;
+      });
+    }, 150);
 
     // Simulate scanning process
     setTimeout(() => {
-      setScanningText('Wine detected! Analyzing...')
-    }, 1500)
+      setScanningText('Wine detected! Analyzing...');
+    }, 1500);
 
     setTimeout(() => {
-      setScanningText('Getting wine details...')
-    }, 3000)
+      setScanningText('Getting wine details...');
+    }, 3000);
 
     setTimeout(() => {
-      setIsScanning(false)
-      setShowResult(true)
-      setScanningText('Wine Found!')
+      setIsScanning(false);
+      setShowResult(true);
+      setScanningText('Wine Found!');
 
       // Show random wine from mock results
-      const randomWine =
-        mockScanResults[Math.floor(Math.random() * mockScanResults.length)]
+      const randomWine = mockScanResults[Math.floor(Math.random() * mockScanResults.length)];
       setTimeout(() => {
-        onWineFound(randomWine)
-      }, 1500)
-    }, 4500)
-  }
+        onWineFound(randomWine);
+      }, 1500);
+    }, 4500);
+  };
 
   const resetScan = () => {
-    setIsScanning(false)
-    setShowResult(false)
-    setScanProgress(0)
-    setScanningText('Point your camera at a wine label or barcode')
-  }
+    setIsScanning(false);
+    setShowResult(false);
+    setScanProgress(0);
+    setScanningText('Point your camera at a wine label or barcode');
+  };
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
@@ -136,43 +128,32 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
               rgba(255,255,255,0.1) 10px,
               rgba(255,255,255,0.1) 20px
             )`,
-            }}
-          ></div>
+            }}></div>
         </div>
 
         {/* Flash effect */}
-        {flashOn && (
-          <div className="absolute inset-0 bg-white opacity-30 animate-pulse"></div>
-        )}
+        {flashOn && <div className="absolute inset-0 bg-white opacity-30 animate-pulse"></div>}
       </div>
 
       {/* Header */}
       <div className="relative z-10 flex items-center justify-between p-4 bg-black bg-opacity-50">
         <button
           onClick={onBack}
-          className="p-3 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors"
-        >
+          className="p-3 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors">
           <X className={screenSize === 'kiosk' ? 'w-7 h-7' : 'w-6 h-6'} />
         </button>
 
-        <h1
-          className={`font-semibold ${screenSize === 'kiosk' ? 'text-xl' : 'text-lg'}`}
-        >
+        <h1 className={`font-semibold ${screenSize === 'kiosk' ? 'text-xl' : 'text-lg'}`}>
           Scan Wine
         </h1>
 
         <button
           onClick={() => setFlashOn(!flashOn)}
-          className="p-3 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors"
-        >
+          className="p-3 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors">
           {flashOn ? (
-            <FlashlightOff
-              className={screenSize === 'kiosk' ? 'w-7 h-7' : 'w-6 h-6'}
-            />
+            <FlashlightOff className={screenSize === 'kiosk' ? 'w-7 h-7' : 'w-6 h-6'} />
           ) : (
-            <Flashlight
-              className={screenSize === 'kiosk' ? 'w-7 h-7' : 'w-6 h-6'}
-            />
+            <Flashlight className={screenSize === 'kiosk' ? 'w-7 h-7' : 'w-6 h-6'} />
           )}
         </button>
       </div>
@@ -186,8 +167,7 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
             style={{
               width: screenSize === 'kiosk' ? '320px' : '256px',
               height: screenSize === 'kiosk' ? '400px' : '320px',
-            }}
-          >
+            }}>
             {/* Corner brackets */}
             <div className="absolute top-2 left-2 w-8 h-8 border-t-4 border-l-4 border-wine-accent rounded-tl-lg"></div>
             <div className="absolute top-2 right-2 w-8 h-8 border-t-4 border-r-4 border-wine-accent rounded-tr-lg"></div>
@@ -199,16 +179,14 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
               <div className="absolute inset-0">
                 <div
                   className="w-full h-1 bg-wine-accent shadow-lg animate-pulse absolute"
-                  style={{ top: `${scanProgress}%` }}
-                ></div>
+                  style={{ top: `${scanProgress}%` }}></div>
                 <div
                   className="w-full h-0.5 absolute"
                   style={{
                     background: `linear-gradient(to right, transparent, rgb(173, 40, 49), transparent)`,
                     top: `${(scanProgress + 10) % 100}%`,
                     animation: 'scan-line 2s linear infinite',
-                  }}
-                ></div>
+                  }}></div>
               </div>
             )}
 
@@ -219,8 +197,7 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
                   <div className="w-full bg-gray-600 rounded-full h-1">
                     <div
                       className="bg-wine-accent h-1 rounded-full transition-all duration-150"
-                      style={{ width: `${scanProgress}%` }}
-                    ></div>
+                      style={{ width: `${scanProgress}%` }}></div>
                   </div>
                 </div>
               </div>
@@ -251,15 +228,11 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
 
       {/* Instructions */}
       <div className="relative z-10 text-center px-8 pb-32">
-        <p className={`mb-6 ${screenSize === 'kiosk' ? 'text-xl' : 'text-lg'}`}>
-          {scanningText}
-        </p>
+        <p className={`mb-6 ${screenSize === 'kiosk' ? 'text-xl' : 'text-lg'}`}>{scanningText}</p>
 
         {isScanning && (
           <div className="mb-4">
-            <div className="text-wine-accent font-semibold">
-              {scanProgress}%
-            </div>
+            <div className="text-wine-accent font-semibold">{scanProgress}%</div>
           </div>
         )}
 
@@ -269,8 +242,7 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
               onClick={startScan}
               className={`bg-wine-accent hover:bg-wine-light text-white font-semibold rounded-full transition-all shadow-lg hover:shadow-xl flex items-center justify-center mx-auto ${
                 screenSize === 'kiosk' ? 'px-8 py-4 text-lg' : 'px-6 py-3'
-              }`}
-            >
+              }`}>
               <Camera className="mr-2 w-5 h-5" />
               Start Scanning
             </button>
@@ -293,8 +265,7 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
         {isScanning && (
           <button
             onClick={resetScan}
-            className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded-lg transition-colors flex items-center justify-center mx-auto"
-          >
+            className="text-white hover:bg-white hover:bg-opacity-20 px-4 py-2 rounded-lg transition-colors flex items-center justify-center mx-auto">
             <RotateCcw className="w-4 h-4 mr-2" />
             Reset
           </button>
@@ -304,9 +275,7 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
           <div className="text-green-400 space-y-2">
             <div className="text-2xl">🍷</div>
             <p className="text-lg font-semibold">Wine Found!</p>
-            <p className="text-sm text-gray-300">
-              Redirecting to wine details...
-            </p>
+            <p className="text-sm text-gray-300">Redirecting to wine details...</p>
           </div>
         )}
       </div>
@@ -315,9 +284,7 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
       {!isScanning && !showResult && (
         <div className="absolute bottom-6 left-6 right-6 z-10">
           <div className="bg-black bg-opacity-70 rounded-2xl p-4 backdrop-blur-sm border border-white border-opacity-20">
-            <p className="text-center text-sm text-gray-300 mb-3">
-              Can't scan? Try these options:
-            </p>
+            <p className="text-center text-sm text-gray-300 mb-3">Can't scan? Try these options:</p>
             <div className="flex space-x-3">
               <button className="flex-1 text-white hover:bg-white hover:bg-opacity-20 px-4 py-3 rounded-lg transition-colors flex items-center justify-center">
                 <ImageIcon className="w-4 h-4 mr-2" />
@@ -339,5 +306,5 @@ export function ScanScreen({ onWineFound, onBack }: ScanScreenProps) {
         }
       `}</style>
     </div>
-  )
+  );
 }

@@ -66,10 +66,9 @@ export const ENVIRONMENT_CONFIG = {
       test: ['error'] as const,
     },
   },
-} as const
+} as const;
 
 // Type exports for better TypeScript support
-export type EnvironmentMode = keyof typeof ENVIRONMENT_CONFIG.features
-export type DeviceType = keyof typeof ENVIRONMENT_CONFIG.devices
-export type LogLevel =
-  (typeof ENVIRONMENT_CONFIG.logging.levels.development)[number]
+export type EnvironmentMode = keyof typeof ENVIRONMENT_CONFIG.features;
+export type DeviceType = keyof typeof ENVIRONMENT_CONFIG.devices;
+export type LogLevel = (typeof ENVIRONMENT_CONFIG.logging.levels.development)[number];

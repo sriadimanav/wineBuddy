@@ -1,21 +1,16 @@
-import type { User } from '@ts/user'
-import { Filter, Search } from 'lucide-react'
-import { useScreenSize } from '../../hooks/useMediaQueries'
+import type { User } from '@ts/user';
+import { Filter, Search } from 'lucide-react';
+import { useScreenSize } from '../../hooks/useMediaQueries';
 
 interface HomeHeaderProps {
-  user: User
-  searchQuery: string
-  onSearchChange: (query: string) => void
-  onProfileClick: () => void
+  user: User;
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
+  onProfileClick: () => void;
 }
 
-export function HomeHeader({
-  user,
-  searchQuery,
-  onSearchChange,
-  onProfileClick,
-}: HomeHeaderProps) {
-  const screenSize = useScreenSize()
+export function HomeHeader({ user, searchQuery, onSearchChange, onProfileClick }: HomeHeaderProps) {
+  const screenSize = useScreenSize();
 
   return (
     <div className="bg-card shadow-sm">
@@ -25,15 +20,13 @@ export function HomeHeader({
             <h1
               className={`font-bold text-foreground mb-1 ${
                 screenSize === 'kiosk' ? 'text-3xl' : 'text-2xl'
-              }`}
-            >
+              }`}>
               Welcome, {user.name}
             </h1>
             <p
               className={`text-muted-foreground ${
                 screenSize === 'kiosk' ? 'text-lg' : 'text-base'
-              }`}
-            >
+              }`}>
               Discover your next favorite wine
             </p>
           </div>
@@ -41,8 +34,7 @@ export function HomeHeader({
             onClick={onProfileClick}
             className={`rounded-full bg-wine-accent flex items-center justify-center text-white font-semibold cursor-pointer hover:bg-wine-light transition-colors ${
               screenSize === 'kiosk' ? 'w-16 h-16 text-xl' : 'w-12 h-12'
-            }`}
-          >
+            }`}>
             {user.name.charAt(0).toUpperCase()}
           </div>
         </div>
@@ -54,7 +46,7 @@ export function HomeHeader({
             type="text"
             placeholder="Search wines, wineries, regions..."
             value={searchQuery}
-            onChange={(e) => onSearchChange(e.target.value)}
+            onChange={e => onSearchChange(e.target.value)}
             className="w-full pl-12 pr-12 py-3 border border-border rounded-xl bg-background text-foreground focus:ring-2 focus:ring-wine-accent focus:border-transparent"
           />
           <button className="absolute right-3 top-1/2 transform -translate-y-1/2 p-2 hover:bg-secondary rounded-lg transition-colors">
@@ -63,5 +55,5 @@ export function HomeHeader({
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,22 +1,22 @@
-import { Award, Clock, Map, Star, Trophy, Users } from 'lucide-react'
+import { Award, Clock, Map, Star, Trophy, Users } from 'lucide-react';
 
 export interface Badge {
-  id: string
-  name: string
-  description: string
-  icon: 'award' | 'trophy' | 'star' | 'map' | 'clock' | 'users'
-  rarity: 'common' | 'rare' | 'epic' | 'legendary'
-  unlockedAt?: Date
+  id: string;
+  name: string;
+  description: string;
+  icon: 'award' | 'trophy' | 'star' | 'map' | 'clock' | 'users';
+  rarity: 'common' | 'rare' | 'epic' | 'legendary';
+  unlockedAt?: Date;
   progress?: {
-    current: number
-    target: number
-  }
+    current: number;
+    target: number;
+  };
 }
 
 interface BadgeComponentProps {
-  badge: Badge
-  size?: 'sm' | 'md' | 'lg'
-  showProgress?: boolean
+  badge: Badge;
+  size?: 'sm' | 'md' | 'lg';
+  showProgress?: boolean;
 }
 
 const iconMap = {
@@ -26,7 +26,7 @@ const iconMap = {
   map: Map,
   clock: Clock,
   users: Users,
-}
+};
 
 const rarityStyles = {
   common: {
@@ -45,7 +45,7 @@ const rarityStyles = {
     background: 'linear-gradient(135deg, #ad2831, #d4a574)',
     color: 'white',
   },
-}
+};
 
 const sizeStyles = {
   sm: {
@@ -63,17 +63,13 @@ const sizeStyles = {
     height: '80px',
     iconSize: 32,
   },
-}
+};
 
-export function BadgeComponent({
-  badge,
-  size = 'md',
-  showProgress = false,
-}: BadgeComponentProps) {
-  const Icon = iconMap[badge.icon]
-  const isUnlocked = !!badge.unlockedAt
-  const sizeStyle = sizeStyles[size]
-  const rarityStyle = rarityStyles[badge.rarity]
+export function BadgeComponent({ badge, size = 'md', showProgress = false }: BadgeComponentProps) {
+  const Icon = iconMap[badge.icon];
+  const isUnlocked = !!badge.unlockedAt;
+  const sizeStyle = sizeStyles[size];
+  const rarityStyle = rarityStyles[badge.rarity];
 
   const badgeStyle: React.CSSProperties = {
     width: sizeStyle.width,
@@ -97,11 +93,11 @@ export function BadgeComponent({
           animation: 'pulse 2s infinite',
         }
       : {}),
-  }
+  };
 
   const progressPercentage = badge.progress
     ? (badge.progress.current / badge.progress.target) * 100
-    : 0
+    : 0;
 
   return (
     <div
@@ -110,19 +106,17 @@ export function BadgeComponent({
         flexDirection: 'column',
         alignItems: 'center',
         gap: '0.5rem',
-      }}
-    >
+      }}>
       <div
         style={badgeStyle}
-        onMouseEnter={(e) => {
+        onMouseEnter={e => {
           if (isUnlocked) {
-            e.currentTarget.style.transform = 'scale(1.05)'
+            e.currentTarget.style.transform = 'scale(1.05)';
           }
         }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'scale(1)'
-        }}
-      >
+        onMouseLeave={e => {
+          e.currentTarget.style.transform = 'scale(1)';
+        }}>
         <Icon size={sizeStyle.iconSize} />
         {!isUnlocked && badge.progress && (
           <div
@@ -136,8 +130,7 @@ export function BadgeComponent({
               background: '#f5eeef',
               borderRadius: '2px',
               overflow: 'hidden',
-            }}
-          >
+            }}>
             <div
               style={{
                 width: `${progressPercentage}%`,
@@ -155,18 +148,17 @@ export function BadgeComponent({
             fontSize: '0.75rem',
             color: '#6b4a4f',
             textAlign: 'center',
-          }}
-        >
+          }}>
           {badge.progress.current}/{badge.progress.target}
         </span>
       )}
     </div>
-  )
+  );
 }
 
 interface BadgeGridProps {
-  badges: Badge[]
-  columns?: number
+  badges: Badge[];
+  columns?: number;
 }
 
 export function BadgeGrid({ badges, columns = 4 }: BadgeGridProps) {
@@ -175,11 +167,11 @@ export function BadgeGrid({ badges, columns = 4 }: BadgeGridProps) {
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
     gap: '1rem',
     padding: '1rem',
-  }
+  };
 
   return (
     <div style={gridStyle}>
-      {badges.map((badge) => (
+      {badges.map(badge => (
         <div
           key={badge.id}
           style={{
@@ -187,8 +179,7 @@ export function BadgeGrid({ badges, columns = 4 }: BadgeGridProps) {
             flexDirection: 'column',
             alignItems: 'center',
             gap: '0.5rem',
-          }}
-        >
+          }}>
           <BadgeComponent badge={badge} showProgress />
           <div style={{ textAlign: 'center' }}>
             <h4
@@ -197,8 +188,7 @@ export function BadgeGrid({ badges, columns = 4 }: BadgeGridProps) {
                 fontWeight: '500',
                 color: '#2a1214',
                 marginBottom: '0.25rem',
-              }}
-            >
+              }}>
               {badge.name}
             </h4>
             <p
@@ -206,15 +196,14 @@ export function BadgeGrid({ badges, columns = 4 }: BadgeGridProps) {
                 fontSize: '0.75rem',
                 color: '#6b4a4f',
                 lineHeight: '1.2',
-              }}
-            >
+              }}>
               {badge.description}
             </p>
           </div>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
 // Sample badges data with proper unlocked states to show wine colors
@@ -251,4 +240,4 @@ export const sampleBadges: Badge[] = [
     rarity: 'legendary',
     progress: { current: 47, target: 100 },
   },
-]
+];
