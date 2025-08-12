@@ -1,7 +1,3 @@
-import type { User, Wine } from '@routes/__root';
-import { Badge } from '@ui/Badge';
-import { Button } from '@ui/Button';
-import { SeparatorComp as Separator } from '@ui/Separator';
 import {
   Calendar,
   Droplets,
@@ -14,6 +10,13 @@ import {
   Thermometer,
 } from 'lucide-react';
 import { useState } from 'react';
+
+import { Badge } from '@ui/Badge';
+import { Button } from '@ui/Button';
+import { SeparatorComp as Separator } from '@ui/Separator';
+
+import type { User, Wine } from '@routes/__root';
+
 import { ImageWithFallback } from './ui/ImageWithFallback';
 
 interface WineDetailScreenProps {

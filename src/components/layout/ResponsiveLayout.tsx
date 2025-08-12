@@ -1,5 +1,6 @@
-import { useMediaQuery } from '@hooks/useMediaQueries';
 import type { CSSProperties, ReactNode } from 'react';
+
+import { useMediaQuery } from '@hooks/useMediaQueries';
 
 type ScreenSize = 'mobile' | 'tablet' | 'desktop' | 'kiosk';
 

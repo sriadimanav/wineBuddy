@@ -9,7 +9,9 @@ import {
   Shield,
   Star,
 } from 'lucide-react';
+
 import type { User } from '../routes/__root';
+
 //import { useScreenSize } from './hooks/useMediaQueries'
 
 interface ProfileScreenProps {

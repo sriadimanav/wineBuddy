@@ -1,5 +1,6 @@
 // components/pwa/PWAStatus.tsx
 import { useEffect, useState } from 'react';
+
 import { isDevelopment, isOnline, isPWAInstalled } from './pwa';
 
 export function PWAStatus() {

@@ -1,6 +1,8 @@
+import { Camera, Trophy, Zap } from 'lucide-react';
+
 import type { Badge } from '@ts/badge';
 import type { User } from '@ts/user';
-import { Camera, Trophy, Zap } from 'lucide-react';
+
 import { AdaptiveGrid } from '../../layout/ResponsiveLayout';
 
 interface GamificationSectionProps {

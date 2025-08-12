@@ -1,6 +1,8 @@
+import { useCallback, useEffect, useState } from 'react';
+
 import type { Badge } from '@ts/badge';
 import type { FeaturedWine, TrendingWine } from '@ts/wine';
-import { useCallback, useEffect, useState } from 'react';
+
 import { wineDataService } from './wineDataService';
 
 interface WineDataState {

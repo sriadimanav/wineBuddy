@@ -1,4 +1,5 @@
 import { Camera } from 'lucide-react';
+
 import { useScreenSize } from '../../hooks/useMediaQueries';
 
 interface QuickScanCTAProps {

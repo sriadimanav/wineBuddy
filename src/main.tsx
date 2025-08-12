@@ -1,17 +1,16 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { RouterProvider, createRouter } from '@tanstack/react-router';
+// PWA Components
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { ErrorBoundary } from 'react-error-boundary';
 
-// Import the generated route tree
-import { routeTree } from './routeTree.gen.ts';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { RouterProvider, createRouter } from '@tanstack/react-router';
 
-// PWA Components
 import { PWAProvider } from './components/pwa/PWAProvider';
-
 // Utilities and styles
 import reportWebVitals from './reportWebVitals.ts';
+// Import the generated route tree
+import { routeTree } from './routeTree.gen.ts';
 import './styles/globals.css';
 
 const queryClient = new QueryClient();

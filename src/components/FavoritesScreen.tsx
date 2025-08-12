@@ -1,5 +1,3 @@
-import type { User, Wine } from '@routes/__root';
-import { useNavigate } from '@tanstack/react-router';
 import {
   Check,
   Edit3,
@@ -14,6 +12,10 @@ import {
   X,
 } from 'lucide-react';
 import { useState } from 'react';
+
+import type { User, Wine } from '@routes/__root';
+import { useNavigate } from '@tanstack/react-router';
+
 import { useScreenSize } from './hooks/useMediaQueries.ts';
 import { ImageWithFallback } from './ui/ImageWithFallback.tsx';
 

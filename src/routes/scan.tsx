@@ -1,4 +1,5 @@
 import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
+
 import { ScanScreen } from '../components/ScanScreen';
 import type { Wine } from './__root';
 

@@ -1,5 +1,7 @@
-import type { FeaturedWine } from '@ts/wine';
 import { MapPin, Star } from 'lucide-react';
+
+import type { FeaturedWine } from '@ts/wine';
+
 import { useScreenSize } from '../../hooks/useMediaQueries';
 import { ImageWithFallback } from '../../ui/ImageWithFallback';
 

@@ -1,5 +1,6 @@
 // components/pwa/PWAProvider.tsx
 import { useEffect } from 'react';
+
 import { PWAInstallBanner } from './PWAInstallBanner';
 import { PWAStatus } from './PWAStatus';
 import { PWAService } from './pwaService';

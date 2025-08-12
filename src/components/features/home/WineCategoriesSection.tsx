@@ -1,4 +1,5 @@
 import { Award } from 'lucide-react';
+
 import { useScreenSize } from '../../hooks/useMediaQueries';
 import { AdaptiveGrid } from '../../layout/ResponsiveLayout';
 

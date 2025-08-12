@@ -1,6 +1,6 @@
+import { AuthScreen } from '@components/AuthScreen';
 import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
 
-import { AuthScreen } from '@components/AuthScreen';
 import type { User } from './__root';
 
 function AuthComponent() {

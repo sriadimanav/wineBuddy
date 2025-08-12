@@ -1,5 +1,7 @@
 import { createFileRoute, redirect } from '@tanstack/react-router';
+
 import { HomeScreen } from '../components/features/home/HomeScreen';
+
 //import type { User } from './__root'
 
 function HomeComponent() {

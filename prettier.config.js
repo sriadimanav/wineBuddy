@@ -5,11 +5,19 @@ const config = {
   arrowParens: 'avoid',
   bracketSameLine: true,
   printWidth: 100,
-  //semi: false,
+  semi: true,
   singleQuote: true,
   tabWidth: 2,
   //trailingComma: 'all',
-  plugins: ['prettier-plugin-organize-imports'],
-};
+  importOrder: [
+    '<THIRD_PARTY_MODULES>',
+    '^@ui/(.*)$',
+    '^@(?!types)(.*)$', // all @ imports except @types
+    '^[./]',
+  ],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  plugins: ['@trivago/prettier-plugin-sort-imports'],
+}
 
-export default config;
+export default config

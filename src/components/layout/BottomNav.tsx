@@ -1,6 +1,7 @@
+import { Heart, Home, type LucideIcon, ScanLine, User } from 'lucide-react';
+
 import { useScreenSize } from '@hooks/useMediaQueries';
 import { Link, useLocation } from '@tanstack/react-router';
-import { Heart, Home, ScanLine, User, type LucideIcon } from 'lucide-react';
 
 type ScreenSize = 'mobile' | 'tablet' | 'desktop' | 'kiosk';
 

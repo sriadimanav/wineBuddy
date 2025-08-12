@@ -1,4 +1,3 @@
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
 import {
   Award,
   Calendar,
@@ -12,6 +11,9 @@ import {
   Wine,
 } from 'lucide-react';
 import { useState } from 'react';
+
+import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
+
 import { useScreenSize } from '../../components/hooks/useMediaQueries.ts';
 import { ImageWithFallback } from '../../components/ui/ImageWithFallback.tsx';
 import type { User, Wine as WineType } from '../__root.tsx';

@@ -1,7 +1,9 @@
-import { createRootRoute, Link, Outlet, useLocation, useNavigate } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 import { ArrowLeft, Wine } from 'lucide-react';
 import * as React from 'react';
+
+import { Link, Outlet, createRootRoute, useLocation, useNavigate } from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+
 import { useScreenSize } from '../components/hooks/useMediaQueries';
 import { BottomNav } from '../components/layout/BottomNav';
 import { ResponsiveLayout } from '../components/layout/ResponsiveLayout';

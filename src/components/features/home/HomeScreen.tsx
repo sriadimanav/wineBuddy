@@ -1,7 +1,6 @@
-import type { User } from '@ts/user.ts';
 import { useState } from 'react';
-import { useUserActions } from './useUserActions';
-import { useWineData } from './useWineData';
+
+import type { User } from '@ts/user.ts';
 
 import { FeaturedWinesSection } from './FeaturedWinesSection';
 import { GamificationSection } from './GamificationSection.tsx';
@@ -10,6 +9,8 @@ import { HomeHeader } from './HomeHeader.tsx';
 import { QuickScanCTA } from './QuickScanCTA.tsx';
 import { TrendingWinesSection } from './TrendingWinesSection';
 import { WineCategoriesSection } from './WineCategoriesSection';
+import { useUserActions } from './useUserActions';
+import { useWineData } from './useWineData';
 
 interface HomeScreenProps {
   user: User;

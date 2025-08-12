@@ -1,6 +1,5 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
-
 import { OnboardingScreen } from '@components/OnboardingScreen';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 
 function OnboardingComponent() {
   const navigate = useNavigate();
