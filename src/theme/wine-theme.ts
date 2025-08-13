@@ -45,7 +45,7 @@ export const wineColors = {
       to: '#6b8e7f',
     },
   },
-} as const
+} as const;
 
 // Typography scale
 export const typography = {
@@ -70,7 +70,7 @@ export const typography = {
     normal: 1.5,
     relaxed: 1.625,
   },
-} as const
+} as const;
 
 // Spacing system
 export const spacing = {
@@ -85,7 +85,7 @@ export const spacing = {
   12: '3rem',
   16: '4rem',
   20: '5rem',
-} as const
+} as const;
 
 // Border radius system
 export const borderRadius = {
@@ -97,7 +97,7 @@ export const borderRadius = {
   '2xl': '1.5rem',
   '3xl': '2rem',
   full: '9999px',
-} as const
+} as const;
 
 // Shadows with wine tinting
 export const shadows = {
@@ -112,7 +112,7 @@ export const shadows = {
     hover: '0 12px 24px -4px rgba(42, 18, 20, 0.12), 0 4px 8px -2px rgba(173, 40, 49, 0.08)',
     glass: '0 8px 32px rgba(42, 18, 20, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
   },
-} as const
+} as const;
 
 // Breakpoints for responsive design
 export const breakpoints = {
@@ -120,7 +120,7 @@ export const breakpoints = {
   tablet: { min: 768, max: 1024 },
   desktop: { min: 1024, max: 1440 },
   kiosk: { min: 1440 },
-} as const
+} as const;
 
 // Animation definitions
 export const animations = {
@@ -135,7 +135,7 @@ export const animations = {
     easeOut: 'cubic-bezier(0, 0, 0.2, 1)',
     easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
   },
-} as const
+} as const;
 
 // Complete theme object
 export const wineTheme = {
@@ -146,63 +146,63 @@ export const wineTheme = {
   shadows,
   breakpoints,
   animations,
-} as const
+} as const;
 
 // Theme helper functions
-export const createWineGradient = (from: string, to: string, direction = 'to right') => 
-  `linear-gradient(${direction}, ${from}, ${to})`
+export const createWineGradient = (from: string, to: string, direction = 'to right') =>
+  `linear-gradient(${direction}, ${from}, ${to})`;
 
 export const createWineShadow = (color: string, opacity = 0.1) =>
-  `0 4px 6px -1px rgba(${color}, ${opacity}), 0 2px 4px -2px rgba(${color}, ${opacity * 0.5})`
+  `0 4px 6px -1px rgba(${color}, ${opacity}), 0 2px 4px -2px rgba(${color}, ${opacity * 0.5})`;
 
 // CSS custom properties generator
 export const generateCSSVariables = (theme = wineTheme) => {
-  const cssVars: Record<string, string> = {}
-  
+  const cssVars: Record<string, string> = {};
+
   // Colors
   Object.entries(theme.colors.wine).forEach(([key, value]) => {
-    cssVars[`--color-wine-${key}`] = value
-  })
-  
+    cssVars[`--color-wine-${key}`] = value;
+  });
+
   Object.entries(theme.colors.rosé).forEach(([key, value]) => {
-    cssVars[`--color-rosé-${key}`] = value
-  })
-  
+    cssVars[`--color-rosé-${key}`] = value;
+  });
+
   Object.entries(theme.colors.semantic).forEach(([key, value]) => {
-    cssVars[`--color-${key}`] = value
-  })
-  
+    cssVars[`--color-${key}`] = value;
+  });
+
   // Typography
   Object.entries(theme.typography.fontSize).forEach(([key, value]) => {
-    cssVars[`--font-size-${key}`] = value
-  })
-  
+    cssVars[`--font-size-${key}`] = value;
+  });
+
   Object.entries(theme.typography.fontWeight).forEach(([key, value]) => {
-    cssVars[`--font-weight-${key}`] = value.toString()
-  })
-  
+    cssVars[`--font-weight-${key}`] = value.toString();
+  });
+
   // Spacing
   Object.entries(theme.spacing).forEach(([key, value]) => {
-    cssVars[`--spacing-${key}`] = value
-  })
-  
+    cssVars[`--spacing-${key}`] = value;
+  });
+
   // Border radius
   Object.entries(theme.borderRadius).forEach(([key, value]) => {
-    cssVars[`--radius-${key}`] = value
-  })
-  
-  return cssVars
-}
+    cssVars[`--radius-${key}`] = value;
+  });
+
+  return cssVars;
+};
 
 // Type exports for TypeScript support
-export type WineTheme = typeof wineTheme
-export type WineColors = typeof wineColors
-export type Typography = typeof typography
-export type Spacing = typeof spacing
-export type BorderRadius = typeof borderRadius
-export type Shadows = typeof shadows
-export type Breakpoints = typeof breakpoints
-export type Animations = typeof animations
+export type WineTheme = typeof wineTheme;
+export type WineColors = typeof wineColors;
+export type Typography = typeof typography;
+export type Spacing = typeof spacing;
+export type BorderRadius = typeof borderRadius;
+export type Shadows = typeof shadows;
+export type Breakpoints = typeof breakpoints;
+export type Animations = typeof animations;
 
 // Default export
-export default wineTheme
+export default wineTheme;

@@ -7,20 +7,18 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 
 import { PWAProvider } from './components/pwa/PWAProvider';
-
-// Import the generated route tree
-import { routeTree } from './routeTree.gen.ts';
-
 // Utilities and styles
 import reportWebVitals from './reportWebVitals.ts';
+// Import the generated route tree
+import { routeTree } from './routeTree.gen.ts';
 import './styles/main.css';
-import { applyThemeVariables, devUtils } from './utils/theme-utils'
+import { applyThemeVariables, devUtils } from './utils/theme-utils';
 
 // Apply theme on app initialization
-applyThemeVariables()
+applyThemeVariables();
 
 // Development logging (optional)
-devUtils.logTheme()
+devUtils.logTheme();
 
 const queryClient = new QueryClient();
 

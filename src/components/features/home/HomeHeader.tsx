@@ -1,6 +1,6 @@
 import { Filter, Search } from 'lucide-react';
 
-import type { User } from '@ts/user';
+import type { User } from '@ts/index';
 
 import { useScreenSize } from '../../hooks/useMediaQueries';
 

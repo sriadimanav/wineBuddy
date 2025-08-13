@@ -1,15 +1,17 @@
-import { ProfileScreen } from '@components/ProfileScreen';
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
+// routes/profile.tsx
+import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
+import { authService } from '@components/features/auth/authService';
+import { ProfileScreen } from '@components/features/profile/ProfileScreen';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 
 function ProfileComponent() {
   const navigate = useNavigate();
 
-  // Get user from localStorage (guaranteed to exist due to beforeLoad)
-  const savedUser = localStorage.getItem('wine-buddy-user');
-  const user = savedUser ? JSON.parse(savedUser) : null;
+  // Get user from auth service
+  const user = authService.getUser();
 
   const handleLogout = () => {
-    localStorage.removeItem('wine-buddy-user');
+    authService.clearUser();
     navigate({ to: '/auth' });
   };
 
@@ -22,20 +24,8 @@ function ProfileComponent() {
 
 export const Route = createFileRoute('/profile')({
   beforeLoad: () => {
-    const hasSeenOnboarding = localStorage.getItem('wine-buddy-onboarding-complete');
-    const savedUser = localStorage.getItem('wine-buddy-user');
-
-    if (!hasSeenOnboarding) {
-      throw redirect({
-        to: '/onboarding',
-      });
-    }
-
-    if (!savedUser) {
-      throw redirect({
-        to: '/auth',
-      });
-    }
+    requireOnboarding();
+    requireAuth();
   },
   component: ProfileComponent,
 });

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { User } from '@ts/user.ts';
+import type { User } from '@ts/index';
 
 import { FeaturedWinesSection } from './FeaturedWinesSection';
 import { GamificationSection } from './GamificationSection.tsx';

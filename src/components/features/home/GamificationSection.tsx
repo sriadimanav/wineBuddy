@@ -1,7 +1,6 @@
 import { Camera, Trophy, Zap } from 'lucide-react';
 
-import type { Badge } from '@ts/badge';
-import type { User } from '@ts/user';
+import type { Badge, User } from '@ts/index';
 
 import { AdaptiveGrid } from '../../layout/ResponsiveLayout';
 

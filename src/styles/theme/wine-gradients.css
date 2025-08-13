@@ -1,38 +1,128 @@
 /* styles/theme/wine-gradients.css */
 /* Gradient utilities */
-.bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
-.bg-gradient-to-l { background-image: linear-gradient(to left, var(--tw-gradient-stops)); }
-.bg-gradient-to-t { background-image: linear-gradient(to top, var(--tw-gradient-stops)); }
-.bg-gradient-to-b { background-image: linear-gradient(to bottom, var(--tw-gradient-stops)); }
-.bg-gradient-to-tr { background-image: linear-gradient(to top right, var(--tw-gradient-stops)); }
-.bg-gradient-to-tl { background-image: linear-gradient(to top left, var(--tw-gradient-stops)); }
-.bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
-.bg-gradient-to-bl { background-image: linear-gradient(to bottom left, var(--tw-gradient-stops)); }
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+.bg-gradient-to-l {
+  background-image: linear-gradient(to left, var(--tw-gradient-stops));
+}
+.bg-gradient-to-t {
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+.bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+.bg-gradient-to-tr {
+  background-image: linear-gradient(to top right, var(--tw-gradient-stops));
+}
+.bg-gradient-to-tl {
+  background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+}
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+.bg-gradient-to-bl {
+  background-image: linear-gradient(to bottom left, var(--tw-gradient-stops));
+}
 
 /* Wine gradient from utilities */
-.from-wine-darkest { --tw-gradient-from: var(--color-wine-darkest); --tw-gradient-to: rgba(37, 9, 2, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.from-wine-dark { --tw-gradient-from: var(--color-wine-dark); --tw-gradient-to: rgba(56, 4, 14, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.from-wine-medium { --tw-gradient-from: var(--color-wine-medium); --tw-gradient-to: rgba(100, 13, 20, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.from-wine-light { --tw-gradient-from: var(--color-wine-light); --tw-gradient-to: rgba(128, 14, 19, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.from-wine-accent { --tw-gradient-from: var(--color-wine-accent); --tw-gradient-to: rgba(173, 40, 49, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.from-wine-darkest {
+  --tw-gradient-from: var(--color-wine-darkest);
+  --tw-gradient-to: rgba(37, 9, 2, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-wine-dark {
+  --tw-gradient-from: var(--color-wine-dark);
+  --tw-gradient-to: rgba(56, 4, 14, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-wine-medium {
+  --tw-gradient-from: var(--color-wine-medium);
+  --tw-gradient-to: rgba(100, 13, 20, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-wine-light {
+  --tw-gradient-from: var(--color-wine-light);
+  --tw-gradient-to: rgba(128, 14, 19, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-wine-accent {
+  --tw-gradient-from: var(--color-wine-accent);
+  --tw-gradient-to: rgba(173, 40, 49, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 
 /* Wine gradient to utilities */
-.to-wine-darkest { --tw-gradient-to: var(--color-wine-darkest); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.to-wine-dark { --tw-gradient-to: var(--color-wine-dark); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.to-wine-medium { --tw-gradient-to: var(--color-wine-medium); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.to-wine-light { --tw-gradient-to: var(--color-wine-light); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.to-wine-accent { --tw-gradient-to: var(--color-wine-accent); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.to-wine-darkest {
+  --tw-gradient-to: var(--color-wine-darkest);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-wine-dark {
+  --tw-gradient-to: var(--color-wine-dark);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-wine-medium {
+  --tw-gradient-to: var(--color-wine-medium);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-wine-light {
+  --tw-gradient-to: var(--color-wine-light);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-wine-accent {
+  --tw-gradient-to: var(--color-wine-accent);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 
 /* Pre-built wine gradients */
-.wine-gradient { background: linear-gradient(135deg, var(--color-wine-darkest), var(--color-wine-dark), var(--color-wine-medium)) !important; }
-.wine-gradient-primary { background: linear-gradient(to right, var(--color-wine-accent), var(--color-wine-light)) !important; }
-.wine-gradient-dark { background: linear-gradient(to right, var(--color-wine-darkest), var(--color-wine-dark)) !important; }
-.wine-gradient-medium { background: linear-gradient(to right, var(--color-wine-medium), var(--color-wine-light)) !important; }
-.wine-gradient-light { background: linear-gradient(to right, var(--color-wine-light), var(--color-wine-accent)) !important; }
-.wine-gradient-vertical { background: linear-gradient(to bottom, var(--color-wine-accent), var(--color-wine-light)) !important; }
+.wine-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-wine-darkest),
+    var(--color-wine-dark),
+    var(--color-wine-medium)
+  ) !important;
+}
+.wine-gradient-primary {
+  background: linear-gradient(
+    to right,
+    var(--color-wine-accent),
+    var(--color-wine-light)
+  ) !important;
+}
+.wine-gradient-dark {
+  background: linear-gradient(
+    to right,
+    var(--color-wine-darkest),
+    var(--color-wine-dark)
+  ) !important;
+}
+.wine-gradient-medium {
+  background: linear-gradient(
+    to right,
+    var(--color-wine-medium),
+    var(--color-wine-light)
+  ) !important;
+}
+.wine-gradient-light {
+  background: linear-gradient(
+    to right,
+    var(--color-wine-light),
+    var(--color-wine-accent)
+  ) !important;
+}
+.wine-gradient-vertical {
+  background: linear-gradient(
+    to bottom,
+    var(--color-wine-accent),
+    var(--color-wine-light)
+  ) !important;
+}
 
 /* Rosé gradients */
-.wine-rosé-gradient { background: linear-gradient(135deg, #fdf8f8, #faf2f3, #f5eeef) !important; }
+.wine-rosé-gradient {
+  background: linear-gradient(135deg, #fdf8f8, #faf2f3, #f5eeef) !important;
+}
 
 /* Text gradient utility */
 .wine-text-gradient {

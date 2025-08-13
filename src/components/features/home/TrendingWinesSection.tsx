@@ -1,6 +1,6 @@
 import { Star, TrendingUp } from 'lucide-react';
 
-import type { TrendingWine } from '@ts/wine';
+import type { TrendingWine } from '@ts/index';
 
 import { useScreenSize } from '../../hooks/useMediaQueries';
 import { ImageWithFallback } from '../../ui/ImageWithFallback';

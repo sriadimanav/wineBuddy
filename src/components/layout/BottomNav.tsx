@@ -1,9 +1,9 @@
+// components/layout/BottomNav.tsx
 import { Heart, Home, type LucideIcon, ScanLine, User } from 'lucide-react';
 
-import { useScreenSize } from '@hooks/useMediaQueries';
 import { Link, useLocation } from '@tanstack/react-router';
 
-type ScreenSize = 'mobile' | 'tablet' | 'desktop' | 'kiosk';
+import { type ScreenSize, useScreenSize } from '../hooks/useMediaQueries';
 
 type NavPath = '/' | '/scan' | '/favorites' | '/profile';
 
@@ -20,19 +20,34 @@ const navItems: readonly NavItem[] = [
   { path: '/profile', icon: User, label: 'Profile' },
 ] as const;
 
+const getIconSize = (screenSize: ScreenSize): number => {
+  switch (screenSize) {
+    case 'kiosk':
+      return 28;
+    case 'desktop':
+      return 24;
+    case 'tablet':
+      return 22;
+    case 'mobile':
+      return 20;
+    default:
+      return 20;
+  }
+};
+
+const isActive = (currentPath: string, navPath: NavPath): boolean => {
+  return currentPath === navPath || (navPath !== '/' && currentPath.startsWith(navPath));
+};
+
 export function BottomNav() {
   const location = useLocation();
-  const screenSize = useScreenSize() as ScreenSize;
+  const screenSize = useScreenSize();
 
   if (location.pathname === '/auth' || location.pathname === '/onboarding') {
     return null;
   }
 
-  const iconSize =
-    screenSize === 'kiosk' ? 28 : screenSize === 'desktop' ? 24 : screenSize === 'tablet' ? 22 : 20;
-
-  const isActive = (path: NavPath) =>
-    location.pathname === path || (path !== '/' && location.pathname.startsWith(path));
+  const iconSize = getIconSize(screenSize);
 
   return (
     <nav
@@ -54,12 +69,14 @@ export function BottomNav() {
               <Icon
                 size={iconSize}
                 className={`transition-colors duration-200 ${
-                  isActive(path) ? 'text-wine-accent' : 'text-muted-foreground'
+                  isActive(location.pathname, path) ? 'text-wine-accent' : 'text-muted-foreground'
                 }`}
               />
               <span
                 className={`text-xs transition-colors duration-200 ${
-                  isActive(path) ? 'text-wine-accent font-medium' : 'text-muted-foreground'
+                  isActive(location.pathname, path)
+                    ? 'text-wine-accent font-medium'
+                    : 'text-muted-foreground'
                 } ${screenSize === 'kiosk' ? 'text-sm' : 'text-xs'}`}>
                 {label}
               </span>

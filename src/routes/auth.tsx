@@ -1,26 +1,28 @@
-import { AuthScreen } from '@components/AuthScreen';
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
-
-import type { User } from './__root';
+// routes/auth.tsx
+import { AuthScreen } from '@components/features/auth/AuthScreen';
+import { createAuthGuard } from '@components/features/auth/authGuards';
+import { authService } from '@components/features/auth/authService';
+import { createUserWithSamples } from '@components/utils/userUtils';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import type { User } from '@ts/index';
 
 function AuthComponent() {
   const navigate = useNavigate();
 
   const handleLogin = async (user: User) => {
-    // Add sample data for new users
-    const userWithSamples: User = {
-      ...user,
-      favorites: user.favorites.length > 0 ? user.favorites : ['1', '3', '4', 'scan-1'], // Sample favorites
-      streakCount: user.streakCount > 0 ? user.streakCount : 2,
-      totalScans: user.totalScans > 0 ? user.totalScans : 8,
-      badges: user.badges.length > 0 ? user.badges : ['first-scan', 'wine-explorer'],
-    };
+    try {
+      // Ensure user has sample data if needed
+      const userWithSamples = createUserWithSamples(user);
 
-    // Save to localStorage
-    localStorage.setItem('wine-buddy-user', JSON.stringify(userWithSamples));
+      // Save to localStorage
+      authService.saveUser(userWithSamples);
 
-    // Navigate to home
-    navigate({ to: '/' });
+      // Navigate to home
+      navigate({ to: '/' });
+    } catch (error) {
+      console.error('Failed to complete login process:', error);
+      // You might want to show an error message to the user here
+    }
   };
 
   return <AuthScreen onLogin={handleLogin} />;
@@ -28,22 +30,7 @@ function AuthComponent() {
 
 export const Route = createFileRoute('/auth')({
   beforeLoad: () => {
-    const hasSeenOnboarding = localStorage.getItem('wine-buddy-onboarding-complete');
-    const savedUser = localStorage.getItem('wine-buddy-user');
-
-    // If user hasn't seen onboarding, redirect there first
-    if (!hasSeenOnboarding) {
-      throw redirect({
-        to: '/onboarding',
-      });
-    }
-
-    // If already authenticated, redirect to home
-    if (savedUser) {
-      throw redirect({
-        to: '/',
-      });
-    }
+    createAuthGuard();
   },
   component: AuthComponent,
 });

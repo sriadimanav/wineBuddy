@@ -43,7 +43,12 @@
 }
 
 .badge-shimmer {
-  background: linear-gradient(45deg, var(--color-accent), var(--color-wine-light), var(--color-accent));
+  background: linear-gradient(
+    45deg,
+    var(--color-accent),
+    var(--color-wine-light),
+    var(--color-accent)
+  );
   background-size: 200% 200%;
   animation: shimmer 2s infinite;
 }

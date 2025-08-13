@@ -1,14 +1,21 @@
-
 /* styles/layout/grid.css */
 .wine-grid {
   display: grid;
   gap: var(--spacing-4);
 }
 
-.wine-grid--1 { grid-template-columns: 1fr; }
-.wine-grid--2 { grid-template-columns: repeat(2, 1fr); }
-.wine-grid--3 { grid-template-columns: repeat(3, 1fr); }
-.wine-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.wine-grid--1 {
+  grid-template-columns: 1fr;
+}
+.wine-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.wine-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.wine-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
 
 /* Responsive grid utilities */
 @media (max-width: 767px) {

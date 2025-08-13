@@ -1,21 +1,25 @@
 /* styles/utils/responsive.css */
 /* Responsive font sizes */
 @media (max-width: 768px) {
-  html { font-size: 14px; }
-  
-  .wine-button { 
+  html {
+    font-size: 14px;
+  }
+
+  .wine-button {
     padding: 0.625rem 1.25rem;
     font-size: var(--font-size-xs);
   }
-  
+
   .mobile-space-y-4 > * + * {
     margin-top: var(--spacing-4);
   }
 }
 
 @media (min-width: 1440px) {
-  html { font-size: 18px; }
-  
+  html {
+    font-size: 18px;
+  }
+
   .wine-button {
     padding: 1rem 2rem;
     font-size: var(--font-size-lg);
@@ -23,16 +27,30 @@
 }
 
 /* Responsive visibility */
-.mobile-only { display: block; }
-.tablet-only { display: none; }
-.desktop-only { display: none; }
+.mobile-only {
+  display: block;
+}
+.tablet-only {
+  display: none;
+}
+.desktop-only {
+  display: none;
+}
 
 @media (min-width: 768px) {
-  .mobile-only { display: none; }
-  .tablet-only { display: block; }
+  .mobile-only {
+    display: none;
+  }
+  .tablet-only {
+    display: block;
+  }
 }
 
 @media (min-width: 1024px) {
-  .tablet-only { display: none; }
-  .desktop-only { display: block; }
+  .tablet-only {
+    display: none;
+  }
+  .desktop-only {
+    display: block;
+  }
 }

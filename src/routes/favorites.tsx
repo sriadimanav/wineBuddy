@@ -1,14 +1,15 @@
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
-
-import { FavoritesScreen } from '../components/FavoritesScreen';
-import type { Wine } from './__root';
+// routes/favorites.tsx
+import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
+import { authService } from '@components/features/auth/authService';
+import { FavoritesScreen } from '@components/features/favorites/FavoritesScreen';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import type { Wine } from '@ts/index';
 
 function FavoritesComponent() {
   const navigate = useNavigate();
 
-  // Get user from localStorage
-  const savedUser = localStorage.getItem('wine-buddy-user');
-  const user = savedUser ? JSON.parse(savedUser) : null;
+  // Get user from auth service instead of direct localStorage
+  const user = authService.getUser();
 
   const handleWineSelect = (wine: Wine) => {
     navigate({ to: '/wine/$id', params: { id: wine.id } });
@@ -23,20 +24,8 @@ function FavoritesComponent() {
 
 export const Route = createFileRoute('/favorites')({
   beforeLoad: () => {
-    const hasSeenOnboarding = localStorage.getItem('wine-buddy-onboarding-complete');
-    const savedUser = localStorage.getItem('wine-buddy-user');
-
-    if (!hasSeenOnboarding) {
-      throw redirect({
-        to: '/onboarding',
-      });
-    }
-
-    if (!savedUser) {
-      throw redirect({
-        to: '/auth',
-      });
-    }
+    requireOnboarding();
+    requireAuth();
   },
   component: FavoritesComponent,
 });

@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import type { Badge } from '@ts/badge';
-import type { FeaturedWine, TrendingWine } from '@ts/wine';
+import type { Badge, FeaturedWine, TrendingWine } from '@ts/index';
 
 import { wineDataService } from './wineDataService';
 

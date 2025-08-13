@@ -1,12 +1,16 @@
-import { ArrowLeft, Wine } from 'lucide-react';
+// routes/__root.tsx
 import * as React from 'react';
 
-import { Link, Outlet, createRootRoute, useLocation, useNavigate } from '@tanstack/react-router';
+import { authService } from '@components/features/auth/authService';
+import { useNavigationState } from '@components/features/auth/useNavigationState';
+import { AppHeader } from '@components/features/root/AppHeader';
+import { LoadingScreen } from '@components/features/root/LoadingScreen';
+import { NotFound } from '@components/features/root/NotFound';
+import { useScreenSize } from '@components/hooks/useMediaQueries';
+import { BottomNav } from '@components/layout/BottomNav';
+import { ResponsiveLayout } from '@components/layout/ResponsiveLayout';
+import { Outlet, createRootRoute, useLocation, useNavigate } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-
-import { useScreenSize } from '../components/hooks/useMediaQueries';
-import { BottomNav } from '../components/layout/BottomNav';
-import { ResponsiveLayout } from '../components/layout/ResponsiveLayout';
 
 export interface Wine {
   id: string;
@@ -46,52 +50,30 @@ function RootComponent() {
   const navigate = useNavigate();
   const screenSize = useScreenSize();
   const [isLoading, setIsLoading] = React.useState(true);
-
-  // Get user from localStorage
   const [user, setUser] = React.useState<User | null>(null);
 
+  // Get navigation state
+  const { showHeader, showBottomNav, headerTitle } = useNavigationState(
+    user,
+    location.pathname,
+    isLoading,
+  );
+
   React.useEffect(() => {
-    const savedUser = localStorage.getItem('wine-buddy-user');
+    const savedUser = authService.getUser();
     if (savedUser) {
-      setUser(JSON.parse(savedUser));
+      setUser(savedUser);
     }
     setIsLoading(false);
   }, []);
 
-  // Determine if we should show navigation elements
-  const hideNavRoutes = ['/onboarding', '/auth'];
-  const hideHeaderRoutes = ['/onboarding', '/auth', '/'];
-  const showHeader =
-    user &&
-    !hideHeaderRoutes.includes(location.pathname) &&
-    (location.pathname.startsWith('/wine/') || location.pathname === '/faq');
-  // ALWAYS show bottom nav except on onboarding and auth pages
-  const showBottomNav = !isLoading && !hideNavRoutes.includes(location.pathname);
-
-  const goBack = () => {
+  const handleGoBack = React.useCallback(() => {
     navigate({ to: '/' });
-  };
-
-  const getHeaderTitle = () => {
-    if (location.pathname === '/faq') return 'FAQ';
-    if (location.pathname.startsWith('/wine/')) {
-      return 'Wine Details';
-    }
-    return '';
-  };
-
-  // Remove inline styles, use Tailwind classes instead
+  }, [navigate]);
 
   // Show loading while checking user state
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-pulse text-wine-accent">
-          <Wine className="w-8 h-8 mb-2 mx-auto" />
-          <p className="text-sm text-muted-foreground">Loading Wine Buddy...</p>
-        </div>
-      </div>
-    );
+    return <LoadingScreen screenSize={screenSize} />;
   }
 
   return (
@@ -103,19 +85,7 @@ function RootComponent() {
       }}>
       {/* Header */}
       {showHeader && (
-        <div className="bg-card border-b border-border px-4 py-4 flex items-center sticky top-0 z-40 shadow-sm">
-          <button
-            onClick={goBack}
-            className="p-2 rounded-lg hover:bg-secondary transition-colors flex items-center justify-center text-foreground mr-2">
-            <ArrowLeft size={screenSize === 'kiosk' ? 24 : 20} />
-          </button>
-          <h1
-            className={`font-semibold text-foreground ${
-              screenSize === 'kiosk' ? 'text-xl' : 'text-lg'
-            }`}>
-            {getHeaderTitle()}
-          </h1>
-        </div>
+        <AppHeader onGoBack={handleGoBack} title={headerTitle} screenSize={screenSize} />
       )}
 
       {/* Main Content */}
@@ -123,7 +93,7 @@ function RootComponent() {
         <Outlet />
       </ResponsiveLayout>
 
-      {/* Bottom Navigation - Only show when user is logged in and not on specific routes */}
+      {/* Bottom Navigation */}
       {showBottomNav && <BottomNav />}
 
       <TanStackRouterDevtools />
@@ -133,26 +103,5 @@ function RootComponent() {
 
 export const Route = createRootRoute({
   component: RootComponent,
-  notFoundComponent: () => {
-    return (
-      <div className="min-h-screen flex items-center justify-center flex-col bg-background">
-        <div className="text-center">
-          <div className="mb-6">
-            <Wine className="w-16 h-16 text-wine-accent mx-auto mb-4" />
-          </div>
-          <h1 className="text-2xl font-bold text-foreground mb-4">404 - Page Not Found</h1>
-          <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-            The wine you're looking for seems to have been uncorked! Let's get you back to
-            discovering amazing wines.
-          </p>
-          <Link
-            to="/"
-            className="inline-flex items-center bg-wine-accent hover:bg-wine-light text-white px-6 py-3 rounded-xl font-medium transition-colors shadow-lg hover:shadow-xl">
-            <Wine className="w-4 h-4 mr-2" />
-            Back to Wine Discovery
-          </Link>
-        </div>
-      </div>
-    );
-  },
+  notFoundComponent: NotFound,
 });

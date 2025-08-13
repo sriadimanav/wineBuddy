@@ -1,6 +1,7 @@
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
-
-import { FAQScreen } from '../components/FAQScreen';
+// routes/faq.tsx
+import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
+import { FAQScreen } from '@components/features/faq/FAQScreen';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
 
 function FAQComponent() {
   const navigate = useNavigate();
@@ -14,20 +15,8 @@ function FAQComponent() {
 
 export const Route = createFileRoute('/faq')({
   beforeLoad: () => {
-    const hasSeenOnboarding = localStorage.getItem('wine-buddy-onboarding-complete');
-    const savedUser = localStorage.getItem('wine-buddy-user');
-
-    if (!hasSeenOnboarding) {
-      throw redirect({
-        to: '/onboarding',
-      });
-    }
-
-    if (!savedUser) {
-      throw redirect({
-        to: '/auth',
-      });
-    }
+    requireOnboarding();
+    requireAuth();
   },
   component: FAQComponent,
 });
