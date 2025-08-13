@@ -3,7 +3,7 @@
  * Theme Integration Utilities
  * Helper functions for working with the Wine Theme System
  */
-import { type WineTheme, generateCSSVariables, wineTheme } from '../theme/wine-theme';
+import { generateCSSVariables, type WineTheme, wineTheme } from '../theme/wine-theme';
 
 /**
  * Apply theme variables to document root

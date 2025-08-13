@@ -9,41 +9,9 @@ import { NotFound } from '@components/features/root/NotFound';
 import { useScreenSize } from '@components/hooks/useMediaQueries';
 import { BottomNav } from '@components/layout/BottomNav';
 import { ResponsiveLayout } from '@components/layout/ResponsiveLayout';
-import { Outlet, createRootRoute, useLocation, useNavigate } from '@tanstack/react-router';
+import { createRootRoute, Outlet, useLocation, useNavigate } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-
-export interface Wine {
-  id: string;
-  name: string;
-  winery: string;
-  vintage: number;
-  region: string;
-  description: string;
-  grapeVariety: string[];
-  color: string;
-  alcoholContent: number;
-  sugarContent: string;
-  taste: string[];
-  aroma: string[];
-  foodPairing: string[];
-  rating: number;
-  reviews: number;
-  sommelierNotes: string;
-  image: string;
-  price?: number;
-}
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  avatar?: string;
-  favorites: string[];
-  streakCount: number;
-  totalScans: number;
-  badges: string[];
-  isGuest?: boolean;
-}
+import type { User } from '@ts/index';
 
 function RootComponent() {
   const location = useLocation();

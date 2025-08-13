@@ -1,6 +1,7 @@
 // hooks/useStarRating.tsx
-import { Star } from 'lucide-react';
 import type { ReactNode } from 'react';
+
+import { Star } from 'lucide-react';
 
 export const useStarRating = () => {
   const renderStars = (rating: number): ReactNode[] => {

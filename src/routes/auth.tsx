@@ -1,6 +1,6 @@
 // routes/auth.tsx
-import { AuthScreen } from '@components/features/auth/AuthScreen';
 import { createAuthGuard } from '@components/features/auth/authGuards';
+import { AuthScreen } from '@components/features/auth/AuthScreen';
 import { authService } from '@components/features/auth/authService';
 import { createUserWithSamples } from '@components/utils/userUtils';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';

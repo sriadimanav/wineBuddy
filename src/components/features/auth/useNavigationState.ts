@@ -1,7 +1,7 @@
 // hooks/useNavigationState.ts
 import { useMemo } from 'react';
 
-import { HIDE_HEADER_ROUTES, HIDE_NAV_ROUTES, getHeaderTitle } from '@/constants/routes';
+import { getHeaderTitle, HIDE_HEADER_ROUTES, HIDE_NAV_ROUTES } from '@/constants/routes';
 import type { User } from '@ts/index';
 
 interface NavigationState {

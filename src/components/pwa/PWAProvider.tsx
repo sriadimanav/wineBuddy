@@ -2,8 +2,8 @@
 import { useEffect } from 'react';
 
 import { PWAInstallBanner } from './PWAInstallBanner';
-import { PWAStatus } from './PWAStatus';
 import { PWAService } from './pwaService';
+import { PWAStatus } from './PWAStatus';
 
 interface PWAProviderProps {
   children: React.ReactNode;

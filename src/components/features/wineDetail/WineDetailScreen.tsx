@@ -8,11 +8,11 @@ import { useNavigate } from '@tanstack/react-router';
 
 import { FoodPairing } from './FoodPairing';
 import { TastingNotes } from './TastingNotes';
+import { useWineDetail } from './useWineDetail';
 import { WineActions } from './WineActions';
 import { WineHero } from './WineHero';
 import { WineOverview } from './WineOverview';
 import { WineTabs } from './WineTabs';
-import { useWineDetail } from './useWineDetail';
 
 interface WineDetailScreenProps {
   id: string;

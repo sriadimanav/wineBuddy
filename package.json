@@ -27,7 +27,16 @@
     "lint-fix": "eslint . --fix",
     "format": "prettier --config prettier.config.js --write .",
     "format:check": "prettier --config prettier.config.js --check .",
-    "clean": "rm -rf node_modules package-lock.json yarn.lock pnpm-lock.yaml"
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "validate": "pnpm run type-check && pnpm run lint && pnpm run format:check && pnpm run test",
+    "clean": "rm -rf node_modules dist dev-dist .turbo coverage pnpm-lock.yaml",
+    "clean:cache": "rm -rf node_modules/.cache .vite dist dev-dist",
+    "preview": "vite preview --port 3001",
+    "analyze": "pnpx vite-bundle-analyzer --port 8889",
+    "analyze:auto-port": "pnpx vite-bundle-analyzer --port 0",
+    "analyze:json": "vite build --mode analyze && pnpx vite-bundle-analyzer dist --mode json",
+    "analyze:vite": "vite build --mode analyze"
   },
   "dependencies": {
     "@radix-ui/react-separator": "1.1.7",
@@ -64,6 +73,7 @@
     "tailwindcss": "4.1.11",
     "typescript": "5.9.2",
     "vite": "7.1.2",
+    "vite-bundle-analyzer": "1.2.1",
     "vite-plugin-pwa": "1.0.2",
     "vitest": "3.2.4",
     "web-vitals": "5.1.0",

@@ -1,5 +1,11 @@
 {
-  "include": ["**/*.ts", "**/*.tsx", "eslint.config.js", "prettier.config.js", "vite.config.js"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "eslint.config.js",
+    "prettier.config.js",
+    "vite.config.js"
+  ],
 
   "compilerOptions": {
     "target": "ES2022",
@@ -26,17 +32,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
-      "@ts/*": ["./src/ts/*"],
-      "@ui/*": ["./src/components/ui/*"],
+      "@public/*": ["./public/*"],
       "@routes/*": ["./src/routes/*"],
       "@styles/*": ["./src/styles/*"],
-      "@public/*": ["./public/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@hooks/*": ["./src/components/hooks/*"],
-      "@layout/*": ["./src/components/layout/*"],
-      "@gamification/*": ["./src/components/gamification/*"],
-      "@figma/*": ["./src/components/figma/*"],
-      "@guidelines/*": ["./src/components/guidelines/*"]
+      "@ts/*": ["./src/ts/*"]
     }
   }
 }

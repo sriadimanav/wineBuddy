@@ -1,8 +1,7 @@
 // components/faq/FAQSearch.tsx
 import { Search } from 'lucide-react';
 
-import { Input } from '@ui/Input';
-
+import { Input } from '@components/ui/Input';
 import type { FAQSearchProps } from '@ts/index';
 
 export function FAQSearch({ searchQuery, onSearchChange }: FAQSearchProps) {

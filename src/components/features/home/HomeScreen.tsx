@@ -7,10 +7,10 @@ import { GuestReminder } from './GuestReminder';
 import { HomeHeader } from './HomeHeader';
 import { QuickScanCTA } from './QuickScanCTA';
 import { TrendingWinesSection } from './TrendingWinesSection';
-import { WineCategoriesSection } from './WineCategoriesSection';
 import { useHomeActions } from './useHomeActions';
 import { useHomeSearch } from './useHomeSearch';
 import { useWineData } from './useWineData';
+import { WineCategoriesSection } from './WineCategoriesSection';
 
 export function HomeScreen({ user }: HomeScreenProps) {
   const { searchState, handleSearchChange } = useHomeSearch();

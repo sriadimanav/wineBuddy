@@ -1,7 +1,8 @@
 'use client';
 
-import { Separator } from 'radix-ui';
 import * as React from 'react';
+
+import { Separator } from 'radix-ui';
 
 import { cn } from '../utils/utils';
 

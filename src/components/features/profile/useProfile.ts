@@ -1,6 +1,7 @@
 // hooks/useProfile.ts
-import { Camera, Heart, Star } from 'lucide-react';
 import { useMemo } from 'react';
+
+import { Camera, Heart, Star } from 'lucide-react';
 
 import type { ProfileStat, User } from '@ts/index';
 

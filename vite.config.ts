@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import path from 'node:path';
 import { defineConfig } from 'vite';
+import { analyzer } from 'vite-bundle-analyzer';
 import { VitePWA } from 'vite-plugin-pwa';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -18,6 +19,7 @@ export default defineConfig({
     tanstackRouter({ autoCodeSplitting: true }),
     viteReact(),
     tailwindcss(),
+    analyzer(),
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
@@ -146,7 +148,6 @@ export default defineConfig({
 
       // Component aliases - using absolute paths
       '@components': path.resolve(__dirname, './src/components'),
-      '@ui': path.resolve(__dirname, './src/components/ui'),
 
       // Route aliases
       '@routes': path.resolve(__dirname, './src/routes'),
@@ -155,12 +156,7 @@ export default defineConfig({
       '@styles': path.resolve(__dirname, './src/styles'),
       '@public': path.resolve(__dirname, './public'),
 
-      // Utility aliases - specific paths
-      '@utils': path.resolve(__dirname, './src/components/utils'),
-      '@hooks': path.resolve(__dirname, './src/components/hooks'),
-      '@layout': path.resolve(__dirname, './src/components/layout'),
-      '@gamification': path.resolve(__dirname, './src/components/gamification'),
-      '@figma': path.resolve(__dirname, './src/components/figma'),
+      // ts aliases - specific paths
       '@ts': path.resolve(__dirname, './src/ts'),
     },
     //extensions: ['.ts', '.tsx', '.js', '.jsx']

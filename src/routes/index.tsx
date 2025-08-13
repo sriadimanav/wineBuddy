@@ -1,8 +1,9 @@
 // routes/index.tsx
+import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
 import { authService } from '@components/features/auth/authService';
 import { HomeScreen } from '@components/features/home/HomeScreen';
 import { createUserWithSamples } from '@components/utils/userUtils';
-import { createFileRoute, redirect } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 
 function HomeComponent() {
   // Get user from auth service
@@ -31,26 +32,8 @@ function HomeComponent() {
 
 export const Route = createFileRoute('/')({
   beforeLoad: () => {
-    // Check routing logic in beforeLoad
-    const hasSeenOnboarding = authService.hasCompletedOnboarding();
-    const savedUser = authService.getUser();
-
-    // First time user - needs onboarding
-    if (!hasSeenOnboarding) {
-      throw redirect({
-        to: '/onboarding',
-      });
-    }
-
-    // Onboarding complete but no user - needs auth
-    if (hasSeenOnboarding && !savedUser) {
-      throw redirect({
-        to: '/auth',
-      });
-    }
-
-    // Valid user exists, continue to home
-    return;
+    requireOnboarding();
+    requireAuth();
   },
   component: HomeComponent,
 });

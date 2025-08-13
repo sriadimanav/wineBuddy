@@ -8,16 +8,45 @@ const config = {
   semi: true,
   singleQuote: true,
   tabWidth: 2,
-  //trailingComma: 'all',
+  trailingComma: 'all', // Enabled for better git diffs
+  useTabs: false,
+  endOfLine: 'lf',
+  quoteProps: 'as-needed',
+  bracketSpacing: true,
+
+  // Import sorting configuration
   importOrder: [
-    '<THIRD_PARTY_MODULES>',
-    '^@ui/(.*)$',
+    '^(react|react-dom)(.*)$', // React imports first
+    '<THIRD_PARTY_MODULES>', // Third party libraries
     '^@(?!types)(.*)$', // all @ imports except @types
-    '^[./]',
+    '^@components/(.*)$', // Component imports
+    '^@ts/(.*)$', // Type imports
+    '^[./]', // Relative imports
   ],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
+  importOrderGroupNamespaceSpecifiers: true,
+  importOrderCaseInsensitive: true,
+
   plugins: ['@trivago/prettier-plugin-sort-imports'],
+
+  // File-specific overrides
+  overrides: [
+    {
+      files: '*.json',
+      options: {
+        printWidth: 80,
+        tabWidth: 2,
+      },
+    },
+    {
+      files: '*.md',
+      options: {
+        printWidth: 80,
+        proseWrap: 'always',
+      },
+    },
+  ],
 };
 
 export default config;

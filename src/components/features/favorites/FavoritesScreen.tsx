@@ -7,9 +7,9 @@ import type { FavoritesScreenProps, FeaturedWine } from '@ts/index';
 import { EditModeActionBar } from './EditModeActionBar';
 import { EmptyState } from './EmptyState';
 import { FavoritesHeader } from './FavoritesHeader';
+import { useFavorites } from './useFavorites';
 import { WineCard } from './WineCard';
 import { WineGridCard } from './WineGridCard';
-import { useFavorites } from './useFavorites';
 
 export function FavoritesScreen({ user, onWineSelect }: FavoritesScreenProps) {
   const navigate = useNavigate();
