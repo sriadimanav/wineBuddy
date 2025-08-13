@@ -1,7 +1,8 @@
 // routes/wine/$id.tsx
+import { createFileRoute } from '@tanstack/react-router';
+
 import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
 import { WineDetailScreen } from '@components/features/wineDetail/WineDetailScreen';
-import { createFileRoute } from '@tanstack/react-router';
 
 function WineDetailComponent() {
   const { id } = Route.useParams();

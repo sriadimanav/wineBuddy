@@ -1,7 +1,10 @@
 // components/FavoritesScreen.tsx
-import { MOCK_FAVORITES_DATA } from '@/constants/favorites';
-import { useScreenSize } from '@components/hooks/useMediaQueries';
 import { useNavigate } from '@tanstack/react-router';
+
+import { MOCK_FAVORITES_DATA } from '@/constants/favorites';
+
+import { useScreenSize } from '@components/hooks/useMediaQueries';
+
 import type { FavoritesScreenProps, FeaturedWine } from '@ts/index';
 
 import { EditModeActionBar } from './EditModeActionBar';

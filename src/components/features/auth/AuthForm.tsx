@@ -2,6 +2,7 @@
 import { Eye, EyeOff, Lock, Mail, User as UserIcon } from 'lucide-react';
 
 import { useScreenSize } from '@/components/hooks/useMediaQueries';
+
 import type { AuthFormProps } from '@ts/index';
 
 export function AuthForm({

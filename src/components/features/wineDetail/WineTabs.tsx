@@ -1,5 +1,6 @@
 // components/wineDetail/WineTabs.tsx
 import { WINE_DETAIL_TABS } from '@/constants/wineDetail';
+
 import type { WineTabsProps } from '@ts/index';
 
 export function WineTabs({ activeTab, onTabChange }: WineTabsProps) {

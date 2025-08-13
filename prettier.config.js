@@ -18,7 +18,7 @@ const config = {
   importOrder: [
     '^(react|react-dom)(.*)$', // React imports first
     '<THIRD_PARTY_MODULES>', // Third party libraries
-    '^@(?!types)(.*)$', // all @ imports except @types
+    '^@/(.*)$', // all @ imports
     '^@components/(.*)$', // Component imports
     '^@ts/(.*)$', // Type imports
     '^[./]', // Relative imports

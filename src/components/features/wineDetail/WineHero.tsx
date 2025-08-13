@@ -2,7 +2,9 @@
 import { Calendar, Heart, MapPin, Share } from 'lucide-react';
 
 import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
+
 import { useStarRating } from '@components/features/favorites/useStarRating';
+
 import type { WineHeroProps } from '@ts/index';
 
 export function WineHero({ wine, isFavorite, onToggleFavorite, screenSize }: WineHeroProps) {

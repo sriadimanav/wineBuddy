@@ -1,8 +1,9 @@
 // routes/profile.tsx
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+
 import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
 import { authService } from '@components/features/auth/authService';
 import { ProfileScreen } from '@components/features/profile/ProfileScreen';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
 
 function ProfileComponent() {
   const navigate = useNavigate();

@@ -1,8 +1,10 @@
 // routes/scan.tsx
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+
 import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
 import { authService } from '@components/features/auth/authService';
 import { ScanScreen } from '@components/features/scan/ScanScreen';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+
 import type { Wine } from '@ts/index';
 
 function ScanComponent() {

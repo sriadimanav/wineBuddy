@@ -1,7 +1,6 @@
 // components/common/NotFound.tsx
-import { Wine } from 'lucide-react';
-
 import { Link } from '@tanstack/react-router';
+import { Wine } from 'lucide-react';
 
 export function NotFound() {
   return (

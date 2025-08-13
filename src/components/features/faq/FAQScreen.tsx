@@ -1,6 +1,8 @@
 // components/FAQScreen.tsx
 import { FAQ_DATA } from '@/constants/faq';
+
 import { useFAQSearch } from '@components/features/faq/useFAQSearch';
+
 import type { FAQScreenProps } from '@ts/index';
 
 import { FAQCategory } from './FAQCategory';

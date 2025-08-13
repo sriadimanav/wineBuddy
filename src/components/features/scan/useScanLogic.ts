@@ -2,6 +2,7 @@
 import { useState } from 'react';
 
 import { MOCK_SCAN_RESULTS, SCAN_CONFIG, SCAN_TEXTS } from '@/constants/scan';
+
 import type { ScanResult, ScanState } from '@ts/index';
 
 export const useScanLogic = () => {

@@ -2,6 +2,7 @@
 import { useCallback, useState } from 'react';
 
 import { HOME_CONFIG } from '@/constants/home';
+
 import type { FeaturedWine, HomeSearchState, TrendingWine } from '@ts/index';
 
 import { wineDataService } from './wineDataService';

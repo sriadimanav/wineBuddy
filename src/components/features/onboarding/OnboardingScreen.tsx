@@ -2,7 +2,9 @@
 import { useState } from 'react';
 
 import { ONBOARDING_STEPS } from '@/constants/onboarding';
+
 import { useScreenSize } from '@components/hooks/useMediaQueries';
+
 import type { OnboardingScreenProps } from '@ts/index';
 
 import { OnboardingBackground } from './OnboardingBackground';

@@ -1,5 +1,6 @@
 // components/onboarding/StepNavigation.tsx
 import { NAVIGATION_ICONS } from '@/constants/onboarding';
+
 import type { StepNavigationProps } from '@ts/index';
 
 export function StepNavigation({

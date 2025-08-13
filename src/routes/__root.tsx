@@ -1,6 +1,9 @@
 // routes/__root.tsx
 import * as React from 'react';
 
+import { createRootRoute, Outlet, useLocation, useNavigate } from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+
 import { authService } from '@components/features/auth/authService';
 import { useNavigationState } from '@components/features/auth/useNavigationState';
 import { AppHeader } from '@components/features/root/AppHeader';
@@ -9,8 +12,7 @@ import { NotFound } from '@components/features/root/NotFound';
 import { useScreenSize } from '@components/hooks/useMediaQueries';
 import { BottomNav } from '@components/layout/BottomNav';
 import { ResponsiveLayout } from '@components/layout/ResponsiveLayout';
-import { createRootRoute, Outlet, useLocation, useNavigate } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+
 import type { User } from '@ts/index';
 
 function RootComponent() {

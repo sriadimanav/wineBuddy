@@ -1,5 +1,6 @@
 // utils/userUtils.ts
 import { GUEST_USER_DATA, SAMPLE_USER_DATA } from '@/constants/sampleData';
+
 import type { User } from '@ts/index';
 
 export const generateId = (): string => {

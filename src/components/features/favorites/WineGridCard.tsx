@@ -2,6 +2,7 @@
 import { Check, Star } from 'lucide-react';
 
 import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
+
 import type { WineGridCardProps } from '@ts/index';
 
 export function WineGridCard({ wine, isEditMode, isSelected, onWineClick }: WineGridCardProps) {

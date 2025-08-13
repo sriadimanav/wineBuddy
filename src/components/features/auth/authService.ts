@@ -1,5 +1,6 @@
 // services/authService.ts
 import { APP_CONFIG } from '@/config/app';
+
 import type { User } from '@ts/index';
 
 export const authService = {

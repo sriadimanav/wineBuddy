@@ -1,9 +1,11 @@
 // routes/auth.tsx
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+
 import { createAuthGuard } from '@components/features/auth/authGuards';
 import { AuthScreen } from '@components/features/auth/AuthScreen';
 import { authService } from '@components/features/auth/authService';
 import { createUserWithSamples } from '@components/utils/userUtils';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+
 import type { User } from '@ts/index';
 
 function AuthComponent() {

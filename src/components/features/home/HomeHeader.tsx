@@ -2,7 +2,9 @@
 import { Filter, Search } from 'lucide-react';
 
 import { HOME_MESSAGES } from '@/constants/home';
+
 import { useScreenSize } from '@components/hooks/useMediaQueries';
+
 import type { HomeHeaderProps } from '@ts/index';
 
 export function HomeHeader({ user, searchQuery, onSearchChange, onProfileClick }: HomeHeaderProps) {

@@ -2,6 +2,7 @@
 import { Check } from 'lucide-react';
 
 import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
+
 import type { WineCardProps } from '@ts/index';
 
 import { useStarRating } from './useStarRating';

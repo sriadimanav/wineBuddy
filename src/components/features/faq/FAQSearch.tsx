@@ -2,6 +2,7 @@
 import { Search } from 'lucide-react';
 
 import { Input } from '@components/ui/Input';
+
 import type { FAQSearchProps } from '@ts/index';
 
 export function FAQSearch({ searchQuery, onSearchChange }: FAQSearchProps) {

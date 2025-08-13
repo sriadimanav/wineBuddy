@@ -2,6 +2,7 @@
 import { useMemo } from 'react';
 
 import { getHeaderTitle, HIDE_HEADER_ROUTES, HIDE_NAV_ROUTES } from '@/constants/routes';
+
 import type { User } from '@ts/index';
 
 interface NavigationState {

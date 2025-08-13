@@ -1,10 +1,11 @@
 // components/WineDetailScreen.tsx
+import { useNavigate } from '@tanstack/react-router';
 import { Wine } from 'lucide-react';
 
 import { WINE_DATABASE } from '@/constants/wineDatabase';
+
 import { authService } from '@components/features/auth/authService';
 import { useScreenSize } from '@components/hooks/useMediaQueries';
-import { useNavigate } from '@tanstack/react-router';
 
 import { FoodPairing } from './FoodPairing';
 import { TastingNotes } from './TastingNotes';

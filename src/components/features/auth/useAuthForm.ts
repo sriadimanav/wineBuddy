@@ -2,6 +2,7 @@
 import { useState } from 'react';
 
 import { hasValidationErrors, validateAuthForm } from '@components/utils/authValidation';
+
 import type { AuthFormData, AuthFormState, FormErrors } from '@ts/index';
 
 const INITIAL_FORM_DATA: AuthFormData = {

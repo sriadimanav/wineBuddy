@@ -1,8 +1,10 @@
 // routes/favorites.tsx
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+
 import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
 import { authService } from '@components/features/auth/authService';
 import { FavoritesScreen } from '@components/features/favorites/FavoritesScreen';
-import { createFileRoute, useNavigate } from '@tanstack/react-router';
+
 import type { Wine } from '@ts/index';
 
 function FavoritesComponent() {

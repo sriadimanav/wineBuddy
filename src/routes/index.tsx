@@ -1,9 +1,10 @@
 // routes/index.tsx
+import { createFileRoute } from '@tanstack/react-router';
+
 import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
 import { authService } from '@components/features/auth/authService';
 import { HomeScreen } from '@components/features/home/HomeScreen';
 import { createUserWithSamples } from '@components/utils/userUtils';
-import { createFileRoute } from '@tanstack/react-router';
 
 function HomeComponent() {
   // Get user from auth service

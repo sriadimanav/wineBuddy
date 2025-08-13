@@ -1,5 +1,6 @@
 // utils/authValidation.ts
 import { APP_CONFIG } from '@/config/app';
+
 import type { AuthFormData, FormErrors } from '@ts/index';
 
 export const validateAuthForm = (formData: AuthFormData, isLogin: boolean): FormErrors => {

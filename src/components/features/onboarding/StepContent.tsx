@@ -1,5 +1,6 @@
 // components/onboarding/StepContent.tsx
 import { STEP_GRADIENTS } from '@/constants/onboarding';
+
 import type { StepContentProps } from '@ts/index';
 
 export function StepContent({ step, screenSize }: StepContentProps) {

@@ -5,6 +5,7 @@ import {
   MOCK_RECENT_ACTIVITIES,
   PROFILE_MENU_ITEMS,
 } from '@/constants/profile';
+
 import type { ProfileScreenProps } from '@ts/index';
 
 import { ProfileActions } from './ProfileActions';

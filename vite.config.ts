@@ -1,12 +1,11 @@
 /// <reference types="vitest" />
+import tailwindcss from '@tailwindcss/vite';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
+import viteReact from '@vitejs/plugin-react';
 import path from 'node:path';
 import { defineConfig } from 'vite';
 import { analyzer } from 'vite-bundle-analyzer';
 import { VitePWA } from 'vite-plugin-pwa';
-
-import tailwindcss from '@tailwindcss/vite';
-import { tanstackRouter } from '@tanstack/router-plugin/vite';
-import viteReact from '@vitejs/plugin-react';
 
 // import { fileURLToPath } from 'node:url'
 

@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { useScreenSize } from '@/components/hooks/useMediaQueries';
 import { APP_CONFIG } from '@/config/app';
 import { delay } from '@/utils/asyncUtils';
+
 import {
   createGuestUser,
   createUserWithSamples,
   extractNameFromEmail,
 } from '@components/utils/userUtils';
+
 import type { AuthScreenProps, User } from '@ts/index';
 
 import { AuthForm } from './AuthForm';
