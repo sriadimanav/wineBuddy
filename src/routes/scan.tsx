@@ -1,19 +1,25 @@
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router';
-
-import { ScanScreen } from '../components/ScanScreen';
-import type { Wine } from './__root';
+// routes/scan.tsx
+import { requireAuth, requireOnboarding } from '@components/features/auth/authGuards';
+import { authService } from '@components/features/auth/authService';
+import { ScanScreen } from '@components/features/scan/ScanScreen';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import type { Wine } from '@ts/index';
 
 function ScanComponent() {
   const navigate = useNavigate();
 
+  // Get user from auth service
+  const user = authService.getUser();
+
   const handleWineFound = (wine: Wine) => {
     // Update user stats
-    const savedUser = localStorage.getItem('wine-buddy-user');
-    if (savedUser) {
-      const user = JSON.parse(savedUser);
-      user.totalScans = (user.totalScans || 0) + 1;
-      user.streakCount = (user.streakCount || 0) + 1;
-      localStorage.setItem('wine-buddy-user', JSON.stringify(user));
+    if (user) {
+      const updatedUser = {
+        ...user,
+        totalScans: (user.totalScans || 0) + 1,
+        streakCount: (user.streakCount || 0) + 1,
+      };
+      authService.saveUser(updatedUser);
     }
 
     // Navigate to wine details
@@ -24,25 +30,17 @@ function ScanComponent() {
     navigate({ to: '/' });
   };
 
+  if (!user) {
+    return null; // This shouldn't happen due to beforeLoad
+  }
+
   return <ScanScreen onWineFound={handleWineFound} onBack={handleBack} />;
 }
 
 export const Route = createFileRoute('/scan')({
   beforeLoad: () => {
-    const hasSeenOnboarding = localStorage.getItem('wine-buddy-onboarding-complete');
-    const savedUser = localStorage.getItem('wine-buddy-user');
-
-    if (!hasSeenOnboarding) {
-      throw redirect({
-        to: '/onboarding',
-      });
-    }
-
-    if (!savedUser) {
-      throw redirect({
-        to: '/auth',
-      });
-    }
+    requireOnboarding();
+    requireAuth();
   },
   component: ScanComponent,
 });

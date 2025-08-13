@@ -1,10 +1,9 @@
+// components/features/home/QuickScanCTA.tsx
 import { Camera } from 'lucide-react';
 
-import { useScreenSize } from '../../hooks/useMediaQueries';
-
-interface QuickScanCTAProps {
-  onScanClick: () => void;
-}
+import { HOME_MESSAGES } from '@/constants/home';
+import { useScreenSize } from '@components/hooks/useMediaQueries';
+import type { QuickScanCTAProps } from '@ts/home';
 
 export function QuickScanCTA({ onScanClick }: QuickScanCTAProps) {
   const screenSize = useScreenSize();
@@ -38,10 +37,10 @@ export function QuickScanCTA({ onScanClick }: QuickScanCTAProps) {
         <div className="flex items-center justify-between">
           <div className="flex-1">
             <h3 className={`font-bold mb-2 ${screenSize === 'kiosk' ? 'text-xl' : 'text-lg'}`}>
-              Scan a Wine Label
+              {HOME_MESSAGES.QUICK_SCAN_TITLE}
             </h3>
             <p className={`opacity-90 mb-4 ${screenSize === 'kiosk' ? 'text-base' : 'text-sm'}`}>
-              Get instant details about any wine
+              {HOME_MESSAGES.QUICK_SCAN_DESCRIPTION}
             </p>
             <button
               onClick={onScanClick}

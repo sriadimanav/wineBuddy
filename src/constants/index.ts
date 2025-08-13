@@ -6,3 +6,5 @@ export * as favorites from './favorites';
 export * as wineDatabase from './wineDatabase';
 export * as wineDetail from './wineDetail';
 export * as profile from './profile';
+export * as scan from './scan';
+export * as home from './home';

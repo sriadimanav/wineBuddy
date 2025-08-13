@@ -1,23 +1,19 @@
-import { useState } from 'react';
-
-import type { User } from '@ts/index';
+// components/features/home/HomeScreen.tsx
+import type { HomeScreenProps } from '@ts/index';
 
 import { FeaturedWinesSection } from './FeaturedWinesSection';
-import { GamificationSection } from './GamificationSection.tsx';
-import { GuestReminder } from './GuestReminder.tsx';
-import { HomeHeader } from './HomeHeader.tsx';
-import { QuickScanCTA } from './QuickScanCTA.tsx';
+import { GamificationSection } from './GamificationSection';
+import { GuestReminder } from './GuestReminder';
+import { HomeHeader } from './HomeHeader';
+import { QuickScanCTA } from './QuickScanCTA';
 import { TrendingWinesSection } from './TrendingWinesSection';
 import { WineCategoriesSection } from './WineCategoriesSection';
-import { useUserActions } from './useUserActions';
+import { useHomeActions } from './useHomeActions';
+import { useHomeSearch } from './useHomeSearch';
 import { useWineData } from './useWineData';
 
-interface HomeScreenProps {
-  user: User;
-}
-
 export function HomeScreen({ user }: HomeScreenProps) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const { searchState, handleSearchChange } = useHomeSearch();
   const { featuredWines, trendingWines, badges } = useWineData();
   const {
     handleWineClick,
@@ -25,14 +21,14 @@ export function HomeScreen({ user }: HomeScreenProps) {
     handleProfileClick,
     handleAuthClick,
     handleCategoryClick,
-  } = useUserActions();
+  } = useHomeActions();
 
   return (
     <div className="min-h-screen bg-background">
       <HomeHeader
         user={user}
-        searchQuery={searchQuery}
-        onSearchChange={setSearchQuery}
+        searchQuery={searchState.query}
+        onSearchChange={handleSearchChange}
         onProfileClick={handleProfileClick}
       />
 
@@ -40,6 +36,7 @@ export function HomeScreen({ user }: HomeScreenProps) {
         {user.isGuest && <GuestReminder onSignUpClick={handleAuthClick} />}
 
         <GamificationSection user={user} badges={badges} />
+
         <QuickScanCTA onScanClick={handleScanNow} />
 
         <FeaturedWinesSection wines={featuredWines} onWineClick={handleWineClick} />

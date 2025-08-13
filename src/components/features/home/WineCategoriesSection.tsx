@@ -1,61 +1,10 @@
+// components/features/home/WineCategoriesSection.tsx
 import { Award } from 'lucide-react';
 
-import { useScreenSize } from '../../hooks/useMediaQueries';
-import { AdaptiveGrid } from '../../layout/ResponsiveLayout';
-
-interface Category {
-  id: string;
-  name: string;
-  description: string;
-  bgColor: string;
-  borderColor: string;
-  iconBgColor: string;
-  onClickValue: WineCategory;
-}
-type WineCategory = 'Red Wines' | 'White Wines' | 'Sparkling Wines' | 'Rosé Wines';
-
-interface WineCategoriesSectionProps {
-  onCategoryClick: (category: WineCategory) => void;
-}
-
-const categories: Category[] = [
-  {
-    id: 'red',
-    name: 'Red Wines',
-    description: 'Bold & Complex',
-    bgColor: 'bg-wine-blush',
-    borderColor: 'border-border',
-    iconBgColor: 'bg-wine-accent',
-    onClickValue: 'Red Wines',
-  },
-  {
-    id: 'white',
-    name: 'White Wines',
-    description: 'Fresh & Crisp',
-    bgColor: 'bg-wine-whisper',
-    borderColor: 'border-border',
-    iconBgColor: 'bg-wine-light',
-    onClickValue: 'White Wines',
-  },
-  {
-    id: 'rose',
-    name: 'Rosé Wines',
-    description: 'Light & Refreshing',
-    bgColor: 'bg-wine-pearl',
-    borderColor: 'border-border',
-    iconBgColor: 'bg-wine-accent',
-    onClickValue: 'Rosé Wines',
-  },
-  {
-    id: 'sparkling',
-    name: 'Sparkling',
-    description: 'Bubbly & Festive',
-    bgColor: 'bg-wine-soft',
-    borderColor: 'border-border',
-    iconBgColor: 'bg-wine-medium',
-    onClickValue: 'Sparkling Wines',
-  },
-];
+import { WINE_CATEGORIES } from '@/constants/home';
+import { useScreenSize } from '@components/hooks/useMediaQueries';
+import { AdaptiveGrid } from '@components/layout/ResponsiveLayout';
+import type { WineCategoriesSectionProps } from '@ts/home';
 
 export function WineCategoriesSection({ onCategoryClick }: WineCategoriesSectionProps) {
   const screenSize = useScreenSize();
@@ -70,10 +19,10 @@ export function WineCategoriesSection({ onCategoryClick }: WineCategoriesSection
       </h2>
 
       <AdaptiveGrid cols={{ mobile: 2, tablet: 2, desktop: 2, kiosk: 4 }} gap="1.5rem">
-        {categories.map(category => (
+        {WINE_CATEGORIES.map(category => (
           <div
             key={category.id}
-            onClick={() => onCategoryClick(category.onClickValue)}
+            onClick={() => onCategoryClick(category)}
             className={`${category.bgColor} ${category.borderColor} border rounded-lg p-3 cursor-pointer hover:shadow-md hover:scale-[1.02] transition-all duration-200 wine-rosé-card`}>
             <div
               className={`w-6 h-6 ${category.iconBgColor} rounded-md flex items-center justify-center mb-2`}>

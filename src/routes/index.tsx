@@ -1,26 +1,15 @@
+// routes/index.tsx
+import { authService } from '@components/features/auth/authService';
 import { HomeScreen } from '@components/features/home/HomeScreen';
+import { createUserWithSamples } from '@components/utils/userUtils';
 import { createFileRoute, redirect } from '@tanstack/react-router';
 
-//import type { User } from './__root'
-
 function HomeComponent() {
-  // Get user from localStorage and ensure they have favorites data
-  const savedUser = localStorage.getItem('wine-buddy-user');
-  let user = savedUser ? JSON.parse(savedUser) : null;
+  // Get user from auth service
+  let user = authService.getUser();
 
-  // Migration: Add sample favorites for existing users who don't have any
-  if (user && (!user.favorites || user.favorites.length === 0)) {
-    user.favorites = user.isGuest ? ['1', '2', '3', '5'] : ['1', '3', '4', 'scan-1'];
-    user.streakCount = user.streakCount || (user.isGuest ? 3 : 2);
-    user.totalScans = user.totalScans || (user.isGuest ? 12 : 8);
-    user.badges = user.badges || ['first-scan', 'wine-explorer'];
-
-    // Save updated user data
-    localStorage.setItem('wine-buddy-user', JSON.stringify(user));
-  }
-
-  // This should never happen since beforeLoad handles the routing logic
   if (!user) {
+    // This should never happen since beforeLoad handles the routing logic
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="animate-pulse text-wine-accent text-center">
@@ -31,14 +20,20 @@ function HomeComponent() {
     );
   }
 
+  // Migration: Add sample data for existing users who don't have any
+  if (!user.favorites || user.favorites.length === 0) {
+    user = createUserWithSamples(user);
+    authService.saveUser(user);
+  }
+
   return <HomeScreen user={user} />;
 }
 
 export const Route = createFileRoute('/')({
   beforeLoad: () => {
     // Check routing logic in beforeLoad
-    const hasSeenOnboarding = localStorage.getItem('wine-buddy-onboarding-complete');
-    const savedUser = localStorage.getItem('wine-buddy-user');
+    const hasSeenOnboarding = authService.hasCompletedOnboarding();
+    const savedUser = authService.getUser();
 
     // First time user - needs onboarding
     if (!hasSeenOnboarding) {

@@ -1,6 +1,6 @@
-interface GuestReminderProps {
-  onSignUpClick: () => void;
-}
+// components/features/home/GuestReminder.tsx
+import { HOME_MESSAGES } from '@/constants/home';
+import type { GuestReminderProps } from '@ts/home';
 
 export function GuestReminder({ onSignUpClick }: GuestReminderProps) {
   return (
@@ -8,9 +8,7 @@ export function GuestReminder({ onSignUpClick }: GuestReminderProps) {
       <div className="flex items-center justify-between">
         <div className="flex-1">
           <h3 className="font-semibold text-wine-accent mb-1">You're exploring as a guest</h3>
-          <p className="text-sm text-muted-foreground">
-            Create an account to save your favorites and track your wine journey!
-          </p>
+          <p className="text-sm text-muted-foreground">{HOME_MESSAGES.GUEST_UPGRADE_DESCRIPTION}</p>
         </div>
         <button
           onClick={onSignUpClick}

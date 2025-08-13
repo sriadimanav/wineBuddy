@@ -12,3 +12,5 @@ export * from './onboarding';
 export * from './favorites';
 export * from './wineDetail';
 export * from './profile';
+export * from './scan';
+export * from './home';
