@@ -1,7 +1,7 @@
 // components/features/scan/ScanInstructions.tsx
 import { Camera, RotateCcw } from 'lucide-react';
 
-import type { ScanInstructionsProps } from '@ts/scan';
+import type { ScanInstructionsProps } from '@ts/index';
 
 export function ScanInstructions({
   scanningText,

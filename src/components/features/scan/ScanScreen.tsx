@@ -1,7 +1,7 @@
 // components/features/scan/ScanScreen.tsx
 import { SCAN_CONFIG } from '@/constants/scan';
 import { useScreenSize } from '@components/hooks/useMediaQueries';
-import type { ScanScreenProps } from '@ts/scan';
+import type { ScanScreenProps } from '@ts/index';
 
 import { ScanAlternatives } from './ScanAlternatives';
 import { ScanCameraView } from './ScanCameraView';

@@ -1,5 +1,5 @@
 // constants/wineDatabase.ts
-import type { FeaturedWine } from '@/ts/wine';
+import type { FeaturedWine } from '@ts/index';
 
 export const WINE_DATABASE: Record<string, FeaturedWine> = {
   '1': {

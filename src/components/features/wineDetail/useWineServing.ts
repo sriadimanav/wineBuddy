@@ -1,6 +1,6 @@
 // hooks/useWineServing.ts
 import { RED_WINE_GRAPES, SERVING_TEMPERATURES, WHITE_WINE_GRAPES } from '@/constants/wineDetail';
-import type { FeaturedWine } from '@/ts/wine';
+import type { FeaturedWine } from '@ts/index';
 
 export const useWineServing = (wine: FeaturedWine) => {
   const getServingTemperature = (): string => {

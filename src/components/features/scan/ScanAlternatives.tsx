@@ -1,7 +1,7 @@
 // components/features/scan/ScanAlternatives.tsx
 import { Image as ImageIcon } from 'lucide-react';
 
-import type { ScanAlternativesProps } from '@ts/scan';
+import type { ScanAlternativesProps } from '@ts/index';
 
 export function ScanAlternatives({ isScanning, showResult }: ScanAlternativesProps) {
   if (isScanning || showResult) {

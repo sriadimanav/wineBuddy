@@ -1,6 +1,6 @@
 // components/features/home/useHomeActions.ts
 import { useNavigate } from '@tanstack/react-router';
-import type { HomeActions, WineCategory } from '@ts/home';
+import type { HomeActions, WineCategory } from '@ts/index';
 
 export const useHomeActions = (): HomeActions => {
   const navigate = useNavigate();

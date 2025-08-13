@@ -4,7 +4,7 @@ import { Award } from 'lucide-react';
 import { WINE_CATEGORIES } from '@/constants/home';
 import { useScreenSize } from '@components/hooks/useMediaQueries';
 import { AdaptiveGrid } from '@components/layout/ResponsiveLayout';
-import type { WineCategoriesSectionProps } from '@ts/home';
+import type { WineCategoriesSectionProps } from '@ts/index';
 
 export function WineCategoriesSection({ onCategoryClick }: WineCategoriesSectionProps) {
   const screenSize = useScreenSize();

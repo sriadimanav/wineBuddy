@@ -1,5 +1,5 @@
 // constants/home.ts
-import type { WineCategory, WineCategoryType } from '@/ts/home';
+import type { WineCategory, WineCategoryType } from '@ts/index';
 
 export const WINE_CATEGORIES: readonly WineCategory[] = [
   {

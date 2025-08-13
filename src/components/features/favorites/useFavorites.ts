@@ -1,9 +1,7 @@
 // hooks/useFavorites.ts
 import { useMemo, useState } from 'react';
 
-import type { User } from '@/ts/user';
-import type { FeaturedWine } from '@/ts/wine';
-import type { ViewMode } from '@ts/index';
+import type { FeaturedWine, User, ViewMode } from '@ts/index';
 
 export const useFavorites = (user: User, allWines: readonly FeaturedWine[]) => {
   const [searchQuery, setSearchQuery] = useState('');

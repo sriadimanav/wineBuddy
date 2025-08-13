@@ -3,7 +3,7 @@ import { Camera } from 'lucide-react';
 
 import { HOME_MESSAGES } from '@/constants/home';
 import { useScreenSize } from '@components/hooks/useMediaQueries';
-import type { QuickScanCTAProps } from '@ts/home';
+import type { QuickScanCTAProps } from '@ts/index';
 
 export function QuickScanCTA({ onScanClick }: QuickScanCTAProps) {
   const screenSize = useScreenSize();

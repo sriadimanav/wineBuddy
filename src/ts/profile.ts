@@ -1,7 +1,7 @@
 // types/profile.ts
 import type { LucideIcon } from 'lucide-react';
 
-import type { User } from '@/ts/user';
+import type { User } from './user';
 
 export interface ProfileScreenProps {
   user: User;

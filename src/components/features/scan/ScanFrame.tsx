@@ -1,7 +1,7 @@
 // components/features/scan/ScanFrame.tsx
 import { CheckCircle } from 'lucide-react';
 
-import type { ScanFrameProps } from '@ts/scan';
+import type { ScanFrameProps } from '@ts/index';
 
 export function ScanFrame({ isScanning, scanProgress, showResult, screenSize }: ScanFrameProps) {
   return (

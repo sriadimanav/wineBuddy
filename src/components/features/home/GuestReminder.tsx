@@ -1,6 +1,6 @@
 // components/features/home/GuestReminder.tsx
 import { HOME_MESSAGES } from '@/constants/home';
-import type { GuestReminderProps } from '@ts/home';
+import type { GuestReminderProps } from '@ts/index';
 
 export function GuestReminder({ onSignUpClick }: GuestReminderProps) {
   return (

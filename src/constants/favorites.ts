@@ -1,5 +1,5 @@
 // constants/mockData.ts
-import type { FeaturedWine } from '@/ts/wine';
+import type { FeaturedWine } from '@ts/index';
 
 export const MOCK_FAVORITES_DATA: readonly FeaturedWine[] = [
   {

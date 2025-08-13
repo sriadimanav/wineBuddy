@@ -1,7 +1,7 @@
 // components/features/scan/ScanHeader.tsx
 import { Flashlight, FlashlightOff, X } from 'lucide-react';
 
-import type { ScanHeaderProps } from '@ts/scan';
+import type { ScanHeaderProps } from '@ts/index';
 
 export function ScanHeader({ onBack, onToggleFlash, flashOn, screenSize }: ScanHeaderProps) {
   return (
