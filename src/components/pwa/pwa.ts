@@ -41,6 +41,7 @@ export const isDevelopment = (): boolean => {
     return false;
   } catch (error) {
     // Silent fallback to production mode if detection fails
+    console.log(error);
     return false;
   }
 };

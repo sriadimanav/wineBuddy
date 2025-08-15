@@ -3,14 +3,14 @@ import { FAQ_DATA } from '@/constants/faq';
 
 import { useFAQSearch } from '@components/features/faq/useFAQSearch';
 
-import type { FAQScreenProps } from '@ts/index';
+//import type { FAQScreenProps } from '@ts/index';
 
 import { FAQCategory } from './FAQCategory';
 import { FAQEmptyState } from './FAQEmptyState';
 import { FAQSearch } from './FAQSearch';
 import { FAQSupport } from './FAQSupport';
 
-export function FAQScreen({}: FAQScreenProps) {
+export function FAQScreen() {
   const { searchQuery, setSearchQuery, filteredFAQ, expandedItems, toggleExpanded } =
     useFAQSearch(FAQ_DATA);
 

@@ -2,7 +2,9 @@
 
 ## Overview
 
-This document outlines strategic improvements to enhance Wine Buddy's functionality, performance, user experience, and maintainability. The suggestions are prioritized by impact and implementation complexity.
+This document outlines strategic improvements to enhance Wine Buddy's
+functionality, performance, user experience, and maintainability. The
+suggestions are prioritized by impact and implementation complexity.
 
 ---
 
@@ -10,8 +12,8 @@ This document outlines strategic improvements to enhance Wine Buddy's functional
 
 ### 1. **Real Backend Integration**
 
-**Current State**: Mock data and localStorage
-**Improvement**: Implement proper backend API
+**Current State**: Mock data and localStorage **Improvement**: Implement proper
+backend API
 
 ```typescript
 // Suggested API service structure
@@ -48,13 +50,12 @@ class WineAPI {
 - User data persistence across devices
 - Better search and filtering capabilities
 
-**Implementation Priority**: High
-**Estimated Effort**: 2-3 weeks
+**Implementation Priority**: High **Estimated Effort**: 2-3 weeks
 
 ### 2. **Real Camera Integration**
 
-**Current State**: Simulated scanning with mock results
-**Improvement**: Implement actual camera scanning
+**Current State**: Simulated scanning with mock results **Improvement**:
+Implement actual camera scanning
 
 ```typescript
 // Suggested camera service
@@ -88,13 +89,12 @@ class CameraService {
 - OCR text extraction from labels
 - Image quality validation
 
-**Implementation Priority**: High
-**Estimated Effort**: 1-2 weeks
+**Implementation Priority**: High **Estimated Effort**: 1-2 weeks
 
 ### 3. **User Authentication & Data Sync**
 
-**Current State**: Local storage only
-**Improvement**: Real authentication with cloud sync
+**Current State**: Local storage only **Improvement**: Real authentication with
+cloud sync
 
 ```typescript
 // Suggested auth improvements
@@ -115,8 +115,7 @@ interface AuthService {
 - Account recovery options
 - Privacy controls
 
-**Implementation Priority**: High
-**Estimated Effort**: 2-3 weeks
+**Implementation Priority**: High **Estimated Effort**: 2-3 weeks
 
 ---
 
@@ -142,7 +141,10 @@ const ScanScreen = lazy(() => import('@/components/features/scan/ScanScreen'));
 ```typescript
 // Add image optimization service
 class ImageOptimizer {
-  static optimizeWineImage(url: string, size: 'thumbnail' | 'medium' | 'large') {
+  static optimizeWineImage(
+    url: string,
+    size: 'thumbnail' | 'medium' | 'large',
+  ) {
     return `${url}?w=${this.getSizeWidth(size)}&q=80&fm=webp`;
   }
 
@@ -176,8 +178,7 @@ function VirtualizedWineList({ wines }: { wines: Wine[] }) {
 }
 ```
 
-**Implementation Priority**: Medium-High
-**Estimated Effort**: 1-2 weeks
+**Implementation Priority**: Medium-High **Estimated Effort**: 1-2 weeks
 
 ### 5. **Enhanced Error Handling & Logging**
 
@@ -210,8 +211,7 @@ class WineErrorBoundary extends Component {
 - A/B testing framework
 - Analytics tracking
 
-**Implementation Priority**: Medium
-**Estimated Effort**: 1 week
+**Implementation Priority**: Medium **Estimated Effort**: 1 week
 
 ### 6. **Testing Infrastructure**
 
@@ -256,8 +256,7 @@ test('user can scan wine and add to favorites', async ({ page }) => {
 - Storybook (component documentation)
 - Visual regression testing
 
-**Implementation Priority**: Medium
-**Estimated Effort**: 2 weeks
+**Implementation Priority**: Medium **Estimated Effort**: 2 weeks
 
 ---
 
@@ -275,7 +274,11 @@ interface RecommendationEngine {
   getRecommendationsForOccasion(occasion: WineOccasion): Promise<Wine[]>;
 }
 
-type WineOccasion = 'dinner_party' | 'romantic_dinner' | 'casual_evening' | 'celebration';
+type WineOccasion =
+  | 'dinner_party'
+  | 'romantic_dinner'
+  | 'casual_evening'
+  | 'celebration';
 ```
 
 #### Advanced Search & Filtering
@@ -317,8 +320,7 @@ interface WineCellar {
 }
 ```
 
-**Implementation Priority**: Medium
-**Estimated Effort**: 3-4 weeks
+**Implementation Priority**: Medium **Estimated Effort**: 3-4 weeks
 
 ### 8. **Social Features**
 
@@ -344,8 +346,7 @@ function WineSocialPanel({ wine }: { wine: Wine }) {
 }
 ```
 
-**Implementation Priority**: Low-Medium
-**Estimated Effort**: 2-3 weeks
+**Implementation Priority**: Low-Medium **Estimated Effort**: 2-3 weeks
 
 ### 9. **Enhanced Gamification**
 
@@ -383,8 +384,7 @@ function GamificationDashboard() {
 }
 ```
 
-**Implementation Priority**: Low-Medium
-**Estimated Effort**: 2 weeks
+**Implementation Priority**: Low-Medium **Estimated Effort**: 2 weeks
 
 ---
 
@@ -465,8 +465,7 @@ WineCard.Title = function WineCardTitle(props) {
 </WineCard>
 ```
 
-**Implementation Priority**: Medium
-**Estimated Effort**: 1-2 weeks
+**Implementation Priority**: Medium **Estimated Effort**: 1-2 weeks
 
 ### 11. **Accessibility Improvements**
 
@@ -514,8 +513,7 @@ function AccessibleWineCard({ wine }: { wine: Wine }) {
 - Voice navigation
 - Reduced motion support
 
-**Implementation Priority**: Medium
-**Estimated Effort**: 1 week
+**Implementation Priority**: Medium **Estimated Effort**: 1 week
 
 ### 12. **Internationalization (i18n)**
 
@@ -561,8 +559,7 @@ function WineCard({ wine }: { wine: Wine }) {
 - Italian
 - Portuguese
 
-**Implementation Priority**: Low-Medium
-**Estimated Effort**: 1-2 weeks
+**Implementation Priority**: Low-Medium **Estimated Effort**: 1-2 weeks
 
 ---
 
@@ -612,8 +609,7 @@ function UserInsightsDashboard() {
 }
 ```
 
-**Implementation Priority**: Low
-**Estimated Effort**: 1 week
+**Implementation Priority**: Low **Estimated Effort**: 1 week
 
 ### 14. **A/B Testing Framework**
 
@@ -647,8 +643,7 @@ function WineCard({ wine }: { wine: Wine }) {
 }
 ```
 
-**Implementation Priority**: Low
-**Estimated Effort**: 1 week
+**Implementation Priority**: Low **Estimated Effort**: 1 week
 
 ---
 
@@ -783,7 +778,9 @@ function OfflineIndicator() {
 
 ## 🎯 Conclusion
 
-These improvements will transform Wine Buddy from a demo application into a production-ready, scalable platform. The suggested phased approach ensures steady progress while maintaining app stability and user experience.
+These improvements will transform Wine Buddy from a demo application into a
+production-ready, scalable platform. The suggested phased approach ensures
+steady progress while maintaining app stability and user experience.
 
 **Next Steps:**
 
@@ -793,4 +790,6 @@ These improvements will transform Wine Buddy from a demo application into a prod
 4. Implement quick wins for immediate user experience enhancement
 5. Establish metrics and monitoring for measuring improvement impact
 
-The combination of technical enhancements, user experience improvements, and business intelligence features will position Wine Buddy as a leading wine discovery platform in the market.
+The combination of technical enhancements, user experience improvements, and
+business intelligence features will position Wine Buddy as a leading wine
+discovery platform in the market.

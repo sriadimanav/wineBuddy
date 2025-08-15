@@ -8,7 +8,7 @@ export function GuestReminder({ onSignUpClick }: GuestReminderProps) {
     <div className="bg-wine-blush border border-border rounded-xl p-4 wine-rosé-card">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <h3 className="font-semibold text-wine-accent mb-1">You're exploring as a guest</h3>
+          <h3 className="font-semibold text-wine-accent mb-1">{`You're exploring as a guest`}</h3>
           <p className="text-sm text-muted-foreground">{HOME_MESSAGES.GUEST_UPGRADE_DESCRIPTION}</p>
         </div>
         <button

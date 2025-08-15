@@ -29,7 +29,7 @@ export function WineOverview({ wine }: WineOverviewProps) {
           <Award className="w-5 h-5 mr-2 text-wine-accent" />
           Sommelier Notes
         </h3>
-        <p className="text-gray-700 leading-relaxed italic">"{wine.sommelierNotes}"</p>
+        <p className="text-gray-700 leading-relaxed italic">{`"${wine.sommelierNotes}"`}</p>
       </div>
 
       {/* Wine Stats */}

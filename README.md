@@ -1,6 +1,7 @@
 # Wine Buddy 🍷
 
-A modern Progressive Web App for wine discovery, scanning, and collection management built with React 19, TypeScript, and TanStack Router.
+A modern Progressive Web App for wine discovery, scanning, and collection
+management built with React 19, TypeScript, and TanStack Router.
 
 **Author**: Aditya Srivastava  
 **Repository**: https://github.com/sriadimanav/wineBuddy  
@@ -113,13 +114,15 @@ src/
 └── config/                 # App configuration
 ```
 
-For detailed structure documentation, see [FOLDER_STRUCTURE.md](FOLDER_STRUCTURE.md).
+For detailed structure documentation, see
+[FOLDER_STRUCTURE.md](FOLDER_STRUCTURE.md).
 
 ## 🎯 Project Configuration
 
 ### Package Manager
 
-This project uses **pnpm** (Performant NPM) for faster installations and better disk space efficiency.
+This project uses **pnpm** (Performant NPM) for faster installations and better
+disk space efficiency.
 
 ```bash
 # Verify versions
@@ -134,14 +137,17 @@ The project uses TypeScript path aliases for cleaner imports:
 ```typescript
 // Instead of: ../../../components/ui/Button
 // Available aliases:
-import something from '@/...';
-// src/*
-import Component from '@components/...';
-import { Button } from '@components/ui/Button';
 // src/styles/*
 import route from '@routes/...';
 // src/ts/*
 import style from '@styles/...';
+
+import something from '@/...';
+
+// src/*
+import Component from '@components/...';
+import { Button } from '@components/ui/Button';
+
 // src/components/*
 import type from '@ts/...';
 
@@ -179,8 +185,7 @@ import type from '@ts/...';
    pnpm run dev
    ```
 
-4. **Open your browser**
-   Navigate to `http://localhost:5173`
+4. **Open your browser** Navigate to `http://localhost:5173`
 
 ### Environment Setup
 
@@ -231,8 +236,7 @@ VITE_PWA_ENABLED=true
    });
    ```
 
-4. **Add navigation**
-   Update `BottomNav.tsx` or relevant navigation components.
+4. **Add navigation** Update `BottomNav.tsx` or relevant navigation components.
 
 ### Component Guidelines
 
@@ -663,4 +667,5 @@ pnpm run type-check:watch
 
 **Happy coding! 🍷✨**
 
-For questions or support, please check the documentation or create an issue in the repository.
+For questions or support, please check the documentation or create an issue in
+the repository.

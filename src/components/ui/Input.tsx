@@ -9,7 +9,8 @@ type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 };
 
 function Input({ className, type = 'text', error, label, id, ref, ...props }: InputProps) {
-  const inputId = id || React.useId();
+  const generatedId = React.useId();
+  const inputId = id || generatedId;
 
   return (
     <div className="flex flex-col gap-1">

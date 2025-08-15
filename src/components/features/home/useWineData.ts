@@ -51,6 +51,7 @@ export function useWineData(): UseWineDataReturn {
         error: null,
       });
     } catch (error) {
+      console.log(error);
       setData(prev => ({
         ...prev,
         loading: false,

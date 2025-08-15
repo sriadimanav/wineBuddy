@@ -1,4 +1,5 @@
 {
+  "$schema": "vscode://schemas/settings/user",
   "files.watcherExclude": {
     "**/routeTree.gen.ts": true
   },
@@ -15,4 +16,5 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true, //enable indentation using space
   "prettier.useTabs": false
+  //"css.validate": false
 }

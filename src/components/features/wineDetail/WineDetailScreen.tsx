@@ -27,7 +27,7 @@ function WineNotFound() {
       <div className="text-center">
         <Wine className="w-16 h-16 text-gray-400 mx-auto mb-4" />
         <h2 className="text-xl font-semibold text-gray-900 mb-2">Wine Not Found</h2>
-        <p className="text-gray-600 mb-4">The wine you're looking for doesn't exist.</p>
+        <p className="text-gray-600 mb-4">{`The wine you're looking for doesn't exist.`}</p>
         <button
           onClick={() => navigate({ to: '/' })}
           className="bg-wine-accent text-white px-6 py-3 rounded-lg hover:bg-wine-light transition-colors">
@@ -44,17 +44,16 @@ export function WineDetailScreen({ id }: WineDetailScreenProps) {
   // Get user from auth service
   const user = authService.getUser();
 
+  const wine = WINE_DATABASE[id];
+  const { isFavorite, activeTab, setActiveTab, toggleFavorite } = useWineDetail(wine, user);
+
   if (!user) {
     return null; // Will be handled by route guard
   }
 
-  const wine = WINE_DATABASE[id];
-
   if (!wine) {
     return <WineNotFound />;
   }
-
-  const { isFavorite, activeTab, setActiveTab, toggleFavorite } = useWineDetail(wine, user);
 
   const handleToggleFavorite = () => {
     toggleFavorite();

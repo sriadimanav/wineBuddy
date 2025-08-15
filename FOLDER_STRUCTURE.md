@@ -2,7 +2,9 @@
 
 ## Overview
 
-Wine Buddy is a React-based Progressive Web App (PWA) for wine discovery and collection management. The application follows a modular, feature-based architecture with TypeScript, TanStack Router, and Tailwind CSS.
+Wine Buddy is a React-based Progressive Web App (PWA) for wine discovery and
+collection management. The application follows a modular, feature-based
+architecture with TypeScript, TanStack Router, and Tailwind CSS.
 
 ## Project Architecture
 
@@ -40,7 +42,8 @@ src/
 
 #### Features (`/components/features`)
 
-Each feature follows a consistent structure with components, hooks, and utilities:
+Each feature follows a consistent structure with components, hooks, and
+utilities:
 
 **Authentication (`/auth`)**
 
@@ -295,4 +298,6 @@ Application-wide constants:
 - Reusable component patterns
 - Error boundaries and fallbacks
 
-This structure provides a scalable, maintainable codebase for the Wine Buddy application with clear separation of concerns and excellent developer experience.
+This structure provides a scalable, maintainable codebase for the Wine Buddy
+application with clear separation of concerns and excellent developer
+experience.

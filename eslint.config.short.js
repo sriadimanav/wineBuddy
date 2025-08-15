@@ -1,7 +1,5 @@
 // @ts-check
 import comments from '@eslint-community/eslint-plugin-eslint-comments';
-import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import importPlugin from 'eslint-plugin-import';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
@@ -9,17 +7,7 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import globals from 'globals';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import tseslint from 'typescript-eslint';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  //allConfig: js.configs.all,
-});
 
 export default tseslint.config(
   // Base configurations
@@ -27,7 +15,7 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
 
   // Community configs (minimal)
-  ...fixupConfigRules(compat.extends('plugin:@eslint-community/eslint-comments/recommended')),
+  comments.configs.recommended,
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
   reactHooks.configs['recommended-latest'],
@@ -59,10 +47,6 @@ export default tseslint.config(
     name: 'wine-buddy-minimal',
     files: ['**/*.{js,jsx,ts,tsx}'],
 
-    plugins: {
-      '@eslint-community/eslint-comments': fixupPluginRules(comments),
-    },
-
     settings: {
       react: { version: 'detect' },
       'import/resolver': {
@@ -73,8 +57,6 @@ export default tseslint.config(
     },
 
     rules: {
-      'react-refresh/only-export-components': 'off',
-
       // 🎯 TYPESCRIPT - Just 2 essential rules
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-explicit-any': 'warn',
@@ -82,24 +64,13 @@ export default tseslint.config(
       // ⚛️ REACT - Just 2 essential rules
       'react/react-in-jsx-scope': 'off',
       'react/jsx-key': 'error',
-      'react/prop-types': 'off', // ✅ Disable PropTypes (using TypeScript)
-      'react/require-default-props': 'off', // ✅ Not needed with TypeScript
-      'react/default-props-match-prop-types': 'off', // ✅ Not needed with TypeScript
-      'react/no-unescaped-entities': 'warn',
 
       // 🪝 REACT HOOKS - Just 1 essential rule
       'react-hooks/rules-of-hooks': 'error',
 
       // 📦 IMPORT - Just 2 essential rules
-      'import/no-unresolved': [
-        'error',
-        {
-          ignore: [
-            '^virtual:', // ✅ Ignore all Vite virtual modules (like virtual:pwa-register)
-          ],
-        },
-      ],
-      'import/order': ['off', { 'newlines-between': 'always' }],
+      'import/no-unresolved': 'error',
+      'import/order': ['error', { 'newlines-between': 'always' }],
 
       // 💬 ESLINT COMMENTS - Just 1 rule
       '@eslint-community/eslint-comments/no-unused-disable': 'error',
@@ -113,26 +84,10 @@ export default tseslint.config(
   // Config files - minimal overrides
   {
     name: 'config-files',
-    files: ['**/*.config.{js,ts}', 'eslint.config.js', '.lintstagedrc.cjs', 'commitlint.config.js'],
-    languageOptions: {
-      globals: globals.node,
-      parser: undefined, // ← Reset parser to default
-      parserOptions: {
-        project: null,
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-      },
-    },
+    files: ['**/*.config.{js,ts}', 'eslint.config.js'],
     rules: {
       'no-console': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
-
-      // Disable rules that need TypeScript project
-      '@typescript-eslint/no-floating-promises': 'off',
-      '@typescript-eslint/await-thenable': 'off',
-      '@typescript-eslint/no-misused-promises': 'off',
-      '@typescript-eslint/require-await': 'off',
-      '@typescript-eslint/unbound-method': 'off',
     },
   },
 
@@ -146,38 +101,8 @@ export default tseslint.config(
     },
   },
 
-  {
-    name: 'commonjs-files',
-    files: ['**/*.cjs'],
-    languageOptions: {
-      globals: globals.node,
-      sourceType: 'script', // Not module for .cjs files
-      parserOptions: {
-        project: null,
-      },
-    },
-    rules: {
-      'no-console': 'off',
-    },
-  },
-
   // Global ignores
   {
-    ignores: [
-      'dist/**',
-      'dev-dist/**',
-      'node_modules/**',
-      '.vite/**',
-      'routeTree.gen.ts',
-      '**/*.gen.ts',
-      'eslint.config.default.js',
-      'eslint.config.tseslint.js',
-      'eslint.config.short.js',
-      '.lintstagedrc.cjs',
-      'commitlint.config.js',
-      'pnpm-lock.yaml',
-      'vite-env.d.ts',
-      '**/*.d.ts',
-    ],
+    ignores: ['dist/**', 'node_modules/**', '.vite/**', 'routeTree.gen.ts', '**/*.gen.ts'],
   },
 );

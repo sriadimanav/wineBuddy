@@ -2,7 +2,11 @@
 
 ## What is A/B Testing?
 
-**A/B Testing** (also called split testing) is a method of comparing two versions of a webpage, app feature, or user interface to determine which one performs better. It's like conducting a controlled experiment where you show different versions to different groups of users and measure which version achieves better results.
+**A/B Testing** (also called split testing) is a method of comparing two
+versions of a webpage, app feature, or user interface to determine which one
+performs better. It's like conducting a controlled experiment where you show
+different versions to different groups of users and measure which version
+achieves better results.
 
 ## 🎯 How A/B Testing Works
 
@@ -24,7 +28,8 @@ Results     Results
 
 ### Example in Wine Buddy Context
 
-**Scenario**: Testing which button color gets more users to add wines to favorites
+**Scenario**: Testing which button color gets more users to add wines to
+favorites
 
 ```typescript
 // Version A (Control) - Red button
@@ -51,7 +56,11 @@ Results     Results
 
 ```typescript
 // Custom hook for A/B testing
-function useABTest(testName: string, variants: string[], defaultVariant?: string) {
+function useABTest(
+  testName: string,
+  variants: string[],
+  defaultVariant?: string,
+) {
   const [variant, setVariant] = useState<string>(defaultVariant || variants[0]);
 
   useEffect(() => {
@@ -259,7 +268,11 @@ interface ABTestMetrics {
 }
 
 // Example tracking
-function trackABTestResults(testName: string, variant: string, metrics: ABTestMetrics) {
+function trackABTestResults(
+  testName: string,
+  variant: string,
+  metrics: ABTestMetrics,
+) {
   analytics.track('ab_test_results', {
     test_name: testName,
     variant,
@@ -357,7 +370,10 @@ function useMultivariateTest() {
 function usePersonalizedABTest(userSegment: string) {
   const testConfig = {
     new_users: { test: 'onboarding_flow', variants: ['simple', 'detailed'] },
-    power_users: { test: 'advanced_features', variants: ['enabled', 'disabled'] },
+    power_users: {
+      test: 'advanced_features',
+      variants: ['enabled', 'disabled'],
+    },
     casual_users: { test: 'gamification', variants: ['basic', 'advanced'] },
   };
 
@@ -480,6 +496,9 @@ A/B testing is a powerful method to:
 - **Increase conversions** and business metrics
 - **Reduce risk** when making changes
 
-For Wine Buddy, A/B testing can help optimize everything from button colors to entire user flows, ensuring that every change improves the user experience and business outcomes.
+For Wine Buddy, A/B testing can help optimize everything from button colors to
+entire user flows, ensuring that every change improves the user experience and
+business outcomes.
 
-**Key Takeaway**: Always test, measure, and iterate based on real user data rather than assumptions!
+**Key Takeaway**: Always test, measure, and iterate based on real user data
+rather than assumptions!

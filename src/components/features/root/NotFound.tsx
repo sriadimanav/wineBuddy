@@ -11,8 +11,8 @@ export function NotFound() {
         </div>
         <h1 className="text-2xl font-bold text-foreground mb-4">404 - Page Not Found</h1>
         <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-          The wine you're looking for seems to have been uncorked! Let's get you back to discovering
-          amazing wines.
+          {`The wine you're looking for seems to have been uncorked! Let's get you back to discovering
+          amazing wines.`}
         </p>
         <Link
           to="/"
