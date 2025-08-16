@@ -14,6 +14,10 @@ const config = {
   quoteProps: 'as-needed',
   bracketSpacing: true,
 
+  // Import order plugin
+  plugins: ['@trivago/prettier-plugin-sort-imports'],
+  // plugins: ['@ianvs/prettier-plugin-sort-imports'],
+
   // Import sorting configuration
   importOrder: [
     '^(react|react-dom)(.*)$', // React imports first
@@ -27,8 +31,6 @@ const config = {
   importOrderSortSpecifiers: true,
   importOrderGroupNamespaceSpecifiers: true,
   importOrderCaseInsensitive: true,
-
-  plugins: ['@trivago/prettier-plugin-sort-imports'],
 
   // File-specific overrides
   overrides: [

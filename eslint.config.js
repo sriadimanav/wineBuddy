@@ -26,6 +26,8 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 // Fast Refresh rules for Vite/React
 import reactRefresh from 'eslint-plugin-react-refresh';
+// Security linting to catch common vulnerabilities (XSS, eval, unsafe patterns)
+import pluginSecurity from 'eslint-plugin-security';
 // Global variables for different environments
 import globals from 'globals';
 // Node.js path utilities (node: prefix is modern)
@@ -47,7 +49,7 @@ import tseslint from 'typescript-eslint';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: __dirname, // can also use --> import.meta.dirname
   recommendedConfig: js.configs.recommended, // Basic JavaScript rules
   //allConfig: js.configs.all,
 });
@@ -64,6 +66,7 @@ export default tseslint.config(
   reactHooks.configs['recommended-latest'], // React Hooks rules
   reactRefresh.configs.vite, // React Fast Refresh for Vite
   importPlugin.flatConfigs.recommended, // Import/export validation
+  pluginSecurity.configs.recommended,
 
   // Prettier last
   prettierRecommended,
