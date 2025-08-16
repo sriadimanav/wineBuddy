@@ -7,12 +7,32 @@ yarn.lock
 dist/
 dist-ssr/
 dev-dist/
+.vite/
+coverage/
+
+# Shell scripts (let EditorConfig handle these)
+*.sh
+*.bash
+*.zsh
+
+# Text files that aren't code
+*.txt
+
+# Docker files (let EditorConfig handle these)
+Dockerfile*
+.dockerignore
+
+# Other config files
+*.ini
+*.cfg
+*.conf
+*.toml
 
 # Ignore node modules
 node_modules/
 
 # Ignore environment files
-.env
+*.env*
 
 # Ignore system files
 .DS_Store

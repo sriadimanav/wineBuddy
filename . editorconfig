@@ -1,9 +1,12 @@
 # EditorConfig is awesome: https://EditorConfig.org
+#
+# HYBRID SETUP: EditorConfig for text files, Prettier for code files
+# This file focuses on files that Prettier doesn't handle
 
 # top-most EditorConfig file
 root = true
 
-# All files
+# Global defaults for all files
 [*]
 charset = utf-8
 end_of_line = lf
@@ -12,34 +15,55 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 2
 
-# JavaScript, TypeScript, React files
-[*.{js,jsx,ts,tsx,mjs,cjs}]
+# Environment files
+[*.env*]
 indent_style = space
 indent_size = 2
-max_line_length = 100
+max_line_length = 120
 
-# JSON files
-[*.json]
+# Shell scripts
+[*.{sh,bash,zsh}]
+indent_style = space
+indent_size = 2
+max_line_length = 120
+
+# Git files
+[.gitignore]
+indent_style = space
+indent_size = 2
+
+[.gitattributes]
+indent_style = space
+indent_size = 2
+
+# Docker files
+[Dockerfile*]
+indent_style = space
+indent_size = 2
+max_line_length = 120
+
+# Config files that Prettier doesn't handle
+[*.{ini,cfg,conf,toml}]
+indent_style = space
+indent_size = 2
+
+# Text files
+[*.txt]
 indent_style = space
 indent_size = 2
 max_line_length = 80
 
-# YAML files
-[*.{yml,yaml}]
+# License files
+[LICENSE*]
 indent_style = space
 indent_size = 2
-
-# Markdown files
-[*.md]
-trim_trailing_whitespace = false
 max_line_length = 80
 
-# Package files
-[package.json]
+# README files (if not .md)
+[README]
 indent_style = space
 indent_size = 2
+max_line_length = 80
 
-# Config files
-[*.config.{js,ts,mjs,cjs}]
-indent_style = space
-indent_size = 2
+# NOTE: Code files (.js, .ts, .jsx, .tsx, .css, .json) are handled by Prettier
+# See prettier.config.js for code formatting rules

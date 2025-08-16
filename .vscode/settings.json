@@ -1,5 +1,5 @@
 {
-  "$schema": "vscode://schemas/settings/user",
+  // File exclusions
   "files.watcherExclude": {
     "**/routeTree.gen.ts": true
   },
@@ -9,12 +9,102 @@
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
   },
-  "eslint.useFlatConfig": false,
+
+  // ESLint Configuration
+  "eslint.useFlatConfig": true,
+  "eslint.format.enable": true, // ESLint CAN format if asked
+  "eslint.lintTask.enable": true, // Adds ESLint to VS Code tasks menu
+  "eslint.run": "onSave", // (values --> onType, onSave, off)
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Editor & Formatting
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.detectIndentation": false, //auto detect tab size
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "never" //Fixe code issues manually (values --> explicit, never)
+  },
+  "editor.insertSpaces": true, //Tab key inserts spaces, not tab character
   "editor.tabSize": 2,
-  "editor.insertSpaces": true, //enable indentation using space
-  "prettier.useTabs": false
+  "editor.detectIndentation": false, //VS Code won't guess indentation from existing files
+  "files.insertFinalNewline": true, //Adds empty line at end of every file --> Unix standard, prevents git warnings
+  "files.trimTrailingWhitespace": true, // Removes spaces at end of lines --> Cleaner git diffs
+  "files.eol": "\n", // Use Unix line endings (LF) not Windows (CRLF)
+
+  // Prettier Configuration
+  "prettier.configPath": "./prettier.config.js",
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+  "prettier.enableDebugLogs": false, // Controls whether Prettier shows debug information in VS Code Output panel
+
+  // File-specific formatters
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[cjs]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[mjs]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // TEXT FILES: Use EditorConfig + VS Code defaults
+  "[plaintext]": {
+    "editor.defaultFormatter": null
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": null
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": null
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": null
+  },
+  "[gitignore]": {
+    "editor.defaultFormatter": null
+  },
+  "[properties]": {
+    "editor.defaultFormatter": null
+  },
+
+  // Disable conflicting formatters
+  "typescript.format.enable": false, // Disables TypeScript's built-in formatter
+  "javascript.format.enable": false // Disables JavaScript's built-in formatter
+
+  // Optional: CSS validation (keep commented as you had)
   //"css.validate": false
+
+  //"prettier.useTabs": false
 }
