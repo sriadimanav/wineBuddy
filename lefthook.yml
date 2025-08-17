@@ -1,6 +1,34 @@
-{
-  '*.{js,jsx,ts,tsx}': ['eslint --fix', 'prettier --write', 'git add'],
-  '*.{json,md,yml,yaml}': ['prettier --write', 'git add'],
-  '*.{css,scss}': ['prettier --write', 'git add'],
-  'package.json': ['prettier --write', 'git add'],
-}
+# lefthook.yml
+pre-commit:
+  parallel: true
+  commands:
+    lint-staged:
+      run: pnpm lint-staged
+
+# Option 1: Fixed prepare-commit-msg with proper TTY handling
+prepare-commit-msg:
+  commands:
+    commitizen:
+      interactive: true
+      run: |
+        if [ -t 1 ]; then
+          exec < /dev/tty && pnpm cz --hook
+        fi
+
+# Option 2: Alternative approach using commit-msg hook
+# Uncomment this and comment out prepare-commit-msg if Option 1 doesn't work
+# commit-msg:
+#   commands:
+#     commitlint:
+#       run: pnpm --no -- commitlint --edit {1}
+#     commitizen-check:
+#       interactive: true
+#       run: |
+#         if [ ! -s {1} ] || grep -q "^# Please enter the commit message" {1}; then
+#           exec < /dev/tty && pnpm cz --hook
+#         fi
+
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm --no -- commitlint --edit {1}
