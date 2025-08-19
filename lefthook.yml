@@ -5,7 +5,6 @@ pre-commit:
     lint-staged:
       run: pnpm lint-staged
 
-# Option 1: Fixed prepare-commit-msg with proper TTY handling
 prepare-commit-msg:
   commands:
     commitizen:
@@ -14,19 +13,6 @@ prepare-commit-msg:
         if [ -t 1 ]; then
           exec < /dev/tty && pnpm cz --hook
         fi
-
-# Option 2: Alternative approach using commit-msg hook
-# Uncomment this and comment out prepare-commit-msg if Option 1 doesn't work
-# commit-msg:
-#   commands:
-#     commitlint:
-#       run: pnpm --no -- commitlint --edit {1}
-#     commitizen-check:
-#       interactive: true
-#       run: |
-#         if [ ! -s {1} ] || grep -q "^# Please enter the commit message" {1}; then
-#           exec < /dev/tty && pnpm cz --hook
-#         fi
 
 commit-msg:
   commands:

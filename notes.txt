@@ -1,0 +1,51 @@
+eslint-plugin-unicorn
+eslint-plugin-jsx-a11y
+prettier-plugin-tailwindcss  # Sort Tailwind classes
+@ianvs/prettier-plugin-sort-imports  # Sort imports
+pnpm add -D audit-ci
+Playwright - E2E Testing -> pnpm add -D @playwright/test
+Storybook - Component Documentation
+pnpm add -D cross-env
+pnpm add -D dotenv-cli
+pnpm add -D typedoc
+pnpm add -D concurrently
+pnpm add -D @lhci/cli
+pnpm add -D rollup-plugin-visualizer
+pnpm add -D swagger-jsdoc swagger-ui-express
+pnpm add -D semantic-release
+pnpm add -D release-it
+npm install -g snyk
+PWA Builder - Enhanced PWA features -> pnpm add -D sonarqube-scanner
+Workbox - Advanced service worker -> pnpm add -D @pwabuilder/pwaupdate
+pnpm add -D chromatic
+pnpm add -D @tokens-studio/figma-plugin
+pnpm add @sentry/react @sentry/vite-plugin
+LogRocket - Session replay -> pnpm add logrocket logrocket-react
+turbo and nx
+stitches and vanilla extract classes
+
+🔮 Other useful tools in production setups
+
+🔍 Code Quality / Standards
+Stylelint → if you use CSS/SCSS/Tailwind, ensures clean styles.
+SonarLint or SonarQube → code smells, maintainability, security.
+EditorConfig → keep indentation/line endings consistent across IDEs.
+
+🧪 Testing
+Jest / Vitest → unit testing.
+Playwright / Cypress → end-to-end testing.
+Some teams add pre-push hooks for running a minimal test suite before pushing.
+
+⚡ DX & Automation
+Changesets → automated versioning + changelog based on Conventional Commits.
+Lint PR titles (GitHub Action using commitlint rules).
+Danger.js → automates PR reviews (e.g., “you didn’t update changelog”).
+Renovate / Dependabot → keeps dependencies up to date automatically.
+
+🔐 Security
+npm audit / pnpm audit / snyk → dependency vulnerability checks.
+git-secrets or truffleHog → prevent committing secrets (AWS keys, tokens).
+
+📦 Monorepo/Scaling (if needed)
+Nx or Turborepo → caching, task pipelines.
+pnpm workspaces → if you’ll have multiple packages.
